@@ -1,9 +1,9 @@
 # Proposal Title
-Author(s): [Author Name(s)]
+**Author(s)**: [Author Name(s)]
 
-Status: [Draft, Review, Last Call, Accepted, Implemented, Rejected]
+**Status**: [Draft, Review, Last Call, Accepted, Implemented, Rejected]
 
-Created: [Creation Date]
+**Created**: [Creation Date]
 
 ## Summary
 [Brief summary of the proposal]

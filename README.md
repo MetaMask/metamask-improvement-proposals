@@ -7,15 +7,15 @@ Welcome to the MetaMask Improvement Proposals (MIPs) repository. This repository
 3. Ensure a committed set of developers are ready to adopt changes before investing time in implementation.
 
 
-# Proposal lifecycle or "workflow"
-To maintain consistency and ensure a smooth evaluation process, the all proposals will be assigned one of the following stages throughout its lifecycle:
+# Proposal lifecycle
+To maintain consistency and ensure a smooth evaluation process, all proposals will be assigned one of the following stages throughout its lifecycle:
 
-1. Draft: Initial proposal submission.
-2. Review: Community feedback and discussion.
-3. Last Call: Final revisions and acceptance criteria.
-4. Accepted: Proposal approved by MetaMask team.
-5. Implemented: Changes have been integrated into MetaMask.
-6. Rejected: Proposal deemed not suitable for implementation.
+1. **Draft**: Initial proposal submission.
+2. **Review**: Community feedback and discussion.
+3. **Last Call**: Final revisions and acceptance criteria.
+4. **Accepted**: Proposal approved by MetaMask team.
+5. **Implemented**: Changes have been integrated into MetaMask.
+6. **Rejected**: Proposal deemed not suitable for implementation.
 
 ![image](./assets/MIP%20Lifecyle.png)
 
