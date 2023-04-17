@@ -127,6 +127,7 @@ Developers and users should also be aware of the standard security consideration
 ## References
 [EIP-747: WatchAsset](https://eips.ethereum.org/EIPS/eip-747)
 [ERC-721: Non-Fungible Token Standard](https://eips.ethereum.org/EIPS/eip-721)
+[ERC-1046: tokenURI Interoperability](https://eips.ethereum.org/EIPS/eip-1046)
 [ERC-1155: Multi Token Standard](https://eips.ethereum.org/EIPS/eip-1155)
 
 ## Copyright
