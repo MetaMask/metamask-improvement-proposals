@@ -55,7 +55,6 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 **ERC-1155**: A standard for representing both fungible and non-fungible tokens on the Ethereum blockchain. It allows for batch operations and efficient transfers, supporting multiple token types within a single contract.
 
-**ERC-1046**: EIP 1046 extends Ethereum token standards (e.g., ERC-20, ERC-721) by introducing a normalized metadata interface for all such token standards.
 ## Proposal Specification
 To extend EIP-747 support for ERC-721 and ERC-1155 tokens while enhancing security, we propose the following changes:
 
@@ -66,13 +65,13 @@ The updated method signature will be as follows:
 ethereum.sendAsync({
   method: 'wallet_watchAsset',
   params: {
-    type: 'ERC20' | 'ERC721' | 'ERC1155' | 'ERC1046',
+    type: 'ERC20' | 'ERC721' | 'ERC1155',
     options: {
       address: string, // required parameter for all types.
       symbol: string, // optional parameter for ERC-20 tokens
       name: string, // optional parameter for ERC-20 tokens
       image: string, // optional parameter for ERC-20 tokens
-      tokenId: string, // required parameter for ERC-721 and ERC-1155 tokens, optional when type is 1046.
+      tokenId: string, // required parameter for ERC-721 and ERC-1155 tokens.
     },
   },
 });
@@ -82,8 +81,6 @@ MetaMask SHOULD use the `tokenId` in conjunction with the contract `address` to 
 When type 'ERC721' is passed, the wallet MUST pass the `tokenId` parameter to the `tokenUri()` method on the contract address provided to fetch the metadata.
 
 When type 'ERC1155' is passed, the wallet MUST pass the `tokenId` parameter to the `uri()` method on the contract address provided to fetch the metadata.
-
-When type 'ERC1046' is passed, the wallet MUST call the `tokenUri()` method on the contract address provided to fetch the metadata, passing a `tokenId` if provided as a param.
 
 
 By retrieving the metadata directly from the token contract using the `tokenId` and contract `address`, we ensure a higher level of security compared to allowing the dApp to provide the image and other metadata directly in the request. This approach mitigates the risk of dApps providing invalid or malicious metadata, as the data is fetched from the original source (the token contract) rather than being supplied by potentially untrustworthy third parties. This results in a more secure and reliable user experience when adding ERC-721 and ERC-1155 tokens to MetaMask.
@@ -127,7 +124,6 @@ Developers and users should also be aware of the standard security consideration
 ## References
 [EIP-747: WatchAsset](https://eips.ethereum.org/EIPS/eip-747)
 [ERC-721: Non-Fungible Token Standard](https://eips.ethereum.org/EIPS/eip-721)
-[ERC-1046: tokenURI Interoperability](https://eips.ethereum.org/EIPS/eip-1046)
 [ERC-1155: Multi Token Standard](https://eips.ethereum.org/EIPS/eip-1155)
 
 ## Copyright
