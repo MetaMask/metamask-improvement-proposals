@@ -85,6 +85,8 @@ When type 'ERC1155' is passed, the wallet MUST pass the `tokenId` parameter to t
 
 By retrieving the metadata directly from the token contract using the `tokenId` and contract `address`, we ensure a higher level of security compared to allowing the dApp to provide the image and other metadata directly in the request. This approach mitigates the risk of dApps providing invalid or malicious metadata, as the data is fetched from the original source (the token contract) rather than being supplied by potentially untrustworthy third parties. This results in a more secure and reliable user experience when adding ERC-721 and ERC-1155 tokens to MetaMask.
 
+The proposed changes have been implemented in the following PR against the `MetaMask/api-specs` repo: https://github.com/MetaMask/api-specs/pull/138
+
 ## Caveats
 The expansion of `wallet_watchAsset` to include ERC-721 and ERC-1155 tokens may result in a more complex user interface and increased storage requirements for MetaMask.
 
