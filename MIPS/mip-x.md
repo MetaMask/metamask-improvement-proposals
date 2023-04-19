@@ -1,4 +1,4 @@
-# MIP-XXXX: Expand EIP-747 to Support ERC-721 and ERC-1155 Tokens (NFTs)
+# MIP-X: Extend `wallet_watchAsset` to Support ERC-721 and ERC-1155 Tokens (NFTs)
 
 **Author**: Alex Donesky (@adonesky1)
 
@@ -7,12 +7,12 @@
 **Created:** 2023-4-11
 
 ## Summary
-This proposal aims to expand the support of EIP-747 to include ERC-721 and ERC-1155 tokens (NFTs) enabling better integration of NFTs within MetaMask. By broadening the scope of supported tokens, we can provide users with a more seamless experience when interacting with NFTs through MetaMask and overcome the existing constraints of EIP-747, which currently only supports ERC-20 tokens.
+This proposal aims to extend the support of `wallet_watchAsset` in MetaMask to include ERC-721 and ERC-1155 tokens (NFTs) enabling better integration of NFTs within the wallet. By broadening the scope of supported tokens, we can provide users with a more seamless experience when interacting with NFTs through MetaMask and overcome the existing constraints of `wallet_watchAsset`, which currently only supports ERC-20 tokens.
 
 ## Motivation
-[EIP-747 (WatchAsset)](https://eips.ethereum.org/EIPS/eip-747) currently allows users to add custom ERC-20 tokens to their MetaMask wallet. However, it does not support ERC-721 or ERC-1155 tokens, the current primary standards for non-fungible tokens (NFTs). With the increasing popularity and adoption of NFTs, it is essential to expand EIP-747 to accommodate these token standards and provide a more comprehensive and seamless user experience.
+[wallet_WatchAsset](https://github.com/MetaMask/api-specs/blob/ec70a1dcb7730ae567094e319704bbad755ce1a8/openrpc.json#L320) currently allows users to add custom ERC-20 tokens to their MetaMask wallet. However, it does not support ERC-721 or ERC-1155 tokens, the current primary standards for non-fungible tokens (NFTs). With the increasing popularity and adoption of NFTs, it is essential to expand `wallet_watchAsset` to accommodate these token standards and provide a more comprehensive and seamless user experience.
 
-Furthermore, by expanding EIP-747 to support ERC-721 and ERC-1155 tokens, MetaMask will enable users to view and interact with their NFTs directly within the wallet, without relying on third-party indexers or third party APIs. This enhancement empowers users to manage their NFT assets directly, increases the usability of MetaMask for NFT-related activities, and ultimately strengthens user trust in the wallet.
+Furthermore, by expanding `wallet_watchAsset` to support ERC-721 and ERC-1155 tokens, MetaMask will enable users to view and interact with their NFTs directly within the wallet, without relying on third-party indexers or third party APIs. This enhancement empowers users to manage their NFT assets directly, increases the usability of MetaMask for NFT-related activities, and ultimately strengthens user trust in the wallet.
 
 By allowing users to add and manage NFTs directly within MetaMask, we can better cater to the growing NFT community and expand the wallet's functionality to meet the evolving needs of the broader Ethereum ecosystem.
 
@@ -56,9 +56,9 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 **ERC-1155**: A standard for representing both fungible and non-fungible tokens on the Ethereum blockchain. It allows for batch operations and efficient transfers, supporting multiple token types within a single contract.
 
 ## Proposal Specification
-To extend EIP-747 support for ERC-721 and ERC-1155 tokens while enhancing security, we propose the following changes:
+To extend `wallet_WatchAsset` support to include ERC-721 and ERC-1155 tokens while enhancing security, we propose the following changes:
 
-Introduce an optional tokenId parameter to the existing options object. This parameter will be used to specify the unique identifier of the NFT when sending a request to add the token.
+Introduce an optional `tokenId` parameter to the existing options object. This parameter will be used to specify the unique identifier of the NFT when sending a request to add the token.
 The updated method signature will be as follows:
 
 ```
@@ -86,7 +86,7 @@ When type 'ERC1155' is passed, the wallet MUST pass the `tokenId` parameter to t
 By retrieving the metadata directly from the token contract using the `tokenId` and contract `address`, we ensure a higher level of security compared to allowing the dApp to provide the image and other metadata directly in the request. This approach mitigates the risk of dApps providing invalid or malicious metadata, as the data is fetched from the original source (the token contract) rather than being supplied by potentially untrustworthy third parties. This results in a more secure and reliable user experience when adding ERC-721 and ERC-1155 tokens to MetaMask.
 
 ## Caveats
-The expansion of EIP-747 to include ERC-721 and ERC-1155 tokens may result in a more complex user interface and increased storage requirements for MetaMask.
+The expansion of `wallet_watchAsset` to include ERC-721 and ERC-1155 tokens may result in a more complex user interface and increased storage requirements for MetaMask.
 
 ## Implementation
 The MetaMask team will be responsible for implementing the proposed changes to the `wallet_watchAsset` method. This will involve updating the wallet's internal logic and user interface to accommodate the additional token types and parameters.
@@ -95,7 +95,7 @@ The MetaMask team will be responsible for implementing the proposed changes to t
 
 Considering that the only additional parameter being proposed is the optional `tokenId` argument, developers should take the following aspects into account when adopting this proposal:
 
-1. Backward compatibility: The existing implementation of EIP-747 for ERC-20 tokens remains unchanged. Developers working with ERC-20 tokens will not need to make any modifications to their current code.
+1. Backward compatibility: The existing implementation of `wallet_watchAsset` for ERC-20 tokens remains unchanged. Developers working with ERC-20 tokens will not need to make any modifications to their current code.
 
 2. Ease of adoption: Developers working with ERC-721 and ERC-1155 tokens can simply include the optional `tokenId` parameter in the options object when sending a request to add an NFT MetaMask will fetch the image, name, symbol, and any other metadata directly from the token contract using the tokenId and contract address, meaning developers can rely on this secure and reliable method of obtaining the necessary token information.
 
@@ -122,7 +122,7 @@ To mitigate this risk, MetaMask could implement the following countermeasures:
 Developers and users should also be aware of the standard security considerations when dealing with tokens, such as verifying contract addresses and ensuring the trustworthiness of token issuers.
 
 ## References
-[EIP-747: WatchAsset](https://eips.ethereum.org/EIPS/eip-747)
+[wallet_WatchAsset](https://github.com/MetaMask/api-specs/blob/ec70a1dcb7730ae567094e319704bbad755ce1a8/openrpc.json#L320p)
 [ERC-721: Non-Fungible Token Standard](https://eips.ethereum.org/EIPS/eip-721)
 [ERC-1155: Multi Token Standard](https://eips.ethereum.org/EIPS/eip-1155)
 
