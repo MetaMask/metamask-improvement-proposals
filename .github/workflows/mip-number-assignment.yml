@@ -1,0 +1,53 @@
+name: Assign MIP number
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+
+jobs:
+  assign_mip_number:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.MIP_BOT_TOKEN }}
+
+      - name: Fetch latest changes
+        run: |
+          git fetch --no-tags --prune --depth=1 origin main
+          git checkout main
+          git reset --hard origin/main
+
+      - name: Set authentication token
+        run: git remote set-url origin https://x-access-token:${{ secrets.MIP_BOT_TOKEN }}@github.com/${{ github.repository }}.git
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Assign MIP number and update file
+        run: node .github/scripts/rename_and_update_mip.js
+
+      - name: Commit MIP number assignment
+        run: |
+          git config --local user.name "MIP Bot"
+          git config --local user.email "mipbot@metamask.io"
+          git add -A
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to commit"
+          else
+            git commit -m "Assign MIP number"
+            git push origin main
+          fi
