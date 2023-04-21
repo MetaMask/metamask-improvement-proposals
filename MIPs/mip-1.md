@@ -1,4 +1,4 @@
-# MIP-X: Extend `wallet_watchAsset` to Support ERC-721 and ERC-1155 Tokens (NFTs)
+# MIP-1: Extend `wallet_watchAsset` to Support ERC-721 and ERC-1155 Tokens (NFTs)
 
 **Author**: Alex Donesky (@adonesky1)
 
