@@ -20,8 +20,11 @@ At the same time, we recognize the diversity of thought and creativity across ou
 If you're primarily interested in the latest production API, MetaMask provides a [machine-readable aggregation](https://github.com/MetaMask/api-specs) of all historical APIs and implemented MIPs that serves as a single source of truth.
 
 For recently proposed or implemented modifications see the following lists:
+
 [Active MIP List](http://insert.URL.here)
+
 [Implemented MIP List](http://insert.URL.here)
+
 [Declined MIP List](http://insert.URL.here)
 
 ## When to follow this process
@@ -51,7 +54,7 @@ Generally, we apply the same process and level of rigor both to Maintainer MIPS 
 
 ## Contributing
 
-[Contribution Guide](./CONTRIBUTING.md)
+Please follow the steps in the [Contribution Guide](./CONTRIBUTING.md).
 
 ## Proposal lifecycle
 
