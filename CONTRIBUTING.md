@@ -37,4 +37,4 @@ From your forked repository, create a pull request targeting the main branch of 
 After submitting your pull request, engage in discussions with the community and the MetaMask team. Address any feedback, questions, or concerns raised during the review process. Update your proposal as needed based on the feedback received.
 
 # Step 8: Proposal progression
-Once your proposal has undergone thorough discussion and review, the MetaMask team will decide on the next steps, which may include further revisions, approval, or rejection of the proposal. If your proposal is approved, it will progress through the MIPs workflow until it reaches the "Implemented" stage.
+Once your proposal has undergone thorough discussion and review, the MetaMask API Maintainers will decide on the next steps, which may include further revisions, approval, or rejection of the proposal. If your proposal is approved, it will progress through the MIPs workflow until it reaches the "Implemented" stage.
