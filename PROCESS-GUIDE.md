@@ -14,6 +14,9 @@ If you're primarily interested in the latest production Wallet API, MetaMask pro
 
 For recently proposed or implemented modifications see the following lists:
 
+[Draft MIP List](./MIPs/)
+
+<!-- Uncomment once we have some in these categories
 [Implemented MIP List](http://insert.URL.here)
 
 [Accepted MIP List](http://insert.URL.here)
@@ -22,9 +25,6 @@ For recently proposed or implemented modifications see the following lists:
 
 [Review MIP List](http://insert.URL.here)
 
-[Draft MIP List](http://insert.URL.here)
-
-<!-- Uncomment once we have some in these categories
 [Discontinued MIP List](http://insert.URL.here)
 
 [Declined MIP List](http://insert.URL.here)
