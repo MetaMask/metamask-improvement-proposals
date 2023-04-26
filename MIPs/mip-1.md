@@ -127,7 +127,9 @@ Developers and users should also be aware of the standard security consideration
 
 ## References
 [wallet_WatchAsset](https://github.com/MetaMask/api-specs/blob/ec70a1dcb7730ae567094e319704bbad755ce1a8/openrpc.json#L320p)
+
 [ERC-721: Non-Fungible Token Standard](https://eips.ethereum.org/EIPS/eip-721)
+
 [ERC-1155: Multi Token Standard](https://eips.ethereum.org/EIPS/eip-1155)
 
 ## Feedback
