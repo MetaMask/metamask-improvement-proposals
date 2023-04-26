@@ -15,7 +15,7 @@ Created: 2023-04-25
 [Brief summary of the proposal]
 
 ## Motivation
-[Explain why this proposal is necessary and what impact it would have for the developer ecosystem]
+[Explain why this proposal is necessary and what impact it would have for the developer ecosystem. What problem does it solve? What alternatives were considered (ex. extending via a [Snap](https://metamask.io/snaps/))? Why is this proposal preferred over alternative solutions or work-arounds?]
 
 ## Usage Example
 [Provide an illustrative example of the proposed API or feature in use]
