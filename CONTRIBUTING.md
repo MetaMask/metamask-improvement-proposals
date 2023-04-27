@@ -25,7 +25,7 @@ Using the provided MIP template, prepare your proposal. Make sure to include all
 Please ensure that your proposal is clear, concise, and well-structured to facilitate discussion and evaluation.
 
 # Step 4: Add your proposal to your branch
-Save your proposal as a Markdown file (.md) in the MIPs folder of your branch. Name the file using the following format: MIP-XXXX.md, where XXXX is a unique identifier for your proposal. This identifier will be assigned by the MIPs maintainers once your proposal has been reviewed and accepted as a draft.
+Save your proposal as a Markdown file (.md) in the MIPs folder of your branch. Name the file using the following format: mip-x.md, where x is a unique identifier for your proposal. This identifier will be assigned by the MIPs maintainers once your proposal has been reviewed and accepted as a draft.
 
 # Step 5: Commit and push your changes
 Commit your changes with a descriptive commit message and push the changes to your forked repository on GitHub.
