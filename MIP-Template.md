@@ -3,7 +3,7 @@ MIP: X
 Title: MIP Title
 Status: Draft
 Stability: n/a
-discussions-to: [discussion, https://github.com/MetaMask/metamask-improvement-proposals/discussions]
+discussions-to: [discussion](https://github.com/MetaMask/metamask-improvement-proposals/discussions)
 Type: Community
 Created: [creation date]
 ---
