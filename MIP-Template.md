@@ -5,7 +5,7 @@ Status: Draft
 discussions-to: [link to discussions]
 Author(s): Name Surname <email> (@github-username)
 Type: Community
-Created: 2023-04-25
+Created: [creation date]
 ---
 ["Status" should be one of: Draft | Review | Last Call | Accepted | Implemented | Postponed | Declined | Discontinued]
 ["Author(s)" should have a comma-separated list of the MIP authors. Each author MUST be written in the following format: `Name Surname <email> (@github-username)`. If the author wants to maintain anonymity, they MAY provide only the username instead of their name and surname. The e-mail and github username are optional and MAY be provided. At least one of the authors MUST have a Github username provided in order to be notified of the changes concerning their MIP.]
