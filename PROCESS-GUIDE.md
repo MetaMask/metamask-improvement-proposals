@@ -43,7 +43,7 @@ Changes that do not require a MIP:
   - Under-the-hood implementation changes that have no effect on MetaMask's Wallet API (could be for performance, security, maintainability, etc.)
 
 ## MIP Sources
-Given all of the considerations involved, it is hard to write a MIP that would get quickly accepted. We still encourage those integrating with MetaMask to contribute because what you have in mind is often going to be something that others may be interested in as well.
+We encourage those who have a need for improvements to the MetaMask API to contribute MIPs as early as possible. Expect to spend some time getting your MIP reviewed and accepted before all of the considerations and feedback has been incorporated.
 
 In practice, MIPs will come in two flavors:
 
@@ -66,10 +66,10 @@ Please follow the steps in the [Contribution Guide](./CONTRIBUTING.md).
 - **Last Call** - The proposal has generally been accepted, but requires a period of further comment and feedback from the community prior to implementation.
 - **Accepted** - The proposal has been accepted and is planned for implementation by a specific group. Only critical changes based on implementation considerations are expected at this stage.
 - **Postponed** - A proposal may be postponed if it is no longer planned for implementation or has not been actively developed for in 6-months. It may either be declined or remain in the postponed state until it is ready to move forward again.
-- **Implemented** - The proposal has been successfully implemented according to the specification in the MIP. The proposal MUST be fully implemented before being considered for this status. The stability of the implementation will be indicated by three sub-stages.
-    **Experimental** - This status indicates that the implementation is not yet stable or finalized. Only early adopters who have committed to testing the proposal should build on the implementation. Based on real-world usage, modifications may continue to be applied to the MIP.  
-    **Stable** - The implementation has been validated and is considered stable. The proposal is considered final. No significant updates except for errata and clarifications will be considered on the proposal. This status indicates that the implementation is ready for broad adoption.
-    **Deprecated** - The implementation may emit warnings. Backward compatibility is not guaranteed and it may be discontinued at any time. Developers should use alternative methods or discontinue its use.
+- **Implemented** - The proposal has been successfully implemented according to the specification in the MIP. The proposal MUST be fully implemented before being considered for this status. The stability of the implementation will be indicated by three stability levels.
+    - **Experimental (1)** - This status indicates that the implementation is not yet stable or finalized. Only early adopters who have committed to testing the proposal should build on the implementation. Based on real-world usage, modifications may continue to be applied to the MIP.
+    - **Stable (2)** - The implementation has been validated and is considered stable. The proposal is considered final. No significant updates except for errata and clarifications will be considered on the proposal. This status indicates that the implementation is ready for broad adoption.
+    - **Deprecated (0)** - The implementation may emit warnings. Backward compatibility is not guaranteed and it may be discontinued at any time. Developers should use alternative methods or discontinue its use.
 - **Discontinued** - Though one of the design goals is to maintain backward compatibility as much as possible, the implementation of the proposal may occasionally need to be completely discontinued for overall system maintainability or security reasons. We recognize that such changes may "break" legacy applications that are no longer actively maintained. This status is final.
 
 
@@ -118,9 +118,9 @@ implementation as a suggestion for review.
 
 Implementors would be expected to:
 - Implement the changes for both the MetaMask Browser Extension & Mobile app
+- Update [api-specs](https://github.com/MetaMask/api-specs) with any API differences that arise during implementation
 - Ensure that the API changes are testable by extending the [Test Dapp](https://github.com/MetaMask/test-dapp)
 - Go through the regular PR review processes for each repository that needs to be modified
-- Update [api-specs](https://github.com/MetaMask/api-specs) with any API differences that arise during implementation
 - Update MetaMask [technical documentation](https://github.com/MetaMask/metamask-docs) so that developers can use the new or modified capability effectively
 
 ## Inspiration
@@ -132,6 +132,9 @@ The MIP process owes its inspiration to the: [React RFC process], [SIP Process],
 [EIP process]: https://eips.ethereum.org/EIPS/eip-1
 
 Please share your feedback on this process. We're open to changing it based on contributor input.
+
+## Authors
+[@adonesky1](https://github.com/adonesky1), [@vandan](https://github.com/vandan), [@shanejonas](https://github.com/shanejonas), [@BelfordZ](https://github.com/BelfordZ)
 
 ## Copyright
 

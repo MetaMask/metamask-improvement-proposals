@@ -2,14 +2,16 @@
 MIP: X
 Title: MIP Title
 Status: Draft
+Stability: n/a
 discussions-to: [link to discussions]
 Author(s): Name Surname <email> (@github-username)
 Type: Community
 Created: 2023-04-25
 ---
 ["Status" should be one of: Draft | Review | Last Call | Accepted | Implemented | Postponed | Declined | Discontinued]
+["Stability" describes the stability of the implementation. Prior to implementation it should be left as "n/a". Once implemented, the stability will be one of: Experimental | Stable | Deprecated]
 ["Author(s)" should have a comma-separated list of the MIP authors. Each author MUST be written in the following format: `Name Surname <email> (@github-username)`. If the author wants to maintain anonymity, they MAY provide only the username instead of their name and surname. The e-mail and github username are optional and MAY be provided. At least one of the authors MUST have a Github username provided in order to be notified of the changes concerning their MIP.]
-["Type" should either be "Community" or "Maintainer"]
+["Type" should either be "Community" or "Maintainer". If you are not an API Maintainer, then please use "Community". You can learn more about the distinction between these types in the [Process Guide](./PROCESS-GUIDE.md).]
 
 ## Summary
 [Brief summary of the proposal]
