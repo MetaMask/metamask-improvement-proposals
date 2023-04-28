@@ -6,7 +6,7 @@ Stability: n/a
 discussions-to: [link to discussions]
 Author(s): Name Surname <email> (@github-username)
 Type: Community
-Created: 2023-04-25
+Created: [creation date]
 ---
 ["Status" should be one of: Draft | Review | Last Call | Accepted | Implemented | Postponed | Declined | Discontinued]
 ["Stability" describes the stability of the implementation. Prior to implementation it should be left as "n/a". Once implemented, the stability will be one of: Experimental | Stable | Deprecated]
