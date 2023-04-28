@@ -5,7 +5,7 @@ Status: Draft
 Stability: n/a
 discussions-to: [discussion](https://github.com/MetaMask/metamask-improvement-proposals/discussions)
 Type: Community
-Created: [creation date]
+Created: date
 ---
 ["Status" should be one of: Draft | Review | Last Call | Accepted | Implemented | Postponed | Declined | Discontinued]
 ["Stability" describes the stability of the implementation. Prior to implementation it should be left as "n/a". Once implemented, the stability will be one of: Experimental | Stable | Deprecated]
