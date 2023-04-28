@@ -3,8 +3,7 @@ MIP: X
 Title: MIP Title
 Status: Draft
 Stability: n/a
-discussions-to: <a href="https://github.com/MetaMask/metamask-improvement-proposals/discussions">discussion</a>
-Author(s): Name Surname <email> (@github-username)
+discussions-to: [discussion, https://github.com/MetaMask/metamask-improvement-proposals/discussions]
 Type: Community
 Created: [creation date]
 ---
