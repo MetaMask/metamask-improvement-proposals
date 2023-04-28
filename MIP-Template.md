@@ -3,7 +3,7 @@ MIP: X
 Title: MIP Title
 Status: Draft
 Stability: n/a
-discussions-to: [link to discussions]
+discussions-to: "(Discussion)[link to discussions]"
 Author(s): Name Surname <email> (@github-username)
 Type: Community
 Created: [creation date]
