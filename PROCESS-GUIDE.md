@@ -116,7 +116,7 @@ The author of a proposal is not obligated to implement it. Of course, the
 proposal author (like any other developer) is welcome to post an
 implementation as a suggestion for review.
 
-Implementors would be expected to:
+Implementors are expected to complete or otherwise coordinate and delegate the following tasks: 
 - Implement the changes for both the MetaMask Browser Extension & Mobile app
 - Update [api-specs](https://github.com/MetaMask/api-specs) with any API differences that arise during implementation
 - Ensure that the API changes are testable by extending the [Test Dapp](https://github.com/MetaMask/test-dapp)
