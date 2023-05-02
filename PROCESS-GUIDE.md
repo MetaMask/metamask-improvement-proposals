@@ -65,7 +65,7 @@ Please follow the steps in the [Contribution Guide](./CONTRIBUTING.md).
 - **Declined** - The proposal may be declined for many reasons. Most common reason would be because it does not align with the design principles or long-term direction of the system and will not be considered for implementation. This status is final. If the idea is to be pursued again, a new proposal MUST be created.
 - **Last Call** - The proposal has generally been accepted, but requires a period of further comment and feedback from the community prior to implementation.
 - **Accepted** - The proposal has been accepted and is planned for implementation by a specific group. Only critical changes based on implementation considerations are expected at this stage.
-- **Postponed** - A proposal may be postponed if it is no longer planned for implementation or has not been actively developed for in 6-months. It may either be declined or remain in the postponed state until it is ready to move forward again.
+- **Stagnant** - A proposal may be stagnant if it is no longer planned for implementation or has not been actively developed for 6-months. It may either be declined or remain in the stagnant state until it is ready to move forward again.
 - **Implemented** - The proposal has been successfully implemented according to the specification in the MIP. The proposal MUST be fully implemented before being considered for this status. The stability of the implementation will be indicated by three stability levels.
     - **Experimental (1)** - This status indicates that the implementation is not yet stable or finalized. Only early adopters who have committed to testing the proposal should build on the implementation. Based on real-world usage, modifications may continue to be applied to the MIP.
     - **Stable (2)** - The implementation has been validated and is considered stable. The proposal is considered final. No significant updates except for errata and clarifications will be considered on the proposal. This status indicates that the implementation is ready for broad adoption.
@@ -81,9 +81,9 @@ stateDiagram-v2
 	state "Last Call" as LC
     Review-->LC  
 	LC-->Accepted
-	Postponed-->Declined
-    Accepted-->Postponed
-	Postponed-->Accepted
+	Stagnant-->Declined
+    Accepted-->Stagnant
+	Stagnant-->Accepted
     Accepted-->Implemented
     state Implemented {
 		direction LR
