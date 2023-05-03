@@ -8,7 +8,7 @@ Create a fork of the MetaMask Improvement Proposals repository on GitHub. This w
 In your forked repository, create a new branch named after your proposal. For example, if your proposal is about adding a new feature called "FeatureX", you can name the branch add-featurex.
 
 # Step 3: Prepare your proposal
-Using the provided MIP template, prepare your proposal. Make sure to include all the required information, such as:
+Using the provided [MIP template](./MIP-Template.md), prepare your proposal. Make sure to include all the required information, such as:
 
 **Proposal title**
 **Author(s)**
