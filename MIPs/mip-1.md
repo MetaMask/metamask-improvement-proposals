@@ -1,10 +1,13 @@
-# MIP-1: Extend `wallet_watchAsset` to Support ERC-721 and ERC-1155 Tokens (NFTs)
-
-**Author**: Alex Donesky (@adonesky1)
-
-**Status**: Draft
-
-**Created:** 2023-4-11
+---
+MIP: 1
+Title: Extend `wallet_watchAsset` to Support ERC-721 and ERC-1155 Tokens (NFTs)
+Status: Draft
+Stability: n/a
+discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions
+Author(s): Alex Donesky (@adonesky1)
+Type: Maintainer
+Created: 2023-04-11
+---
 
 ## Summary
 This proposal aims to extend the support of `wallet_watchAsset` in MetaMask to include ERC-721 and ERC-1155 tokens (NFTs) enabling better integration of NFTs within the wallet. By broadening the scope of supported tokens, we can provide users with a more seamless experience when interacting with NFTs through MetaMask and overcome the existing constraints of `wallet_watchAsset`, which currently only supports ERC-20 tokens.
@@ -125,11 +128,10 @@ Developers and users should also be aware of the standard security consideration
 
 ## References
 [wallet_WatchAsset](https://github.com/MetaMask/api-specs/blob/ec70a1dcb7730ae567094e319704bbad755ce1a8/openrpc.json#L320p)
-[ERC-721: Non-Fungible Token Standard](https://eips.ethereum.org/EIPS/eip-721)
-[ERC-1155: Multi Token Standard](https://eips.ethereum.org/EIPS/eip-1155)
 
-## Copyright
-Copyright and related rights waived via CC0
+[ERC-721: Non-Fungible Token Standard](https://eips.ethereum.org/EIPS/eip-721)
+
+[ERC-1155: Multi Token Standard](https://eips.ethereum.org/EIPS/eip-1155)
 
 ## Feedback
 Please provide feedback on this proposal by opening an issue in the MetaMask MIPs repository.
@@ -137,5 +139,5 @@ Please provide feedback on this proposal by opening an issue in the MetaMask MIP
 ## Committed Developers
 Alex Donesky (@adonesky1)
 
-
-
+## Copyright
+Copyright and related rights waived via [CC0](../LICENSE).

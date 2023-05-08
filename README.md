@@ -1,25 +1,24 @@
 # MetaMask Improvement Proposals (MIPs) Repository
 Welcome to the MetaMask Improvement Proposals (MIPs) repository. This repository serves as a public space to discuss, evaluate, and implement improvements to the MetaMask Wallet API. Our goal is to create a more robust and effective API by actively involving developers and prioritizing their feedback.
 
-# Core Aims and Approach
+## Core Aims and Approach
 1. Establish a transparent process for MetaMask Improvement Proposals.
-2. Prioritize feedback from developers actively integrating with MetaMask.
+2. Prioritize feedback and improvements from developers who are actively integrating with MetaMask.
 3. Ensure a committed set of developers are ready to adopt changes before investing time in implementation.
 
 
-# Proposal lifecycle
-To maintain consistency and ensure a smooth evaluation process, all proposals will be assigned one of the following stages throughout its lifecycle:
+# Process Guidelines
 
-1. **Draft**: Initial proposal submission.
-2. **Review**: Community feedback and discussion.
-3. **Last Call**: Final revisions and acceptance criteria.
-4. **Accepted**: Proposal approved by MetaMask team.
-5. **Implemented**: Changes have been integrated into MetaMask.
-6. **Rejected**: Proposal deemed not suitable for implementation.
+We encourage developers to actively participate in the MIPs process by submitting proposals, providing feedback on existing proposals, and engaging in discussions. 
 
-![image](./assets/MIP%20Lifecyle.png)
+Please refer to the following documents:
 
-We encourage developers to actively participate in the MIPs process by submitting proposals, providing feedback on existing proposals, and engaging in discussions. Please refer to the CONTRIBUTING.md file for detailed guidelines on how to contribute.
+[PROCESS GUIDE](./PROCESS-GUIDE.md) 
+For an overview of the process and guidelines about when creating a MIP would be appropriate.
 
-# License
-The MetaMask Improvement Proposals repository is licensed under the MIT License.
+[CONTRIBUTING](./CONTRIBUTING.md) 
+For detailed guidelines on how to contribute.
+
+## Copyright
+
+Copyright and related rights waived via [CC0](./LICENSE).
