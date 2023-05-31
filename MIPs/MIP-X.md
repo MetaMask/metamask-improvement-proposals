@@ -6,7 +6,7 @@ Stability: n/a
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions
 Author(s): Shane Jonas (jonas.shane@gmail.com)
 Type: Maintainer
-Created: 2023-05-30
+Created: 2023-05-31
 
 ---
 
