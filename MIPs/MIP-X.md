@@ -27,7 +27,6 @@ To support versioning in MetaMask's CAIP-27 implementation, the following change
 
 2. Modify the CAIP-27 resolution logic in MetaMask to handle versioned appropriately. The resolution process should take into account the specified version.
 
-
 The updated CAIP-27 API in MetaMask will have the following structure:
 
 ```json
