@@ -111,7 +111,7 @@ The following principles of SemVer should be adhered to:
 By adopting Semantic Versioning for MetaMask's CAIP-27 implementation, developers can easily understand the implications of version updates and make informed decisions about integration and compatibility. This approach promotes transparency, consistency, and stability in the evolution of the CAIP-27 standard within MetaMask.
 
 ## User Experience Considerations
-The support for versioned CAIP-27 asset identifiers in MetaMask will enhance the user experience by enabling seamless interaction with assets across different networks and chains. Users can specify the desired version when resolving asset identifiers, ensuring compatibility with specific version-specific specifications.
+The support for versioned CAIP-27 requests in MetaMask will enhance the user experience by enabling seamless interaction with assets across different networks and chains. Users can specify the desired version when resolving requests, ensuring compatibility with version-specific specifications.
 
 ## Security Considerations
 The introduction of versioning support for CAIP-27 in MetaMask should consider the following security considerations:
