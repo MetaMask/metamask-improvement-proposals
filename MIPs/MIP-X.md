@@ -116,7 +116,7 @@ The support for versioned CAIP-27 asset identifiers in MetaMask will enhance the
 ## Security Considerations
 The introduction of versioning support for CAIP-27 in MetaMask should consider the following security considerations:
 
-1. Asset Identifier Validation: MetaMask should validate the format and integrity of versioned asset identifiers to prevent potential malicious or malformed inputs.
+1. Request Validation: MetaMask should validate the format and integrity of requests to prevent potential malicious or malformed inputs.
 
 2. Trusted Metadata Sources: MetaMask should rely on trusted sources when retrieving version-specific asset metadata to mitigate the risk of unauthorized or tampered data.
 
