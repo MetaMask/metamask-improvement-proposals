@@ -27,7 +27,6 @@ To support versioning in MetaMask's CAIP-27 implementation, the following change
 
 2. Modify the CAIP-27 resolution logic in MetaMask to handle versioned appropriately. The resolution process should take into account the specified version.
 
-3. Add a new method, `getSupportedVersions`, which returns the list of CAIP-27 versions supported by MetaMask. This method allows developers and users to query the supported versions and ensure compatibility when interacting with versioned asset identifiers.
 
 The updated CAIP-27 API in MetaMask will have the following structure:
 
