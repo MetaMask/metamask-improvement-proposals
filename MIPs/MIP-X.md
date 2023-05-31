@@ -118,9 +118,7 @@ The introduction of versioning support for CAIP-27 in MetaMask should consider t
 
 1. Request Validation: MetaMask should validate the format and integrity of requests to prevent potential malicious or malformed inputs.
 
-2. Trusted Metadata Sources: MetaMask should rely on trusted sources when retrieving version-specific asset metadata to mitigate the risk of unauthorized or tampered data.
-
-3. User Education: Users should be educated about the importance of using trusted versions and the potential risks associated with interacting with unsupported or unknown versions of CAIP-27 request.
+2. User Education: Users should be educated about the importance of using trusted versions and the potential risks associated with interacting with unsupported or unknown versions of CAIP-27 request.
 
 ## References
 [CAIP-27: Crypto Asset Identifier Protocol](https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-27.md)
