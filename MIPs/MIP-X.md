@@ -11,7 +11,7 @@ Created: 2023-05-31
 ---
 
 ## Summary
-This proposal aims to enhance MetaMask's support for the CAIP-27 (Crypto Asset Identifier Protocol) standard by introducing versioning capabilities. By adding support for versioned CAIP-27 asset identifiers, MetaMask can provide a more flexible and future-proof solution for identifying and interacting with crypto assets across different chains and networks.
+This proposal aims to enhance MetaMask's support for the CAIP-27 (Crypto Asset Identifier Protocol) standard by introducing versioning capabilities. By adding support for versioned CAIP-27 requests, MetaMask can provide a more flexible and future-proof solution for identifying and interacting with crypto assets across different chains and networks.
 
 ## Motivation
 The CAIP-27 standard is widely used for identifying crypto assets and provides a standardized way to represent asset identifiers. However, the current implementation in MetaMask lacks support for versioning, which limits its ability to adapt, change, and fix  the Metamask API.
