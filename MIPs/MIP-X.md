@@ -57,7 +57,7 @@ Introducing versioning support for CAIP-27 in MetaMask may require additional st
 The MetaMask team will be responsible for implementing the proposed changes to support versioned CAIP-27 requests. This will involve updating the CAIP-27 resolution logic, modifying the API, and ensuring compatibility with different versions of requests.
 
 ## Developer Adoption Considerations
-Developers integrating MetaMask's CAIP-27 functionality should consider the following aspects when adopting versioned asset identifiers:
+Developers integrating MetaMask's CAIP-27 functionality should consider the following aspects when adopting versioned requests:
 
 1. Handling Versioned Requests: Developers should update their dapp logic to consider the specified version parameter when calling the MetaMask API.
 
