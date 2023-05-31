@@ -59,11 +59,11 @@ The MetaMask team will be responsible for implementing the proposed changes to s
 ## Developer Adoption Considerations
 Developers integrating MetaMask's CAIP-27 functionality should consider the following aspects when adopting versioned asset identifiers:
 
-1. Version Compatibility: Developers should query the supported versions using the `getSupportedVersions` method and ensure compatibility between their version and the ones supported by MetaMask.
+1. Handling Versioned Requests: Developers should update their dapp logic to consider the specified version parameter when calling the MetaMask API.
 
-2. Handling Versioned Requests: Developers should update their dapp logic to consider the specified version parameter when calling the MetaMask API.
+2. Handling Deprecation: Developers should update their dapp to use the a newer version when versions are considered deprecated.
 
- This ensures compatibility with the corresponding version-specific specifications.
+This ensures compatibility with the corresponding version-specific specifications.
  
 ### Deprecation of Versions
 To ensure the ongoing maintenance and efficiency of MetaMask's CAIP-27 API implementation, a deprecation policy for versions should be established. After a certain number of versions or a specified period, older versions may be deprecated to streamline development efforts and optimize resource allocation, especially in the context of our multichain efforts.
