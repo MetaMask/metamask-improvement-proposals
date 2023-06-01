@@ -14,7 +14,7 @@ Created: 2023-05-31
 This proposal aims to enhance MetaMask's support for the CAIP-27 (Chain Agnostic Improvement Proposals) standard by introducing versioning capabilities. By adding support for versioned CAIP-27 requests, MetaMask can provide a more flexible and future-proof solution for identifying and interacting with crypto assets across different chains and networks.
 
 ## Motivation
-The CAIP-27 standard is widely used for identifying crypto assets and provides a standardized way to represent wallet requests. However, the current implementation in MetaMask lacks support for versioning, which limits its ability to adapt, change, and fix  the Metamask API.
+The CAIP-27 standard is widely used for identifying crypto assets and provides a standardized way to represent wallet requests. However, the current implementation in MetaMask lacks support for versioning, which limits its ability to adapt, change, and fix the Metamask API.
 
 Introducing versioning support in MetaMask's CAIP-27 implementation will enable better compatibility with different versions of the API. 
 
