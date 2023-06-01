@@ -18,7 +18,7 @@ The CAIP-27 standard is widely used for identifying crypto assets and provides a
 
 Introducing versioning support in MetaMask's CAIP-27 implementation will enable better compatibility with different versions of the API. 
 
-By supporting versioned CAIP-27, MetaMask ensures that users can seamlessly interact with crypto assets across various networks and chains, even as asset identifier standards and the wallet evolve.
+By supporting versioned CAIP-27, MetaMask ensures that users can seamlessly interact with crypto assets across various networks and chains, even as standards and the wallet evolve.
 
 ## Proposal Specification
 To support versioning in MetaMask's CAIP-27 implementation, the following changes are proposed:
@@ -48,10 +48,10 @@ The updated CAIP-27 API in MetaMask will have the following structure:
 }
 ```
 
-The proposed changes will enhance MetaMask's CAIP-27 implementation to support versioned requests, providing a more flexible and future-proof solution for identifying and interacting with crypto assets.
+The proposed changes will enhance MetaMask's CAIP-27 implementation to support versioned requests, providing a more flexible and future-proof solution for identifying and interacting with the wallet.
 
 ## Caveats
-Introducing versioning support for CAIP-27 in MetaMask may require additional storage and computational resources to handle the resolution and retrieval of version-specific asset metadata. Careful consideration should be given to optimize the implementation to minimize any potential impact on performance.
+Introducing versioning support for CAIP-27 in MetaMask may require additional storage, computational resources, and code paths to handle the resolution and retrieval of version-specific APIs and their UIs. Careful consideration should be given to optimize the implementation to minimize any potential impact on performance and UX.
 
 ## Implementation
 The MetaMask team will be responsible for implementing the proposed changes to support versioned CAIP-27 requests. This will involve updating the CAIP-27 resolution logic, modifying the API, and ensuring compatibility with different versions of requests.
@@ -111,7 +111,7 @@ The following principles of SemVer should be adhered to:
 By adopting Semantic Versioning for MetaMask's CAIP-27 implementation, developers can easily understand the implications of version updates and make informed decisions about integration and compatibility. This approach promotes transparency, consistency, and stability in the evolution of the CAIP-27 standard within MetaMask.
 
 ## User Experience Considerations
-The support for versioned CAIP-27 requests in MetaMask will enhance the user experience by enabling seamless interaction with assets across different networks and chains. Users can specify the desired version when resolving requests, ensuring compatibility with version-specific specifications.
+The support for versioned CAIP-27 requests in MetaMask will enhance the user experience by enabling seamless interaction with the wallet across different networks and chains. Users can specify the desired version when resolving requests, ensuring compatibility with version-specific specifications.
 
 ## Security Considerations
 The introduction of versioning support for CAIP-27 in MetaMask should consider the following security considerations:
@@ -121,7 +121,7 @@ The introduction of versioning support for CAIP-27 in MetaMask should consider t
 2. User Education: Users should be educated about the importance of using trusted versions and the potential risks associated with interacting with unsupported or unknown versions of CAIP-27 request.
 
 ## References
-[CAIP-27: Crypto Asset Identifier Protocol](https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-27.md)
+[CAIP-27](https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-27.md)
 
 ## Feedback
 Please provide feedback on this proposal by opening an issue in the MetaMask MIPs repository.
