@@ -34,9 +34,6 @@ jobs:
         with:
           node-version: 14
 
-      - name: Install dependencies
-        run: yarn install
-
       - name: Assign MIP number and update file
         run: node .github/scripts/rename_and_update_mip.js
 
