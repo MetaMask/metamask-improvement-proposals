@@ -1,7 +1,7 @@
 ---
 MIP: 1
 Title: Extend `wallet_watchAsset` to Support ERC-721 and ERC-1155 Tokens (NFTs)
-Status: Draft
+Status: Review
 Stability: n/a
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions
 Author(s): Alex Donesky (@adonesky1)
@@ -15,7 +15,7 @@ This proposal aims to extend the support of `wallet_watchAsset` in MetaMask to i
 ## Motivation
 [wallet_WatchAsset](https://github.com/MetaMask/api-specs/blob/ec70a1dcb7730ae567094e319704bbad755ce1a8/openrpc.json#L320) currently allows users to add custom ERC-20 tokens to their MetaMask wallet. However, it does not support ERC-721 or ERC-1155 tokens, the current primary standards for non-fungible tokens (NFTs). With the increasing popularity and adoption of NFTs, it is essential to expand `wallet_watchAsset` to accommodate these token standards and provide a more comprehensive and seamless user experience.
 
-Furthermore, by expanding `wallet_watchAsset` to support ERC-721 and ERC-1155 tokens, MetaMask will enable users to view and interact with their NFTs directly within the wallet, without relying on third-party indexers or third party APIs. This enhancement empowers users to manage their NFT assets directly, increases the usability of MetaMask for NFT-related activities, and ultimately strengthens user trust in the wallet.
+While MetaMask does offer NFT auto-detection, there limitations in the set of EVM chains that are supported and latency that may be involved. In addition, many users may have NFT auto-detection services disabled due to concerns with potential security and privacy tradeoffs. By expanding `wallet_watchAsset` to support ERC-721 and ERC-1155 tokens, app developers can give their users the ability to view and interact with any of their NFTs directly within MetaMask, without relying on third-party indexers or APIs. This enhancement empowers users to manage their NFT assets directly, increases the usability of MetaMask for NFT-related activities, and ultimately strengthens user trust in the wallet.
 
 By allowing users to add and manage NFTs directly within MetaMask, we can better cater to the growing NFT community and expand the wallet's functionality to meet the evolving needs of the broader Ethereum ecosystem.
 
