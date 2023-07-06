@@ -22,7 +22,7 @@ By allowing users to add and manage NFTs directly within MetaMask, we can better
 # Usage Example
 ```
 // Request to add an ERC-721 token (NFT)
-ethereum.sendAsync({
+ethereum.request({
   method: 'wallet_watchAsset',
   params: {
     type: 'ERC721',
@@ -34,7 +34,7 @@ ethereum.sendAsync({
 });
 
 // Request to add an ERC-1155 token (NFT)
-ethereum.sendAsync({
+ethereum.request({
   method: 'wallet_watchAsset',
   params: {
     type: 'ERC1155',
@@ -65,7 +65,7 @@ Introduce an optional `tokenId` parameter to the existing options object. This p
 The updated method signature will be as follows:
 
 ```
-ethereum.sendAsync({
+ethereum.request({
   method: 'wallet_watchAsset',
   params: {
     type: 'ERC20' | 'ERC721' | 'ERC1155',
