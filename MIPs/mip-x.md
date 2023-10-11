@@ -1,5 +1,5 @@
 ---
-MIP: 1
+MIP: x
 Title: Implement `wallet_revokePermissions` for Flexible Permission Revocation
 Status: Review
 Stability: n/a
