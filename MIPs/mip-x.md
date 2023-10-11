@@ -10,10 +10,20 @@ Created: 2023-10-06
 ---
 
 ## Summary
-This proposal aims to add a new JSON-RPC method, `wallet_revokePermissions`, to MetaMask. This method is designed to offer a high degree of flexibility in managing permissions. Specifically, it allows for the revocation of an entire permission object, thereby removing all accounts linked to a given invoker. Alternatively, it can selectively revoke permissions for a specific account or a set of accounts connected to that invoker. In doing so, this method bolsters user control and privacy by providing a more granular way to manage permissions for connected dApps and accounts.
+This proposal aims to add a new JSON-RPC method, `wallet_revokePermissions`, to MetaMask. This method is designed to offer a high degree of flexibility in managing permissions. Users can either revoke all permissions for a connected dApp or selectively revoke permissions for specific accounts linked to a given invoker. This streamlines the user experience by reducing the number of steps needed to manage permissions and disconnect from dApps, thereby aligning with traditional OAuth systems for enhanced user control and privacy.
 
 ## Motivation
-Revoking permissions is a crucial part of any permission-based system. This feature would bring MetaMask's permission model closer to feature-parity with traditional OAuth-based systems, allowing users and dApps to manage permissions more effectively. Allowing users to revoke permissions (e.g. disconnecting accounts) would cater to the needs of both users and dApp developers, ensuring a more robust and secure environment.
+The existing permission system lacks a streamlined way for users and dApps to manage and revoke permissions. This proposal aims to:
+
+1. Streamline User Experience: Currently, disconnecting a dApp requires navigating through multiple UI layers. Implementing `wallet_revokePermissions` will simplify this process and align with user expectations.
+
+2. Close an Ergonomic Gap: Being able to request permissions but not revoke them programmatically is inconsistent and poses challenges for developers. This proposal offers a holistic solution for permission management.
+
+3. Developer Experience: Dapp developers currently might resort to mocking disconnect functionality, which is not a genuine revocation of permissions. `wallet_revokePermissions` allows for an authentic disconnect, enhancing security and user trust.
+
+4. User Experience: Enabling users to have granular control over their permissions directly from within the dapp not only enhances UX but also aligns with best practices in data privacy and user agency.
+
+By implementing wallet_revokePermissions, we achieve feature parity with traditional permission systems, offering a more robust, secure, and user-friendly environment.
 
 # Usage Example
 ```
@@ -82,7 +92,18 @@ The MetaMask team will be responsible for implementing the proposed changes to t
 2. Ease of Adoption: This method has been designed with flexibility in mind, offering both broad and specific options for permission revocation. This dual capability greatly simplifies the adoption process for both users and dApp developers.
 
 ## User Experience Considerations
-The proposed `wallet_revokePermissions` method enhances user experience by easily revoking specific or general permissions from dApps, aligning with traditional security models for increased accessibility.
+
+#### Enhancements:
+
+Streamlining Disconnection: Reducing the number of clicks and steps needed to disconnect from a dApp, making the experience more user-friendly.
+
+Consistency in Connection Management: Providing a disconnect feature directly within the dApp aligns with user expectations and creates a consistent experience.
+
+Improved User-Dapp Communication: Clear, in-app options for managing permissions improve user confidence and control.
+
+User Empowerment: The proposed method aligns with best practices in data privacy, giving users the agency to manage their data and connections effectively.
+
+Synchronized Actions and Security: Ensuring that the dApp is aware of a user's intent to disconnect prevents potential security loopholes and reflects the user’s action accurately in the dApp’s state.
 
 ## Security Considerations
 The introduction of the `wallet_revokePermissions` method bolsters security by providing users with more control over permission revocation, reducing the potential attack surface. By allowing users to revoke permissions either partially or entirely, it minimizes the risk of unauthorized or malicious activity.
