@@ -45,7 +45,7 @@ The new JSON RPC method wallet_swap should be implemented with the following par
 
   - `token_address`: The address of the source token.
   - `chainId`: The chain ID on hexadecimal format where the source token resides.
-  - `amount`: The amount on hexadecimal format of source token to be swapped.
+  - `amount`: The amount on wei and hexadecimal format of source token to be swapped.
 
 - `to`: An object containing details about the destination token. It should include:
 
