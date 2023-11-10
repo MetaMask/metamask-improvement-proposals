@@ -26,7 +26,7 @@ ethereum.request({
     from: {
       token_address: '0x1234567890abcdefABCDEF1234567890ABCDEF',
       chainId: '0x1',
-      amount: '0x10',
+      amount: '0xDE0B6B3A7640000',
     },
     to: {
       token_address: '0xabcdef1234567890ABCDEF1234567890abcdef',
