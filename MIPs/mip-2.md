@@ -37,17 +37,6 @@ ethereum.request({
 
 ```
 
-# Proposal
-
-Language
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" written in uppercase in this document are to be interpreted as described in RFC 2119.
-
-## Definitions
-
-**ERC-721**: A standard for representing non-fungible tokens (NFTs) on the Ethereum blockchain. Each token has a unique ID and cannot be divided or merged.
-
-**ERC-1155**: A standard for representing both fungible and non-fungible tokens on the Ethereum blockchain. It allows for batch operations and efficient transfers, supporting multiple token types within a single contract.
-
 ## Proposal Specification
 
 The new JSON RPC method wallet_swap should be implemented with the following parameters:
