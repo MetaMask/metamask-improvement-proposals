@@ -100,6 +100,10 @@ To mitigate this risk, MetaMask could implement the following countermeasures:
 
 Developers and users should also be aware of the standard security considerations when dealing with tokens, such as verifying contract addresses and ensuring the trustworthiness of token issuers.
 
+## References
+
+[EIP: wallet_swap JSON RPC method](https://github.com/tommasini/EIPs/blob/64090fe54761906fc9bde31ad46eb85230de5e8d/EIPS/eip-swap-rpc.md)
+
 ## Feedback
 
 Please provide feedback on this proposal by opening an issue in the MetaMask MIPs repository.
