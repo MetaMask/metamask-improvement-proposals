@@ -113,7 +113,7 @@ The MetaMask team will be responsible for implementing the proposed changes to t
 
 Streamlining Disconnection: Reducing the number of clicks and steps needed to disconnect from a dApp, making the experience more user-friendly.
 
-Consistency in Connection Management: Providing a disconnect feature directly within the dApp aligns with user expectations and creates a consistent experience since the dapp can both request and revoke permissions.
+Consistency in Connection Management: Providing a disconnect feature directly within the dApp aligns with user expectations and creates a consistent experience since the dApp can both request and revoke permissions.
 
 Improved User-Dapp Communication: Clear, in-app options for managing permissions improve user confidence and control.
 
