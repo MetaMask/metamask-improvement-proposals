@@ -35,7 +35,7 @@ await window.ethereum.request({
       "eth_accounts": {
         "caveats": [
           {
-            "type": "restrictReturnedAccounts,
+            "type": "restrictReturnedAccounts",
             "value": [
               "0x36Cad5E14C0a845500E0aDA68C642d254BE8d538"
             ]
