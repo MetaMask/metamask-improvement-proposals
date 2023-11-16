@@ -103,7 +103,7 @@ The implementation of `wallet_revokePermissions` means more granular control ove
 The MetaMask team will be responsible for implementing the proposed changes to the `wallet_revokePermissions` method.
 
 ## Developer Adoption Considerations
-1. Backward Compatibility: Dapps that currently manage permissions using custom logic will need to update their code to integrate this new method to keep their state in sync with metamask, however the method is backwards compatible.
+1. Backward Compatibility: dApps that currently manage permissions using custom logic will need to update their code to integrate this new method to keep their state in sync with metamask, however the method is backwards compatible.
 
 2. Ease of Adoption: This method has been designed with flexibility in mind, offering both broad (revoke all permissions for a given domain at once) and specific options for permission revocation. This dual capability greatly simplifies the adoption process for both users and dApp developers.
 
