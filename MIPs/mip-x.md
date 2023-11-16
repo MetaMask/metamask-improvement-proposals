@@ -19,7 +19,7 @@ The existing permission system lacks a streamlined way for users and dApps to ma
 
 2. Close an Ergonomic Gap: Being able to request permissions but not revoke them programmatically is inconsistent and poses challenges for developers. This proposal offers a holistic solution for permission management.
 
-3. Developer Experience: Dapp developers currently might resort to mocking disconnect functionality, which is not a genuine revocation of permissions. `wallet_revokePermissions` allows for an authentic disconnect, enhancing security and user trust.
+3. Developer Experience: dApp developers currently might resort to mocking disconnect functionality, which is not a genuine revocation of permissions. `wallet_revokePermissions` allows for an authentic disconnect, enhancing security and user trust.
 
 4. User Experience: Enabling users to have granular control over their permissions directly from within the dapp not only enhances UX but also aligns with best practices in data privacy and user agency.
 
