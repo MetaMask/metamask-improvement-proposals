@@ -52,6 +52,7 @@ await window.ethereum.request({
   "method": "wallet_revokePermissions",
   "params": []
 });
+
 await window.ethereum.request({
   "method": "wallet_revokePermissions",
   "params": [
