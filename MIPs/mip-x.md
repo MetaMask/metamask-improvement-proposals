@@ -21,7 +21,7 @@ The existing permission system lacks a streamlined way for users and dApps to ma
 
 3. Developer Experience: dApp developers currently might resort to mocking disconnect functionality, which is not a genuine revocation of permissions. `wallet_revokePermissions` allows for an authentic disconnect, enhancing security and user trust.
 
-4. User Experience: Enabling users to have granular control over their permissions directly from within the dapp not only enhances UX but also aligns with best practices in data privacy and user agency.
+4. User Experience: Enabling users to have granular control over their permissions directly from within the dApp not only enhances UX but also aligns with best practices in data privacy and user agency.
 
 By implementing wallet_revokePermissions, we achieve feature parity with traditional permission systems, offering a more robust, secure, and user-friendly environment.
 
