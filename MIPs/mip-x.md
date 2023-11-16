@@ -10,7 +10,7 @@ Created: 2023-10-06
 ---
 
 ## Summary
-This proposal aims to add a new JSON-RPC method, `wallet_revokePermissions`, to MetaMask. This method is designed to offer a high degree of flexibility in managing permissions. Users can either revoke all permissions for a connected dApp or selectively revoke permissions for specific accounts linked to a given dApp. This streamlines the user experience by reducing the number of steps needed to manage permissions and disconnect from dApps, thereby aligning with traditional OAuth systems for enhanced user control and privacy.
+This proposal aims to add a new JSON-RPC method, `wallet_revokePermissions`, to MetaMask. This method is designed to offer a high degree of flexibility in managing permissions. This streamlines the user experience by reducing the number of steps needed to manage permissions and disconnect from dApps, thereby aligning with traditional OAuth systems for enhanced user control and privacy.
 
 ## Motivation
 The existing permission system lacks a streamlined way for users and dApps to manage and revoke permissions. This proposal aims to:
@@ -24,6 +24,35 @@ The existing permission system lacks a streamlined way for users and dApps to ma
 4. User Experience: Enabling users to have granular control over their permissions directly from within the dApp not only enhances UX but also aligns with best practices in data privacy and user agency.
 
 By implementing wallet_revokePermissions, we achieve feature parity with traditional permission systems, offering a more robust, secure, and user-friendly environment.
+
+
+# Proposal
+
+## Definitions
+**Revoke**: To officially cancel or withdraw specific privileges, rights, or permissions. In the context of `wallet_revokePermissions`, revoking would entail nullifying the access granted to certain dApps or operations, such as account information retrieval via `eth_accounts`.
+
+## Proposal Specification
+The `wallet_revokePermissions` method is proposed as a new JSON-RPC feature for MetaMask, aimed at giving users more granular control over permission management. With this method, users can can revoke permissions for the specified permissions and caveats provided.
+
+The method signature will be as follows:
+
+```js
+await window.ethereum.request({
+  "method": "wallet_revokePermissions",
+  "params": [
+    {
+      "baz": {
+        "caveats": [
+          {
+            "type": "foo",
+            "value": "bar"
+          }
+        ]
+      }
+    }
+  ]
+});
+```
 
 # Usage Example
 ```js
@@ -47,48 +76,12 @@ await window.ethereum.request({
   ]
 });
 
-// Request to revoke all permissions for the current dApps domain
-await window.ethereum.request({
-  "method": "wallet_revokePermissions",
-  "params": []
-});
-
+// revoke eth_account permission for the dApp
 await window.ethereum.request({
   "method": "wallet_revokePermissions",
   "params": [
     {
-      "eth_accounts": {
-      }
-    }
-  ]
-});
-```
-
-In these examples, all parameters are optional, enabling the dApp to revoke all permissions by default. However, the proposal also supports revoking specific permissions. For instance, by specifying the id which is the identifier returned upon a successful `wallet_requestPermission` call, you can target individual permissions for revocation.
-
-# Proposal
-
-## Definitions
-**Revoke**: To officially cancel or withdraw specific privileges, rights, or permissions. In the context of `wallet_revokePermissions`, revoking would entail nullifying the access granted to certain dApps or operations, such as account information retrieval via `eth_accounts`.
-
-## Proposal Specification
-The `wallet_revokePermissions` method is proposed as a new JSON-RPC feature for MetaMask, aimed at giving users more granular control over permission management. With this method, users can either revoke all permissions associated with connected origins (dApps) or opt for a more targeted approach by specifying the target permission. For example, MetaMask can revoke permissions for a specific account address or for many addresses. Additionally, if all parameters are omitted, it triggers a full revocation of all permissions.
-
-The updated method signature will be as follows:
-
-```js
-await window.ethereum.request({
-  "method": "wallet_revokePermissions",
-  "params": [
-    {
-      "eth_accounts": {
-        "caveats": [
-          {
-            "type": "foo",
-            "value": "bar"
-          }
-        ]
-      }
+      "eth_accounts": {}
     }
   ]
 });
@@ -100,12 +93,7 @@ The proposed changes have been implemented in the following PR against the `Meta
 The implementation of `wallet_revokePermissions` means more granular control over user permissions and, subsequently, more combinations of permissions that can be revoked. This increases the scope of testing to ensure that there are no edge cases that haven't been considered, or bugs.
 
 ## Implementation
-The MetaMask team will be responsible for implementing the proposed changes to the `wallet_revokePermissions` method.
-
-## Developer Adoption Considerations
-1. Backward Compatibility: dApps that currently manage permissions using custom logic will need to update their code to integrate this new method to keep their state in sync with metamask, however the method is backwards compatible.
-
-2. Ease of Adoption: This method has been designed with flexibility in mind, offering both broad (revoke all permissions for a given domain at once) and specific options for permission revocation. This dual capability greatly simplifies the adoption process for both users and dApp developers.
+There is a [PR](https://github.com/MetaMask/core/pull/1889) open against the `MetaMask/core` repo that implements the proposed changes.
 
 ## User Experience Considerations
 
