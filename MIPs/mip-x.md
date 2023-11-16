@@ -47,7 +47,7 @@ await window.ethereum.request({
   ]
 });
 
-// Request to revoke all permissions for the current dapps domain
+// Request to revoke all permissions for the current dApps domain
 await window.ethereum.request({
   "method": "wallet_revokePermissions",
   "params": []
