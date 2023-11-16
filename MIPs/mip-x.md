@@ -4,13 +4,13 @@ Title: Implement `wallet_revokePermissions` for Flexible Permission Revocation
 Status: Review
 Stability: n/a
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions
-Author(s): Julia Collins (@julesat22)
+Author(s): Julia Collins (@julesat22), Shane Jonas (@shanejonas)
 Type: Community
 Created: 2023-10-06
 ---
 
 ## Summary
-This proposal aims to add a new JSON-RPC method, `wallet_revokePermissions`, to MetaMask. This method is designed to offer a high degree of flexibility in managing permissions. Users can either revoke all permissions for a connected dApp or selectively revoke permissions for specific accounts linked to a given invoker. This streamlines the user experience by reducing the number of steps needed to manage permissions and disconnect from dApps, thereby aligning with traditional OAuth systems for enhanced user control and privacy.
+This proposal aims to add a new JSON-RPC method, `wallet_revokePermissions`, to MetaMask. This method is designed to offer a high degree of flexibility in managing permissions. Users can either revoke all permissions for a connected dApp or selectively revoke permissions for specific accounts linked to a given dapp. This streamlines the user experience by reducing the number of steps needed to manage permissions and disconnect from dApps, thereby aligning with traditional OAuth systems for enhanced user control and privacy.
 
 ## Motivation
 The existing permission system lacks a streamlined way for users and dApps to manage and revoke permissions. This proposal aims to:
@@ -26,55 +26,62 @@ The existing permission system lacks a streamlined way for users and dApps to ma
 By implementing wallet_revokePermissions, we achieve feature parity with traditional permission systems, offering a more robust, secure, and user-friendly environment.
 
 # Usage Example
-```
+```js
 // Request to revoke permissions for a single address (disconnect a user's account)
 await window.ethereum.request({
   "method": "wallet_revokePermissions",
-  "params": {
-    "permission": {
-      "caveatValue": [
-        "0x36Cad5E14C0a845500E0aDA68C642d254BE8d538"
-      ],
-      "target": "eth_accounts",
-      "caveatType": "restrictReturnedAccounts"
+  "params": [
+    {
+      "eth_accounts": {
+        "caveats": [
+          {
+            "type": "restrictReturnedAccounts,
+            "value": [
+              "0x36Cad5E14C0a845500E0aDA68C642d254BE8d538"
+            ]
+          }
+          "0x36Cad5E14C0a845500E0aDA68C642d254BE8d538"
+        ],
+      }
     }
-  }
+  ]
 });
 
-// Request to revoke all permissions
+// Request to revoke all permissions for the current dapps domain
 await window.ethereum.request({
   "method": "wallet_revokePermissions",
-  "params": {}
+  "params": []
 });
 
 ```
 
-In these examples, all parameters are optional, enabling the invoker to revoke all permissions by default. However, the proposal also supports revoking specific permissions. For instance, by specifying the id which is the identifier returned upon a successful `wallet_requestPermission` call, you can target individual permissions for revocation.
+In these examples, all parameters are optional, enabling the dapp to revoke all permissions by default. However, the proposal also supports revoking specific permissions. For instance, by specifying the id which is the identifier returned upon a successful `wallet_requestPermission` call, you can target individual permissions for revocation.
 
 # Proposal
 
 ## Definitions
 **Revoke**: To officially cancel or withdraw specific privileges, rights, or permissions. In the context of `wallet_revokePermissions`, revoking would entail nullifying the access granted to certain dApps or operations, such as account information retrieval via `eth_accounts`.
 
-**Invoker**: This refers to the entity that initiates or "calls" a specific method or function. In the case of `wallet_revokePermissions`, the invoker might be the user or the user's wallet software that initiates the revocation of permissions for specific dApps.
-
-
 ## Proposal Specification
 The `wallet_revokePermissions` method is proposed as a new JSON-RPC feature for MetaMask, aimed at giving users more granular control over permission management. With this method, users can either revoke all permissions associated with connected origins (dApps) or opt for a more targeted approach by specifying the target permission. For example, MetaMask can revoke permissions for a specific account address or for many addresses. Additionally, if all parameters are omitted, it triggers a full revocation of all permissions.
 
 The updated method signature will be as follows:
 
-```
+```js
 await window.ethereum.request({
   "method": "wallet_revokePermissions",
-  "params": {
-    "permission": {
-      "caveatValue": string[], // value of the caveat to be revoked from the target permission
-      "target": "eth_accounts" | "wallet_snap" | "snap_dialog" | "snap_notify" | "snap_manageState"
-      "caveatType": string // type of the caveat to update,
-      "id": string // id of permission to be revoked
+  "params": [
+    {
+      "eth_accounts": {
+        "caveats": [
+          {
+            "type": "foo",
+            "value": "bar"
+          }
+        ]
+      }
     }
-  }
+  ]
 });
 ```
 
@@ -87,9 +94,9 @@ The implementation of `wallet_revokePermissions` means more granular control ove
 The MetaMask team will be responsible for implementing the proposed changes to the `wallet_revokePermissions` method.
 
 ## Developer Adoption Considerations
-1. Backward Compatibility: Dapps that currently manage permissions using custom logic will need to update their code to integrate this new method, however the method is backwards compatible.
+1. Backward Compatibility: Dapps that currently manage permissions using custom logic will need to update their code to integrate this new method to keep their state in sync with metamask, however the method is backwards compatible.
 
-2. Ease of Adoption: This method has been designed with flexibility in mind, offering both broad and specific options for permission revocation. This dual capability greatly simplifies the adoption process for both users and dApp developers.
+2. Ease of Adoption: This method has been designed with flexibility in mind, offering both broad (revoke all permissions for a given domain at once) and specific options for permission revocation. This dual capability greatly simplifies the adoption process for both users and dApp developers.
 
 ## User Experience Considerations
 
@@ -97,7 +104,7 @@ The MetaMask team will be responsible for implementing the proposed changes to t
 
 Streamlining Disconnection: Reducing the number of clicks and steps needed to disconnect from a dApp, making the experience more user-friendly.
 
-Consistency in Connection Management: Providing a disconnect feature directly within the dApp aligns with user expectations and creates a consistent experience.
+Consistency in Connection Management: Providing a disconnect feature directly within the dApp aligns with user expectations and creates a consistent experience since the dapp can both request and revoke permissions.
 
 Improved User-Dapp Communication: Clear, in-app options for managing permissions improve user confidence and control.
 
@@ -108,7 +115,7 @@ Synchronized Actions and Security: Ensuring that the dApp is aware of a user's i
 ## Security Considerations
 The introduction of the `wallet_revokePermissions` method bolsters security by providing users with more control over permission revocation, reducing the potential attack surface. By allowing users to revoke permissions either partially or entirely, it minimizes the risk of unauthorized or malicious activity.
 
-However, the security model depends on users actively managing these permissions, and there's a minor risk that poorly implemented dApps could confuse users about what they're revoking, potentially leading to unwanted outcomes.
+However, the security model depends on users actively managing these permissions, and there's a minor risk that poorly implemented dApps could confuse users about what they're revoking, potentially leading to unwanted outcomes. Ex. If an attacker had XSS access to a site, it could revoke permissions without the users consent.
 
 To mitigate this risk, MetaMask could implement the following countermeasures:
 
@@ -123,7 +130,7 @@ To mitigate this risk, MetaMask could implement the following countermeasures:
 Please provide feedback on this proposal by opening an issue in the MetaMask MIPs repository.
 
 ## Committed Developers
-Julia Collins (@julesat22)
+Julia Collins (@julesat22), Shane Jonas (@shanejonas)
 
 ## Copyright
 Copyright and related rights waived via [CC0](../LICENSE).
