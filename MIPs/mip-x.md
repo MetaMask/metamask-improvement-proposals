@@ -64,7 +64,7 @@ await window.ethereum.request({
 });
 ```
 
-In these examples, all parameters are optional, enabling the dapp to revoke all permissions by default. However, the proposal also supports revoking specific permissions. For instance, by specifying the id which is the identifier returned upon a successful `wallet_requestPermission` call, you can target individual permissions for revocation.
+In these examples, all parameters are optional, enabling the dApp to revoke all permissions by default. However, the proposal also supports revoking specific permissions. For instance, by specifying the id which is the identifier returned upon a successful `wallet_requestPermission` call, you can target individual permissions for revocation.
 
 # Proposal
 
