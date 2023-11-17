@@ -13,7 +13,7 @@ Created: 2023-10-06
 This proposal aims to add a new JSON-RPC method, `wallet_revokePermissions`, to MetaMask. This method is designed to offer a high degree of flexibility in managing permissions. This streamlines the user experience by reducing the number of steps needed to manage permissions and disconnect from dApps, thereby aligning with traditional OAuth systems for enhanced user control and privacy.
 
 ## Motivation
-The existing permission system lacks a streamlined way for users and dApps to manage and revoke permissions. This proposal aims to:
+The MetaMask Wallet API currently lacks a streamlined way for users and dApps to revoke permissions. This proposal aims to:
 
 1. Streamline User Experience: Currently, disconnecting a dApp requires navigating through multiple UI layers. Implementing `wallet_revokePermissions` will simplify this process and align with user expectations.
 
