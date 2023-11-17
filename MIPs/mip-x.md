@@ -27,7 +27,7 @@ By implementing wallet_revokePermissions, we achieve feature parity with traditi
 
 
 # Proposal
-The `wallet_revokePermissions` method is proposed as a new JSON-RPC feature for MetaMask, aimed at giving users more granular control over permission management. With this method, users can can revoke permissions for the specified permissions and caveats provided.
+The `wallet_revokePermissions` method is proposed as a new JSON-RPC feature for MetaMask, aimed at giving users more granular control over permission management. With this method, users can can revoke permissions for the specified permission(s).
 
 The method signature will be as follows:
 
@@ -36,14 +36,7 @@ await window.ethereum.request({
   "method": "wallet_revokePermissions",
   "params": [
     {
-      "baz": {
-        "caveats": [
-          {
-            "type": "foo",
-            "value": "bar"
-          }
-        ]
-      }
+      "<permission>": {}
     }
   ]
 });
@@ -51,25 +44,6 @@ await window.ethereum.request({
 
 # Usage Example
 ```js
-// Request to revoke permissions for a single address (disconnect a user's account)
-await window.ethereum.request({
-  "method": "wallet_revokePermissions",
-  "params": [
-    {
-      "eth_accounts": {
-        "caveats": [
-          {
-            "type": "restrictReturnedAccounts",
-            "value": [
-              "0x36Cad5E14C0a845500E0aDA68C642d254BE8d538"
-            ]
-          }
-        ],
-      }
-    }
-  ]
-});
-
 // revoke eth_account permission for the dApp
 await window.ethereum.request({
   "method": "wallet_revokePermissions",
@@ -79,12 +53,22 @@ await window.ethereum.request({
     }
   ]
 });
+
+// revoke snap_dialog permission for the dApp
+await window.ethereum.request({
+  "method": "wallet_revokePermissions",
+  "params": [
+    {
+      "snap_dialog": {}
+    }
+  ]
+});
 ```
 
 The proposed changes have been implemented in the following PR against the `MetaMask/api-specs` repo: https://github.com/MetaMask/api-specs/pull/145
 
 ## Caveats
-The implementation of `wallet_revokePermissions` means more granular control over user permissions and, subsequently, more combinations of permissions that can be revoked. This increases the scope of testing to ensure that there are no edge cases that haven't been considered, or bugs.
+Adding Caveats to the implementation of `wallet_revokePermissions` means more granular control over user permissions and, subsequently, more combinations of permissions that can be revoked. This increases the scope of implementation so it will not be supported in the initial implementation.
 
 ## Implementation
 There is a [PR](https://github.com/MetaMask/core/pull/1889) open against the `MetaMask/core` repo that implements the proposed changes.
