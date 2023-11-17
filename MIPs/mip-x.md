@@ -27,11 +27,6 @@ By implementing wallet_revokePermissions, we achieve feature parity with traditi
 
 
 # Proposal
-
-## Definitions
-**Revoke**: To officially cancel or withdraw specific privileges, rights, or permissions. In the context of `wallet_revokePermissions`, revoking would entail nullifying the access granted to certain dApps or operations, such as account information retrieval via `eth_accounts`.
-
-## Proposal Specification
 The `wallet_revokePermissions` method is proposed as a new JSON-RPC feature for MetaMask, aimed at giving users more granular control over permission management. With this method, users can can revoke permissions for the specified permissions and caveats provided.
 
 The method signature will be as follows:
@@ -118,6 +113,9 @@ To mitigate this risk, MetaMask could implement the following countermeasures:
 **User Education**: MetaMask could inform users about the importance of managing permissions and the risks associated with not revoking outdated or unused permissions. Offer guidelines for making informed decisions about when and how to revoke permissions for different dApps.
 
 **Warning and Consent**: Before executing a revoke operation, MetaMask could display an inormative alert message to users. This message could inform them of the consequences of revoking permissions and/or the specific permission(s) they are attempting to revoke.
+
+## Definitions
+**Revoke**: To officially cancel or withdraw specific privileges, rights, or permissions. In the context of `wallet_revokePermissions`, revoking would entail nullifying the access granted to certain dApps or operations, such as account information retrieval via `eth_accounts`.
 
 ## References
 [wallet_revokePermissions](https://github.com/MetaMask/api-specs/pull/145)
