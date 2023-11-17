@@ -69,7 +69,6 @@ await window.ethereum.request({
               "0x36Cad5E14C0a845500E0aDA68C642d254BE8d538"
             ]
           }
-          "0x36Cad5E14C0a845500E0aDA68C642d254BE8d538"
         ],
       }
     }
