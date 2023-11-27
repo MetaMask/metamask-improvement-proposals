@@ -2,7 +2,7 @@
 MIP: 1
 Title: Implement `wallet_swap` to support Dapps to swap
 Status: Draft
-Stability: Experimental
+Stability: n/a
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions
 Author(s): Tomás Santos (@tommasini)
 Type: Maintainer
