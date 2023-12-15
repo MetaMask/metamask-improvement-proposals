@@ -14,21 +14,8 @@ If you're primarily interested in the latest production Wallet API, MetaMask pro
 
 For recently proposed or implemented modifications see the following lists:
 
-[Draft MIP List](./MIPs/)
-
-<!-- Uncomment once we have some in these categories
-[Implemented MIP List](http://insert.URL.here)
-
-[Accepted MIP List](http://insert.URL.here)
-
-[Last Call MIP List](http://insert.URL.here)
-
-[Review MIP List](http://insert.URL.here)
-
-[Discontinued MIP List](http://insert.URL.here)
-
-[Declined MIP List](http://insert.URL.here)
--->
+[MIP List](./MIPs/)
+[MIP List by Status](./MIPs/mips-by-status.md)
 
 ## When to follow this process
 Contributors must follow the MIP process in order to request additions or make changes to the MetaMask Wallet APIs that are available by default across all MetaMask clients (Browser Extension & Mobile).
@@ -47,10 +34,7 @@ We encourage those who have a need for improvements to the MetaMask API to contr
 
 In practice, MIPs will come in two flavors:
 
-* **Maintainer MIPs** are submitted by API Maintainers after extensive (sometimes,
-multi-month) design, discussion, and experimentation. The purpose of these MIPs is to preview the design
-for the community and to provide an opportunity for feedback. We read every comment on the MIPs
-we publish, respond to questions, and sometimes incorporate the feedback into the proposal.
+* **Maintainer MIPs** are submitted by API Maintainers after extensive (sometimes multi-month) design, discussion, and experimentation. The purpose of these MIPs is to preview the design for the community and to provide an opportunity for feedback. We read every comment on the MIPs we publish, respond to questions, and sometimes incorporate the feedback into the proposal.
 
 * **Community MIPs** can be submitted by anyone. The guidelines provided here are meant to streamline the process by providing you with common considerations you'll want to ask yourself before submitting a PR for your proposal. However, initial Community MIP submissions are not expected to have all considerations addressed up front. The MIP process allows for periods of feedback and refinement before a proposal is accepted for official review.
 
@@ -63,7 +47,7 @@ Please follow the steps in the [Contribution Guide](./CONTRIBUTING.md).
 - **Draft** - The initial proposal stage, indicating that the proposal is in development. The proposal will be submitted for review after being properly formatted. Major changes to the proposal are expected during this stage.
 - **Review** - The proposal author(s) marked this proposal as ready for peer review. All members of the community are encouraged to participate. Incremental changes to the proposal are expected during this stage.
 - **Declined** - The proposal may be declined for many reasons. Most common reason would be because it does not align with the design principles or long-term direction of the system and will not be considered for implementation. This status is final. If the idea is to be pursued again, a new proposal MUST be created.
-- **Last Call** - The proposal has generally been accepted, but requires a period of further comment and feedback from the community prior to implementation.
+- **Last Call** - The proposal has generally been accepted, but requires a period of further comment and feedback from the community prior to implementation. It's best practice to include a Last Call, but some Maintainer MIPs may skip this stage.
 - **Accepted** - The proposal has been accepted and is planned for implementation by a specific group. Only critical changes based on implementation considerations are expected at this stage.
 - **Stagnant** - A proposal may be stagnant if it is no longer planned for implementation or has not been actively developed for 6-months. It may either be declined or remain in the stagnant state until it is ready to move forward again.
 - **Implemented** - The proposal has been successfully implemented according to the specification in the MIP. The proposal MUST be fully implemented before being considered for this status. The stability of the implementation will be indicated by three stability levels.
@@ -79,7 +63,8 @@ stateDiagram-v2
     Draft-->Review
 	Review-->Declined
 	state "Last Call" as LC
-    Review-->LC  
+    Review-->LC
+    Review-->Accepted  
 	LC-->Accepted
 	Stagnant-->Declined
     Accepted-->Stagnant
