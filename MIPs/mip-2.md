@@ -1,8 +1,8 @@
 ---
 MIP: 2
 Title: Implement `wallet_revokePermissions` for Flexible Permission Revocation
-Status: Accepted
-Stability: n/a
+Status: Implemented
+Stability: Experimental
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions
 Author(s): Julia Collins (@julesat22), Shane Jonas (@shanejonas)
 Type: Community
