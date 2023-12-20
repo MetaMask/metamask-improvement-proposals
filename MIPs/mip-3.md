@@ -26,6 +26,8 @@ Implementing `wallet_swapAsset` would allow the entire token swap process to occ
 - Increased adoption - More intuitive swap workflow lowers barrier to dApp usage.
 - Interoperability - Standard method works across different wallets.
 
+Comparing with other alternative, implementing it using swaps, would create more friction and less adoption since the users would need to install that specific snap to be able to perform a swap action. The all goal is to reduce friction to swaps.
+
 Overall, this proposal fills a clear gap in dApp capabilities related to swapping tokens. Implementing it would provide significant value to both developers and users in the Ethereum ecosystem.
 
 # Usage Example
