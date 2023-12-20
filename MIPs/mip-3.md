@@ -35,7 +35,7 @@ Overall, this proposal fills a clear gap in dApp capabilities related to swappin
 ```
 ethereum.request({
   method: 'wallet_swapAsset',
-  params: {
+  params: [{
     from: {
       token_address: '0x1234567890abcdefABCDEF1234567890ABCDEF',
       chainId: '0x1',
@@ -45,7 +45,9 @@ ethereum.request({
       token_address: '0xabcdef1234567890ABCDEF1234567890abcdef',
       chainId: '0x1',
     },
+    user_address: '0x0000000000000000000000000000000000000000'
   },
+  ]
 });
 
 ```
