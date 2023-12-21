@@ -67,6 +67,8 @@ The new JSON RPC method wallet_swapAsset should be implemented with the followin
   - `token_address`: The address of the destination token.
   - `chainId`: The chain ID on hexadecimal format where the destination token resides.
 
+- `user_address`: An string containing the address connected to the dapp.
+
 MetaMask will interpret the method call and perform the necessary validations and operations to initiate the token swap.
 
 ## Caveats
