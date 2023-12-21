@@ -36,11 +36,11 @@ Overall, this proposal fills a clear gap in dApp capabilities related to swappin
 ethereum.request({
   method: 'wallet_swapAsset',
   params: [{
-    from: {
+    from: [{
       token_address: '0x1234567890abcdefABCDEF1234567890ABCDEF',
       chainId: '0x1',
       amount: '0xDE0B6B3A7640000',
-    },
+    }],
     to: {
       token_address: '0xabcdef1234567890ABCDEF1234567890abcdef',
       chainId: '0x1',
@@ -109,9 +109,11 @@ While the proposed implementation of `wallet_swapAsset` do not introduce new sec
 
 Malicious actors may prompt users to swap fake tokens that they created and fake on the dapp that the users are doing swap to an official token.
 
-To mitigate this risk, MetaMask could implement the following countermeasures:
+To mitigate this risk, MetaMask have implemented the following countermeasure:
 
 **Token Verification:** Implement a token verification process in the wallet. Before performing the swap, the wallet could verify the authenticity of the tokens involved in the swap by checking them against a list of known and trusted tokens.
+
+The token list still will have the possibility of have a malicious token and for that we have implemented the following countermeasure:
 
 **User Education:** Inform users about the potential risks associated with token swaps and provide guidelines for safely performing these operations. Users should be advised to verify the authenticity of the tokens they are swapping and the dApps they are using.
 
