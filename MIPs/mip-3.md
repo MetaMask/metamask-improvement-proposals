@@ -25,6 +25,7 @@ Implementing `wallet_swapAsset` would allow the entire token swap process to occ
 - Better dApp integration - dApps can build and control the swap experience natively with just a few lines.
 - Increased adoption - More intuitive swap workflow lowers barrier to dApp usage.
 - Interoperability - Standard method works across different wallets.
+- Increase revenue - Easier adoption means more users will use MetaMask swaps.
 
 Comparing with other alternative, implementing it using swaps, would create more friction and less adoption since the users would need to install that specific snap to be able to perform a swap action. The all goal is to reduce friction to swaps.
 
