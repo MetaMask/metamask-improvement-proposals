@@ -184,9 +184,7 @@ Malicious actors may prompt users to swap fake tokens that they created and fake
 
 To mitigate this risk, MetaMask have implemented the following countermeasure:
 
-**Token Verification:** Implement a token verification process in the wallet. Before performing the swap, the wallet could verify the authenticity of the tokens involved in the swap by checking them against a list of known and trusted tokens.
-
-The token list still will have the possibility of have a malicious token and for that we have implemented the following countermeasure:
+**Token Verification:** Implement the tokenlist api v2, that includes a safety feature for token verification. We can swap tokens that are on our token list, added via Dapp or manually, if we check all of them we are sure that the tokens on the user wallet are sanitized and not dangerous.
 
 **User Education:** Inform users about the potential risks associated with token swaps and provide guidelines for safely performing these operations. Users should be advised to verify the authenticity of the tokens they are swapping and the dApps they are using.
 
