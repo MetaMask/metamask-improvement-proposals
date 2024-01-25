@@ -47,35 +47,19 @@ According to the CAIP-27 standard, a JSON-RPC request scoped to a particular cha
 ##### Single Request
 Here's an example of how a single JSON-RPC request targeted to Ethereum Mainnet would be wrapped in a provider_request when attempting to query a balance on Ethereum Mainnnet:
 
-
-ethereum.request({
-  "jsonrpc": "2.0",
-  "method": "provider_request",
- "params": [{
-   "version": "0.0.1",
-      "scope: "eip155:1",
-   "request": {
-          "method": "eth_getBalance",
-     "params": ['0xabc...', 'latest']
-       }
-   }]
-  "id": 1
-});
-
-
 ```javascript
 ethereum.request({
-  jsonrpc: "2.0",
-  method: 'provider_request',
-  params: [{
-    "version": "0.0.1",
-    scope: 'eip155:1',
-    request: {
-      method: 'eth_getBalance',
-      params: ['0xabc...', 'latest']
-    }
-  }]
-  id: 1
+    "jsonrpc": "2.0",
+    "method": "provider_request",
+    "params":[{
+        "version": "0.0.1",
+        "scope": "eip155:1",
+        "request":{
+            "method": "eth_getBalance",
+            "params": ["0xabc...","latest"]
+        }
+    }]
+    "id": 1
 });
 ```
 
@@ -84,38 +68,38 @@ In this example, the `scope` field is populated with the chain ID corresponding 
 ##### Batch Request for Multiple Chains
 Here's an example of how JSON-RPC batch requests to get balances from both Ethereum Mainnet and Binance Smart Chain would be called by wrapping the requests in a `provider_request`:
 
+```javascript
 ethereum.request([
   {
-    jsonrpc: "2.0",
-    method: 'provider_request',
-    params: {
-      scope: 'eip155:1',
-      request: {
-        method: 'eth_getBalance',
-        params: ['0xabc...', 'latest']
+    "jsonrpc": "2.0",
+    "method": "provider_request",
+    "params": {
+        "scope": "eip155:1",
+        "request": {
+            "method": "eth_getBalance",
+            "params": ["0xabc...", "latest"]
       }
     }
-    id: 1
+    "id": 1
   },
   {
-    jsonrpc: "2.0",
-    method: 'provider_request',
-    params: {
-      scope: 'eip155:56',
-      request: {
-        method: 'eth_getBalance',
-        params: ['0xabc...', 'latest']
+    "jsonrpc": "2.0",
+    "method": "provider_request",
+    "params": {
+        "scope": "eip155:59144",
+        "request": {
+            "method": "eth_getBalance",
+            "params": ["0xabc...", "latest"]
       }
     }
-    id: 2
+    "id": 2
   }
 ]);
+```
 
+In this example, the `provider_request` wraps each JSON-RPC `eth_getBalance` request with one scoped to Ethereum Mainnet (`eip155:1`) and another to Linea (`eip155:59144`).
 
-
-In this example, the `provider_request` wraps each JSON-RPC `eth_getBalance` requests: one scoped to Ethereum Mainnet (`eip155:1`) and another to Binance Smart Chain (`eip155:56`).
-
-For consistency and excepting [provider_authorization](), all MetaMask JSON-RPC requests will be made through a `provider_request` including those that are `wallet` scoped. See [provider_authorization] for information about supported scopes.
+For consistency and excepting [provider_authorization](mip-mc-handshake.md), all MetaMask JSON-RPC requests will be made through a `provider_request` including those that are `wallet` scoped. See [provider_authorization](mip-mc-handshake.md) for information about supported scopes.
 
 #### Reference Spec
 The proposed changes have been specified in a machine-readable format in the following PR against the `MetaMask/api-specs` repo: [add URL here]()
@@ -126,7 +110,7 @@ If MetaMask is not connected to the chain specified in the `scope`, an error sho
 If an invalid `scope` is specified, then an error should be returned.
 
 ## Backwards Compatibility
-The `provider_request` method is an addition to the existing methods and thus is backward-compatible. Existing JSON-RPC methods without the `provider_request` wrapper would continue to work as they currently do.
+The `provider_request` method is introduced through the [Multichain API](mip-mc-delivery.md), which is completely separate from the existing JSON-RPC methods. Existing JSON-RPC that are called without the `provider_request` wrapper would continue to work as they currently do.
 
 ## Test Cases
 General test cases should cover:
