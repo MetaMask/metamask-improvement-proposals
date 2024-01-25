@@ -15,6 +15,9 @@
 ## Draft
 
 - [wallet_swapAsset](https://github.com/MetaMask/metamask-improvement-proposals/pull/25)
+- [Multichain provider_authorize](mip-mc-handshake.md)
+- [Multichain provider_request](mip-mc-request.md)
+- [Multichain API delivery](mip-mc-delivery.md)
 - [API Versioning](https://github.com/MetaMask/metamask-improvement-proposals/pull/11)
 
 ## Future
