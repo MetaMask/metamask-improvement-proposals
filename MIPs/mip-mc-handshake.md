@@ -15,7 +15,7 @@ A proposal to introduce an unrestricted `provider_authorize` method for applicat
 
 This interface is intended to be part of a new version of the MetaMask Wallet API that is optimized for multichain interactions.
 
-This proposal aims to implement CAIP-25's JSON-RPC Provider Authorization into MetaMask while adapting the `rpcEndpoints` parameter to be compliant with the object structure defined in EIP-3085. Designing the interface in this way will provide a standardized approach for dApps to request access to networks and suggest JSON-RPC endpoints.
+This proposal aims to implement CAIP-25's JSON-RPC Provider Authorization into MetaMask. For EVM (eip155) networks, the `rpcEndpoints` parameter is adapted to be compliant with the object structure defined in EIP-3085. Designing the interface in this way will provide a standardized approach for dApps to request access to networks and JSON-RPC methods.
 
 ## Motivation
 
@@ -164,7 +164,7 @@ Valid scopes SHALL include and will initially be limited to:
 See MetaMask’s rpcDocument for the most up-to-date specification of supported methods: https://metamask.github.io/api-specs/latest/openrpc.json
 
 `wallet_switchEthereumChain` - this method WILL NOT be carried over to the Multichain API as chain switching coordination between dApp and wallet will no longer be necessary
-`eth_sign`, `eth_signTypedData`, `eth_signTypedData_v3` WILL NOT be carried over to the Multichain API as these signature methods have been superseded by `personal_sign` and `eth_signTypedData_v4`
+`eth_sign`, `eth_signTypedData`, `eth_signTypedData_v3` WILL NOT be carried over to the Multichain API as these signature methods have been superseded by the more commonly used `personal_sign` and `eth_signTypedData_v4` methods
 
 ##### Valid notifications
 `accountsChanged` - Because `provider_authorize` will return the accounts that the user authorized a dapp to interact with in the response, this notification is no longer necessary. The `accountsChanged` notification WILL NOT be carried over to the Multichain API.
@@ -206,7 +206,7 @@ Implementing this proposal involves a significant modification to MetaMask's JSO
 ## User Experience Considerations
 [Explain any user experience implications of the proposal]
 
-Calling the `provider_authorize` method with optionalScopes that include any eip155 prefixed scopes will trigger the following sequence:
+Calling the `provider_authorize` method with `optionalScopes` that include any eip155 prefixed scopes will trigger the following sequence:
 
 ```mermaid
 sequenceDiagram
