@@ -29,7 +29,7 @@ The provider_authorize method is specifically meant to:
 
 By adopting the CAIP-25 standard from the ChainAgnostic Standards Alliance to accomplish this, MetaMask can encourage industry interoperability while building a unique and powerful multichain experience.
 
-General motivations for introducing a multichain-optimized wallet API include:
+General motivations for introducing a multichain-optimized Wallet API include:
 
 - Reducing friction when interacting across different chains (both in dApps and MetaMask)
 - Simplifying development for dApp builders
@@ -128,12 +128,22 @@ An example of the corresponding JSON-RPC response that an application would rece
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" written in uppercase in this document are to be interpreted as described in RFC 2119.
 
 ## Definitions
-[TODO Provide detailed definitions for any new terms or concepts introduced in the proposal]
 
-MetaMask Wallet API
-Multichain API
-Scope
-Permissions
+**Wallet API**: [The interface](https://docs.metamask.io/wallet/concepts/apis/) that dapps can use to programmatically interact with MetaMask.
+
+**Multichain API**: A version of the Wallet API that is optimized for interactions across multiple chains.
+
+**Scope**: A uniquely identified domain for which authorizations can be applied (see [CAIP-217](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-217.md) for further definition).
+
+**Authorization**: A permission to use a resource. This term may be used interchangeably with the term **Permission**.
+
+**eip155 scope**: A scope that applies to a particular EVM-compatible chain identified as specified in [CAIP-2](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-2.md).
+
+**wallet scope**: A scope that applies to capabilities that a MetaMask Wallet client can handle in a relatively self-contained way.
+
+**chain**: A distributed ledger that can be targeted. It may or may not refer to a blockchain, which is a type of distributed ledger.  
+
+**network**: An RPC network or node that enables interactions with a chain.
 
 
 ## Proposal Specification
@@ -142,9 +152,9 @@ Permissions
 
 - While `provider_authorize` will not be available through an EIP-1193 provider, the Multichain API Delivery MIP provides details about how to access the multichain API. 
 
-- Permissions for both `wallet` and chain-specific scopes SHOULD generally be placed into `optionalScopes`. Use of `requiredScopes` will be supported but is NOT RECOMMENDED
+- Authorization requests for both `wallet` and chain-specific scopes SHOULD generally be placed into `optionalScopes`. Use of `requiredScopes` will be supported but is NOT RECOMMENDED
 
-- `chainId` directly indicates the blockchain target, formatted as a string that includes both the namespace and the reference, following CAIP-2 conventions.
+- `chainId` uniquely indentifies the target chain, formatted as a string that includes both the namespace and the reference, following CAIP-2 conventions.
   
 - `methods`, `notifications`, and `rpcEndpoints` are listed directly under each scope in line with CAIP-25.
 
@@ -155,28 +165,28 @@ Permissions
 #### Valid Scopes
 Valid scopes SHALL include and will initially be limited to:
 - `wallet`
-- `eip155:X` (eip155 prefixed scopes)
+- `eip155:X` (eip155 scope)
 
-> **Note:** In the future, this specification may be extended to support Snap IDs or the full range of CAIP-2 Namespaces: https://namespaces.chainagnostic.org/
+> **Note:** In the future, this specification may be extended to support Snap IDs or the full range of [CAIP-2 Namespaces](https://namespaces.chainagnostic.org/)
 
 #### Wallet-Scope
 ##### Valid methods
 See MetaMask’s rpcDocument for the most up-to-date specification of supported methods: https://metamask.github.io/api-specs/latest/openrpc.json
 
-`wallet_switchEthereumChain` - this method WILL NOT be carried over to the Multichain API as chain switching coordination between dApp and wallet will no longer be necessary
-`eth_sign`, `eth_signTypedData`, `eth_signTypedData_v3` WILL NOT be carried over to the Multichain API as these signature methods have been superseded by the more commonly used `personal_sign` and `eth_signTypedData_v4` methods
+`wallet_switchEthereumChain` method WILL NOT be carried over to the Multichain API as chain switching coordination between dApp and wallet will no longer be necessary
+`eth_sign`, `eth_signTypedData`, `eth_signTypedData_v3` methods WILL NOT be included in the Multichain API as these signature methods have been superseded by the more commonly used `personal_sign` and `eth_signTypedData_v4` methods
 
 ##### Valid notifications
-`accountsChanged` - Because `provider_authorize` will return the accounts that the user authorized a dapp to interact with in the response, this notification is no longer necessary. The `accountsChanged` notification WILL NOT be carried over to the Multichain API.
+`accountsChanged` - Because `provider_authorize` will return the accounts that the user authorized a dapp to interact with in the response, this notification is no longer necessary. The `accountsChanged` notification WILL NOT be included in the Multichain API.
 
 #### eip155:X Scope
 ##### Valid methods
 See MetaMask’s rpcDocument for the most up-to-date specification of supported Ethereum methods: https://metamask.github.io/api-specs/latest/openrpc.json
 
-The `eth_accounts` and `eth_chainId` methods are no longer necessary and will not be carried forward.
+The `eth_accounts` and `eth_chainId` methods are no longer necessary and will not be included in the Multichain API.
 
 ##### Valid notifications
-`message` - dApps can register to be notified of RPC-triggered notifications 
+`message` - dApps can register to be notified of network-triggered notifications
 
 ##### Valid rpcEndpoints
 When a MetaMask user does not have an existing network configured for a given eip155 chainId, including rpcEndpoints in the [scopeObjects](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-217.md) will trigger MetaMask to suggest that the user add the first endpoint in the list. MetaMask expects rpcEndpoints to conform with the [EIP-3085](https://eips.ethereum.org/EIPS/eip-3085) standard. No action is taken if the user already has a network configured for the chainId.
@@ -185,10 +195,7 @@ When a MetaMask user does not have an existing network configured for a given ei
 The error-handling behavior will follow CAIP-25 guidelines. If the wallet (MetaMask in this case) does not support the blockchain namespace or reference, or if any of the specified permissions are not supported, an error message will be returned.
 
 ## Rationale
-By incorporating CAIP-25 and EIP-3085, this proposal aims to provide a comprehensive and standards-friendly way for dApp developers to request wallet permissions in a multichain context. The provider_authorize method will also enable an intuitive connection experience for users who wish to interact with dApps across multiple chains using MetaMask.
-
-## Backwards Compatibility
-Existing MetaMask Wallet APIs will remain available through the existing Ethereum Provider API. 
+By incorporating CAIP-25 and EIP-3085 standards, this proposal aims to provide a comprehensive and standards-friendly way for dApp developers to request wallet permissions in a multichain context. The `provider_authorize` method will also enable an intuitive connection experience for users who wish to interact with dApps across multiple chains using MetaMask. Developers can choose to either request permissions upfront or to request them progressively according to their needs.
 
 ## Test Cases
 Test cases should cover:
@@ -201,10 +208,14 @@ Test cases should cover:
 Implementing this proposal involves a significant modification to MetaMask's JSON-RPC request-handling code to support the new `provider_authorize` method, adjustments to the permissioning system, and updates to the UI components for user consent and management of dapp permissions.
 
 ## Developer Adoption Considerations
+
 [Explain any considerations that developers should take into account when adopting this proposal. For example, how will it affect compatibility, and what changes may need to be made to accommodate the proposal?]
 
+Backward compatibility will be maintained through the existing Ethereum Provider API. However, the Multichain API WILL NOT be available through the existing Ethereum Provider API. Because many developers rely on third-party libraries to connect their dapps with wallets, a some mapping logic that allows them to keep their "single chain" code as-is while actually hitting the multichain API may facilitate more rapid adoption. 
+
+Developers should expect most new improvements to the Wallet API to be delivered only though the multichain API, NOT the Ethereum Provider API.
+
 ## User Experience Considerations
-[Explain any user experience implications of the proposal]
 
 Calling the `provider_authorize` method with `optionalScopes` that include any eip155 prefixed scopes will trigger the following sequence:
 
@@ -220,11 +231,13 @@ sequenceDiagram
     MetaMask-->>-app: provider_authorize Response
 ```
 
-Many developers rely on third-party libraries to connect their dapps with wallets. Developers who use third-party libraries may need a mapping to keep their "single chain" code as-is while actually hitting the multichain API 
-
 ## Privacy Considerations
+This proposal raises important privacy considerations, including the need to avoid data leaking and the challenge of obtaining genuine user consent. It underscores the importance of preserving user anonymity and the sensitivites involved in determining authorizations. Identifying and mitigating these issues is crucial for protecting user privacy during multichain interactions, prompting a careful evaluation of how best to balance functionality with privacy concerns.
 
 ## Security Considerations
+This proposal is an opportunity to further incorporate the [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) in MetaMask.
+
+The proposal also brings to light some security considerations critical to multichain interactions. These include the challenges of ensuring robust authentication and authorization and the importance that users understand the chain with which they are interacting. Identifying and addressing these issues is vital for safeguarding users against the evolving landscape of security threats in the blockchain ecosystem.
 
 ## Committed Developers
 MetaMask Portfolio
@@ -232,11 +245,10 @@ MetaMask Bridge
 
 ## Open Issues
 List of significant open issues that require resolution in order for this MIP to be ready to be moved to the `Review` stage
+- Add OpenRPC specs for the provider_authorize method
 - Confirm which existing methods are not going to included in the Multichain API
 - Confirm how CAIP-25 will be extended to support rpcEndpoints that follow the structure specified in EIP-3085
 - Determine whether API versioning should be incorporated into this MIP
-- Fill in all relevant sections that have been included
-
 
 ## Copyright
 

@@ -2,8 +2,6 @@
 
 ## Last Call
 
-- [MIP-2](mip-2.md)
-
 ## Review
 
 ## Accepted
@@ -11,6 +9,7 @@
 ## Implemented
 
 - [MIP-1](mip-1.md)
+- [MIP-2](mip-2.md)
 
 ## Draft
 
