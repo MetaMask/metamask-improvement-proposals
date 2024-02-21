@@ -13,7 +13,7 @@ Created: 2024-01-25
 
 A proposal to introduce an unrestricted `provider_authorize` method for applications to connect to MetaMask per ChainAgnostic Standards Alliance’s CAIP-25 standard. The `provider_authorize` method establishes an interface for permissioning application access to wallet-managed resources including accounts, RPC providers, and specific JSON-RPC methods across multiple chains (EVM and beyond) in a concurrent session. An application can request access to these resources by specifying scopes as defined in CAIP-217.
 
-This interface is intended to be part of a new version of the MetaMask Wallet API that is optimized for multichain interactions.
+This method is intended to be part of a new version of the MetaMask Wallet API that is optimized for multichain interactions.
 
 This proposal aims to implement CAIP-25's JSON-RPC Provider Authorization into MetaMask. For EVM (eip155) networks, the `rpcEndpoints` parameter is adapted to be compliant with the object structure defined in EIP-3085. Designing the interface in this way will provide a standardized approach for dApps to request access to networks and JSON-RPC methods.
 
