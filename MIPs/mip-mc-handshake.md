@@ -21,7 +21,7 @@ This proposal aims to implement CAIP-25's JSON-RPC Provider Authorization into M
 
 The purpose of this proposal is to offer a convenient and standard interface for performing an initial handshake with a version of MetaMask that is designed for simultaneous interactions across multiple chains. 
 
-The provider_authorize method is specifically meant to:
+The `provider_authorize` method is specifically meant to:
 
 - Generally improve application-to-wallet interface negotiation
 - Initiate multichain account and network connections
