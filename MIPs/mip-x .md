@@ -33,16 +33,16 @@ window.ethereum.request({ method: 'eth_sendTransaction', params: [tx] })
 
 For example this one is from ganache and is wrapped in `value`.
 ##### Current Behaviour
-```
+```json
 {
-  "jsonrpc":"2.0",
-  "error":"[ethjs-query] while formatting outputs from RPC '{"value":{"code":-32603}}'",
+  "jsonrpc": "2.0",
+  "error": "[ethjs-query] while formatting outputs from RPC '{"value":{"code":-32603}}'",
   "id": 4653223632683671
 }
 ```
 
 ##### Proposed Behaviour
-```javascript
+```json
 { 
   "jsonrpc":"2.0",
   "error": {
@@ -61,7 +61,7 @@ This change is expected to **NOT** be backwards compatible, as it involves chang
 
 #### Test Cases
 - Test scenarios where API errors are triggered to ensure that the error messages are returned as expected without any wrapping or stringifying.
-- Compatibility testing with existing MetaMask extensions and dApps to ensure no adverse effects on functionality.
+- Compatibility testing with MetaMask extension, mobile and existing dApps to ensure no adverse effects on functionality.
 
 #### Implementation
 The proposed changes would probably be implemented in the `ethjs-query` library (and possibly other `ethjs-*` libraries, following a review and testing process to ensure accuracy and reliability of error messages.
