@@ -3,7 +3,7 @@ MIP: X
 Title: Fix Error Handling in API Responses
 Status: Draft
 Stability: Experimental
-discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions
+discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions/37
 Author(s): Shane Jonas (@shanejonas)
 Type: Maintaner
 Created: 2024-03-04
