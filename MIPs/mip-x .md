@@ -19,7 +19,6 @@ Issue https://github.com/MetaMask/metamask-extension/issues/19697, https://githu
 - **Current Behaviour:** Errors returned by the API are wrapped and stringified, leading to terribly formatted error messages in some cases.
 - **Proposed Change:** Modify the error handling process to return original error messages directly without wrapping or stringification. This would introduce a breaking change to developers who have wrote code to parse those errors and handle them.
 
-
 #### Examples
 There are some edge cases with sendTransaction where a node may have formatted the error message in a way that is not expected.
 
@@ -55,7 +54,6 @@ window.ethereum.request({ method: 'eth_sendTransaction', params: [tx] })
 ```
 
 ##### Proposed Behaviour
-
 ```json
 { 
   "jsonrpc":"2.0",
