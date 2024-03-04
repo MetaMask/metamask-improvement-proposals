@@ -34,7 +34,6 @@ window.ethereum.request({ method: 'eth_sendTransaction', params: [tx] })
 For example this one is from ganache and is wrapped in `value`.
 ##### Current Behaviour
 ```
-// Logs:
 {
   "jsonrpc":"2.0",
   "error":"[ethjs-query] while formatting outputs from RPC '{"value":{"code":-32603}}'",
