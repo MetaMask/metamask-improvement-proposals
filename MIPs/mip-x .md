@@ -52,8 +52,10 @@ window.ethereum.request({ method: 'eth_sendTransaction', params: [tx] })
     "message": "[ethjs-query] while formatting outputs from RPC '{\"value\":{\"code\":-32603,\"data\":{\"message\":\"VM Exception while processing transaction: invalid opcode\",\"code\":-32000,\"data\":{\"0x877c456d0b406f0706f405b0d2eb4e0ebc69629a539503e7ad94a7f9b6ba36af\":{\"error\":\"invalid opcode\",\"program_counter\":13,\"return\":\"0x\"},\"stack\":\"c: VM Exception while processing transaction: invalid opcode\\n    at Function.c.fromResults (/home/x/code/x/smart-contracts/node_modules/ganache-cli/build/ganache-core.node.cli.js:4:192416)\\n    at w.processBlock (/home/x/code/x/smart-contracts/node_modules/ganache-cli/build/ganache-core.node.cli.js:42:50915)\\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\",\"name\":\"c\"}}}}'"
   }
 }
+```
 
 ##### Proposed Behaviour
+
 ```json
 { 
   "jsonrpc":"2.0",
