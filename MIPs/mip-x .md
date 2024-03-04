@@ -10,10 +10,10 @@ Created: 2024-03-04
 ---
 
 #### Abstract
-This proposal aims to refine MetaMask's API error handling by eliminating the practice of stringifying or wrapping errors. The current method obscures underlying issues, complicating debugging and resolution for developers.
+This proposal aims to refine MetaMask's API error handling by eliminating the practice of stringifying or wrapping errors. The current edge cases obscure underlying issues, complicating debugging and resolution for developers.
 
 #### Motivation
-Issue https://github.com/MetaMask/metamask-extension/issues/19697 and https://github.com/MetaMask/metamask-extension/pull/15205#issuecomment-1199953855 highlighted difficulties faced by developers due to the API's error handling mechanism, where errors were stringified/wrapped, masking the root cause. This change proposes to break some existing error cases to facilitate clearer understanding and quicker resolution of issues.
+Issue https://github.com/MetaMask/metamask-extension/issues/19697 and https://github.com/MetaMask/metamask-extension/pull/15205#issuecomment-1199953855 highlighted difficulties faced by developers due to the API's error handling mechanism, where some errors are wrapped and stringified. This change proposes to break some existing error cases to facilitate clearer understanding and quicker resolution of issues.
 
 #### Specification
 - **Current Behaviour:** Errors returned by the API are wrapped and stringified, leading to terribly formatted error messages in some cases.
@@ -57,7 +57,7 @@ For example this one is from ganache and is wrapped in `value`.
 Directly presenting errors enhances developer experience by providing clear, actionable insights into issues encountered during development, thereby reducing troubleshooting time and effort. This change would also align MetaMask's error handling with the broader Ethereum ecosystem, making it easier for developers to work with MetaMask.
 
 #### Backwards Compatibility
-This change is expected to **NOT** be backwards compatible, as it involves changing the error message formatting for some cases. Developers accustomed to the existing error handling mechanism may need to adjust their code.
+This change is expected to **NOT** be backwards compatible, as it involves changing the error message formatting for some cases. Developers accustomed to the existing error handling mechanism for those cases may need to adjust their code.
 
 #### Test Cases
 - Test scenarios where API errors are triggered to ensure that the error messages are returned as expected without any wrapping or stringifying.
