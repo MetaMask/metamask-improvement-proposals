@@ -36,7 +36,7 @@ For example this one is from ganache and is wrapped in `value`.
 ```json
 {
   "jsonrpc": "2.0",
-  "error": "[ethjs-query] while formatting outputs from RPC '{\"value\":{\"code\":-32603}}'",
+  "error": "[ethjs-query] while formatting outputs from RPC '{\"value\":{\"code\":-32603,\"message\":\"Internal Server Error\"}}'",
   "id": 4653223632683671
 }
 ```
