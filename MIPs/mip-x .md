@@ -41,7 +41,7 @@ window.ethereum.request({ method: 'eth_sendTransaction', params: [tx] })
 ```json
 {
   "jsonrpc": "2.0",
-  "error": "[ethjs-query] while formatting outputs from RPC '{\"value\":{\"code\":-32603,\"data\":{\"message\":\"Internal Server Error\"}}
+  "error": "[ethjs-query] while formatting outputs from RPC '{\"value\":{\"code\":-32603,\"data\":{\"message\":\"Internal Server Error\"}}}'",
 }
 ```
 ```json
