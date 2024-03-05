@@ -79,3 +79,7 @@ This change is expected to **NOT** be backwards compatible, as it involves chang
 The proposed changes would probably be implemented in the `ethjs-query` library (and possibly other `ethjs-*` libraries, following a review and testing process to ensure accuracy and reliability of error messages.
 
 This proposal seeks feedback from the MetaMask developer community to refine and finalize the approach for fixing error handling.
+
+##### Timeline
+
+The proposed changes are expected to be implemented in the next 3 months. This timeline includes the review, testing, and implementation of the changes. As well as letting developers know about the changes and giving them time to adjust their code.
