@@ -27,7 +27,7 @@ Implementing `wallet_swapAsset` would allow the entire token swap process to occ
 - Interoperability - Standard method works across different wallets.
 - Increase revenue - Easier adoption means more users will use MetaMask swaps.
 
-Comparing with other alternative, implementing it using swaps, would create more friction and less adoption since the users would need to install that specific snap to be able to perform a swap action. The all goal is to reduce friction to swaps.
+Comparing with other alternative, implementing it using snaps, would create more friction and less adoption since the users would need to install that specific snap to be able to perform a swap action. The goal is to reduce friction to swaps.
 
 Overall, this proposal fills a clear gap in dApp capabilities related to swapping tokens. Implementing it would provide significant value to both developers and users in the Ethereum ecosystem.
 
@@ -58,7 +58,7 @@ The new JSON RPC method wallet_swapAsset should be implemented with the followin
 - `from`: An object containing details about the source token. It should include:
 
   - `token_address`: The address of the source token.
-  - `amount`: The amount on wei and hexadecimal format of source token to be swapped.
+  - `amount`: The amount on wei in hexadecimal format of the source token to be swapped.
 
 - `to`: An object containing details about the destination token. It should include:
 
@@ -66,9 +66,9 @@ The new JSON RPC method wallet_swapAsset should be implemented with the followin
 
 - `user_address`: An string containing the address connected to the dapp.
 
-- `referall_code`: (Optional) Future implementation will allow adding a referall code to bigger adoption of the json rpc method across the builders community
+- `referral_code`: (Optional) Future implementation will allow adding a refferal code to drive adoption of the JSON RPC method across the builders community.
 
-- `send_to`: (Optional) Allows integration of the implementation of the swap send to feature.
+- `send_to`: (Optional) Allows integration with Swap's `send to` feature.
 
 MetaMask will interpret the method call and perform the necessary validations and operations to initiate the token swap.
 
@@ -130,7 +130,7 @@ Considering that this is a new json rpc method, developers should take the follo
   ```
 
 5. Security: Dapp Developers should ensure that the token addresses and chain IDs provided in the method call are valid and secure. They should also inform users about the potential risks and considerations when performing token swaps.
-   On MetaMask platfors we have warnings in place that say to the user to be carefull when a token is not that trustworthy. We check if the number of occurrences is more than one, If not we show an alert the we obligate the user to ready and press a button to be able to swap.
+   On MetaMask platforms we have warnings in place that say to the user to be carefull when a token is not that trustworthy. We check if the number of occurrences is more than one, If not we show an alert the we obligate the user to ready and press a button to be able to swap.
 
 6. Testing: Before deploying the `wallet_swapAsset` method in a live environment, MetaMask engineers should thoroughly test it to ensure it works correctly and handles errors appropriately. This includes testing with different token types, amounts, and network conditions.
 
@@ -142,7 +142,7 @@ Users will now be able to swap tokens without leaving dapps.
 The `wallet_swapAsset` method might be new to some users, providing educational resources can help them understand how it works and how to use it.
 If the `wallet_swapAsset` method encounters an error, the wallet/dapp should provide a clear and understandable error message to the user. This helps users understand what went wrong and how to fix it.
 
-On MetaMask Mobile, if the user have on the wallet an selected account but on the dapp in app browser another, when using swaps feature, MetaMask Mobile will check if the accounts are different and switch to the account selected on the dapp if they are.
+While using MetaMask Mobile with this method, the mobile app will first check if selected account is different between the wallet and the dApp. If it is different, the mobile app will switch to the matching account before continuing with the swap.
 
 ```markdown
 if (
@@ -159,9 +159,9 @@ checksummedDappConnectedAccount,
 
 While the proposed implementation of `wallet_swapAsset` do not introduce new security risks in terms of contract interactions, they do present a potential risk related to phishing, althought it is good to mention that this risk already exist on our swaps flow.
 
-Malicious actors may prompt users to swap fake tokens that they created and fake on the dapp that the users are doing swap to an official token.
+Malicious actors may prompt users to swap fake tokens and convince users that they are performing a swap with an official token.
 
-To mitigate this risk, MetaMask have implemented the following countermeasure:
+To mitigate this risk, MetaMask has implemented the following countermeasure:
 
 **User Education:** Inform users about the potential risks associated with token swaps and provide guidelines for safely performing these operations. Users should be advised to verify the authenticity of the tokens they are swapping and the dApps they are using.
 
