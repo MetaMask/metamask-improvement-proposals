@@ -39,12 +39,10 @@ ethereum.request({
   params: [{
     from: [{
       token_address: '0x1234567890abcdefABCDEF1234567890ABCDEF',
-      chainId: '0x1',
       amount: '0xDE0B6B3A7640000',
     }],
     to: {
       token_address: '0xabcdef1234567890ABCDEF1234567890abcdef',
-      chainId: '0x1',
     },
     user_address: '0x0000000000000000000000000000000000000000'
   },
@@ -60,17 +58,17 @@ The new JSON RPC method wallet_swapAsset should be implemented with the followin
 - `from`: An object containing details about the source token. It should include:
 
   - `token_address`: The address of the source token.
-  - `chainId`: The chain ID on hexadecimal format where the source token resides.
   - `amount`: The amount on wei and hexadecimal format of source token to be swapped.
 
 - `to`: An object containing details about the destination token. It should include:
 
   - `token_address`: The address of the destination token.
-  - `chainId`: The chain ID on hexadecimal format where the destination token resides.
 
 - `user_address`: An string containing the address connected to the dapp.
 
-- `referral_code`: (Optional) An string containing a code, to create a gamify experience (sharing revenue for example) with dapps, to lead to a bigger adoption of this json rpc method, directly or throught MetaMask SDK tool.
+- `referall_code`: (Optional) Future implementation will allow adding a referall code to bigger adoption of the json rpc method across the builders community
+
+- `send_to`: (Optional) Allows integration of the implementation of the swap send to feature.
 
 MetaMask will interpret the method call and perform the necessary validations and operations to initiate the token swap.
 
@@ -99,8 +97,8 @@ Considering that this is a new json rpc method, developers should take the follo
 - **Undefined Parameters**: Parameters like `from`, `to`, `user_address`, etc. are essential for the `wallet_swapAsset` method to work correctly. If not provided, the `validateParams` function would throw an error saying `"${property} property of ${name} is not defined"`. (This validation will change on the future when we allow multiple swap tokens, since the architecture of this rpc method allows it.)
 
   ```markdown
-  validateParams(from[0], ['amount', 'chainId', 'token_address'], 'from');
-  validateParams(to, ['token_address', 'chainId'], 'to');
+  validateParams(from[0], [amount, token_address], 'from');
+  validateParams(to, [token_address], 'to');
   ```
 
 - **Invalid User Address**: If a non-existent address is provided in `user_address`, then the method will throw an error 'This address does not exist'.
@@ -121,16 +119,6 @@ Considering that this is a new json rpc method, developers should take the follo
   }
   ```
 
-- **Inconsistent `chainId`**: If the `chainId` of the source and destination tokens are not the same, 'ChainId value is not consistent between from and to' error would be thrown. However, this restriction will be lifted with the support of cross-chain swaps. (We have this validation because we do not yet allow cross chain swaps. But this can change on the future since the architecture fo this rpc method have that into account.)
-
-  ```markdown
-  if (from[0].chainId !== to.chainId) {
-  throw ethErrors.rpc.invalidParams(
-  'ChainId value is not consistent between from and to',
-  );
-  }
-  ```
-
 - **Inactive or Unsupported Swaps**: If the swap is inactive or not possible on the current chain, an alert with the message 'Swap is not active or not possible on this chain' will be triggered.
 
   ```markdown
@@ -142,9 +130,9 @@ Considering that this is a new json rpc method, developers should take the follo
   ```
 
 5. Security: Dapp Developers should ensure that the token addresses and chain IDs provided in the method call are valid and secure. They should also inform users about the potential risks and considerations when performing token swaps.
-   On MetaMask Mobile we only display a token that were already on our trusted token list, so we will not expose the user to new security risks. Nevertheless we have warnings in place that say to the user to be carefull when a token is not that trustworthy. We check if the number of occurrences is more than one, If not we show an alert the we obligate the user to ready and press a button to be able to swap.
+   On MetaMask platfors we have warnings in place that say to the user to be carefull when a token is not that trustworthy. We check if the number of occurrences is more than one, If not we show an alert the we obligate the user to ready and press a button to be able to swap.
 
-6. Testing: Before deploying the `wallet_swapAsset` method in a live environment, metamask engineers should thoroughly test it to ensure it works correctly and handles errors appropriately. This includes testing with different token types, amounts, and network conditions.
+6. Testing: Before deploying the `wallet_swapAsset` method in a live environment, MetaMask engineers should thoroughly test it to ensure it works correctly and handles errors appropriately. This includes testing with different token types, amounts, and network conditions.
 
 7. Interoperability: The `wallet_swapAsset` method provides a standardized way for dApps to request token swaps from wallets. This can improve interoperability between different dApps and wallets, as they can all use the same method for token swaps.
 
@@ -153,38 +141,27 @@ Considering that this is a new json rpc method, developers should take the follo
 Users will now be able to swap tokens without leaving dapps.
 The `wallet_swapAsset` method might be new to some users, providing educational resources can help them understand how it works and how to use it.
 If the `wallet_swapAsset` method encounters an error, the wallet/dapp should provide a clear and understandable error message to the user. This helps users understand what went wrong and how to fix it.
-On metamask mobile if the chain id is different of the `from` property or the `to` property comparing to the network selected on the wallet, we will show a bottom sheet asking the user to switch to the intended network for the swaps operation.
-
-```markdown
-if (
-chainId !== parseInt(from[0].chainId, 16).toString() ||
-chainId !== parseInt(to.chainId, 16).toString()
-) {
-await RPCMethods.wallet_switchEthereumChain({
-req: {
-params: [{ chainId: from[0].chainId }],
-},
-res,
-requestUserApproval,
-analytics: {
-request_source: getSource(),
-request_platform: analytics?.platform,
-},
-});
-}
-```
 
 On MetaMask Mobile, if the user have on the wallet an selected account but on the dapp in app browser another, when using swaps feature, MetaMask Mobile will check if the accounts are different and switch to the account selected on the dapp if they are.
 
+```markdown
+if (
+safeToChecksumAddress(selectedAddress) !==
+checksummedDappConnectedAccount
+) {
+Engine.context.PreferencesController.setSelectedAddress(
+checksummedDappConnectedAccount,
+);
+}
+```
+
 ## Security Considerations
 
-While the proposed implementation of `wallet_swapAsset` do not introduce new security risks in terms of contract interactions, they do present a potential risk related to phishing.
+While the proposed implementation of `wallet_swapAsset` do not introduce new security risks in terms of contract interactions, they do present a potential risk related to phishing, althought it is good to mention that this risk already exist on our swaps flow.
 
 Malicious actors may prompt users to swap fake tokens that they created and fake on the dapp that the users are doing swap to an official token.
 
 To mitigate this risk, MetaMask have implemented the following countermeasure:
-
-**Token Verification:** Implement the tokenlist api v2, that includes a safety feature for token verification. We can swap tokens that are on our token list, added via Dapp or manually, if we check all of them we are sure that the tokens on the user wallet are sanitized and not dangerous.
 
 **User Education:** Inform users about the potential risks associated with token swaps and provide guidelines for safely performing these operations. Users should be advised to verify the authenticity of the tokens they are swapping and the dApps they are using.
 
