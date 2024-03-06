@@ -97,7 +97,7 @@ ethereum.request([
 ]);
 ```
 
-In this example, the `provider_request` wraps each JSON-RPC `eth_getBalance` request with one scoped to Ethereum Mainnet (`eip155:1`) and another to Linea (`eip155:59144`).
+In this example, the `provider_request` wraps each JSON-RPC `eth_getBalance` request with a separate CAIP-27 request, one explicitly scoped to Ethereum Mainnet (`eip155:1`) and another to Linea (`eip155:59144`).
 
 For consistency and excepting [provider_authorization](mip-mc-handshake.md), all MetaMask JSON-RPC requests will be made through a `provider_request` including those that are `wallet` scoped. See [provider_authorization](mip-mc-handshake.md) for information about supported scopes.
 
