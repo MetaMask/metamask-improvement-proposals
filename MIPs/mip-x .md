@@ -69,7 +69,7 @@ window.ethereum.request({ method: 'eth_sendTransaction', params: [tx] })
 Directly presenting errors enhances developer experience by providing clear, actionable insights into issues encountered during development, thereby reducing troubleshooting time and effort. This change would also align MetaMask's error handling with the broader Ethereum ecosystem, making it easier for developers to work with MetaMask.
 
 #### Backwards Compatibility
-This change is expected to **NOT** be backwards compatible, as it involves changing the error message formatting for some cases. Developers accustomed to the existing error handling mechanism for those cases may need to adjust their code.
+This change is **NOT** expected to be backwards compatible, as it involves changing the error message formatting for some cases. This change corrects unintended behaviors to follow the intended design more closely. However, developers expecting the existing error handling mechanism and formats may need to adjust their code.
 
 #### Test Cases
 - Test scenarios where API errors are triggered to ensure that the error messages are returned as expected without any wrapping or stringifying.
