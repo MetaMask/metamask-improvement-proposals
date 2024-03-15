@@ -38,13 +38,13 @@ ethereum.request({
   method: 'wallet_swapAsset',
   params: [{
     from: [{
-      token_address: '0x1234567890abcdefABCDEF1234567890ABCDEF',
-      amount: '0xDE0B6B3A7640000',
+      tokenAddress: '0x1234567890abcdefABCDEF1234567890ABCDEF',
+      value: '0xDE0B6B3A7640000',
     }],
     to: {
-      token_address: '0xabcdef1234567890ABCDEF1234567890abcdef',
+      tokenAddress: '0xabcdef1234567890ABCDEF1234567890abcdef',
     },
-    user_address: '0x0000000000000000000000000000000000000000'
+    userAddress: '0x0000000000000000000000000000000000000000'
   },
   ]
 });
@@ -57,18 +57,18 @@ The new JSON RPC method wallet_swapAsset should be implemented with the followin
 
 - `from`: An object containing details about the source token. It should include:
 
-  - `token_address`: The address of the source token.
-  - `amount`: The amount on wei in hexadecimal format of the source token to be swapped.
+  - `tokenAddress`: The address of the source token.
+  - `value`: The amount of wei in hexadecimal format of the source token to be swapped.
 
 - `to`: An object containing details about the destination token. It should include:
 
-  - `token_address`: The address of the destination token.
+  - `tokenAddress`: The address of the destination token.
 
-- `user_address`: An string containing the address connected to the dapp.
+- `userAddress`: Account address connected to the dapp.
 
-- `referral_code`: (Optional) Future implementation will allow adding a refferal code to drive adoption of the JSON RPC method across the builders community.
+- `referralCode`: (Optional) Future implementation will allow adding a refferal code to drive adoption of the JSON RPC method across the builders community.
 
-- `send_to`: (Optional) Allows integration with Swap's `send to` feature.
+- `sendTo`: (Optional) Allows integration with Swap's `send to` feature.
 
 MetaMask will interpret the method call and perform the necessary validations and operations to initiate the token swap.
 
@@ -94,14 +94,14 @@ Considering that this is a new json rpc method, developers should take the follo
    On MetaMask side we intent to validate every property of the request and return an approriate answer to the dapp.
    Currently we throw this errors:
 
-- **Undefined Parameters**: Parameters like `from`, `to`, `user_address`, etc. are essential for the `wallet_swapAsset` method to work correctly. If not provided, the `validateParams` function would throw an error saying `"${property} property of ${name} is not defined"`. (This validation will change on the future when we allow multiple swap tokens, since the architecture of this rpc method allows it.)
+- **Undefined Parameters**: Parameters like `from`, `to`, `userAddress`, etc. are essential for the `wallet_swapAsset` method to work correctly. If not provided, the `validateParams` function would throw an error saying `"${property} property of ${name} is not defined"`. (This validation will change on the future when we allow multiple swap tokens, since the architecture of this rpc method allows it.)
 
   ```markdown
-  validateParams(from[0], [amount, token_address], 'from');
-  validateParams(to, [token_address], 'to');
+  validateParams(from[0], [value, tokenAddress], 'from');
+  validateParams(to, [tokenAddress], 'to');
   ```
 
-- **Invalid User Address**: If a non-existent address is provided in `user_address`, then the method will throw an error 'This address does not exist'.
+- **Invalid User Address**: If a non-existent address is provided in `userAddress`, then the method will throw an error 'This address does not exist'.
 
   ```markdown
   if (!dappConnectedAccount) {
@@ -129,7 +129,7 @@ Considering that this is a new json rpc method, developers should take the follo
   }
   ```
 
-5. Security: Dapp Developers should ensure that the token addresses and chain IDs provided in the method call are valid and secure. They should also inform users about the potential risks and considerations when performing token swaps.
+5. Security: Dapp Developers should ensure that the token addresses provided in the method call are secure and valid for the current chain ID. They should also inform users about the potential risks and considerations when performing token swaps.
    On MetaMask platforms we have warnings in place that say to the user to be carefull when a token is not that trustworthy. We check if the number of occurrences is more than one, If not we show an alert the we obligate the user to ready and press a button to be able to swap.
 
 6. Testing: Before deploying the `wallet_swapAsset` method in a live environment, MetaMask engineers should thoroughly test it to ensure it works correctly and handles errors appropriately. This includes testing with different token types, amounts, and network conditions.
@@ -157,7 +157,7 @@ checksummedDappConnectedAccount,
 
 ## Security Considerations
 
-While the proposed implementation of `wallet_swapAsset` do not introduce new security risks in terms of contract interactions, they do present a potential risk related to phishing, althought it is good to mention that this risk already exist on our swaps flow.
+While the proposed implementation of `wallet_swapAsset` does not introduce new security risks in terms of contract interactions, they do present a potential risk related to phishing.
 
 Malicious actors may prompt users to swap fake tokens and convince users that they are performing a swap with an official token.
 
