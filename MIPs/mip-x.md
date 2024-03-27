@@ -1,8 +1,7 @@
 ---
-MIP: 1
+MIP: X
 Title: Implement JSON-RPC Request Batching
 Status: Draft
-Stability: Experimental
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions
 Author(s): Jiexi Luan (@jiexi)
 Type: Maintainer
