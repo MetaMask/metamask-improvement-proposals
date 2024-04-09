@@ -3,7 +3,7 @@ MIP: X
 Title: Wallet Authorization for a Multichain-Optimized MetaMask
 Status: Draft
 Stability: n/a
-discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions
+discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions/33
 Author(s): Vandan Parikh (@vandan), Alex Donesky (@adonesky1)
 Type: Maintainer
 Created: 2024-01-25
