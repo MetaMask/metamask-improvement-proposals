@@ -134,7 +134,7 @@ The proposed changes to support request batching do not introduce new security r
 Please provide feedback on this proposal by opening an issue in the MetaMask MIPs repository.
 
 ## Committed Developers
-Jiexi Luan (@jiexi)
+Alex Donesky (@adonesky1), Shane Jonas (@shanejonas), Zachary Belford (@belfordz), Jiexi Luan (@jiexi)
 
 ## Copyright
 Copyright and related rights waived via [CC0](../LICENSE).
