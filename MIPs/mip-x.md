@@ -9,7 +9,7 @@ Created: 2024-03-25
 ---
 
 ## Summary
-This proposal aims to extend the MetaMask JSON-RPC API that is accessible via `window.ethereum.request()` to include support for batching requests. Batched requests would be processed in parallel by the wallet. All passthrough requests in a batch will be sent to the RPC endpoint in a batch. All requests requiring user confirmation will have results returned after user approval/rejection. Results will be returned as available and are not guaranteed to be in the same order as the respective requests. Introducing native support for request batching allows developers to improve Dapp efficiency and aligns the MetaMask JSON-RPC API closer to the [JSON-RPC 2.0 specification](https://www.jsonrpc.org/specification#batch).
+This proposal aims to extend the MetaMask JSON-RPC API that is accessible via `window.ethereum.request()` to include support for batching requests. MetaMask may process a batch rpc call as a set of concurrent tasks, processing them in any order and with any width of parallelism. All passthrough requests in a batch will be sent to the RPC endpoint in a batch. All requests requiring user confirmation will have results returned after user approval/rejection. Results will be returned as available and are not guaranteed to be in the same order as the respective requests. Introducing native support for request batching allows developers to improve Dapp efficiency and aligns the MetaMask JSON-RPC API closer to the [JSON-RPC 2.0 specification](https://www.jsonrpc.org/specification#batch).
 
 ## Motivation
 
