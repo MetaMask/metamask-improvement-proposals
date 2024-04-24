@@ -135,7 +135,7 @@ Considering that this is a new json rpc method, developers should take the follo
 ## User Experience Considerations
 
 Users will now be able to swap tokens without leaving dapps.
-The `wallet_swapAsset` method might be new to some users, providing educational resources can help them understand how it works and how to use it.
+Since `wallet_swapAsset` method will be new to some users, providing educational resources may help in understand how the method works as well as how to use it.
 If the `wallet_swapAsset` method encounters an error, the wallet/dapp should provide a clear and understandable error message to the user. This helps users understand what went wrong and how to fix it.
 
 While using MetaMask Mobile with this method, the mobile app will first check if selected account is different between the wallet and the dApp. If it is different, the mobile app will switch to the matching account before continuing with the swap.
