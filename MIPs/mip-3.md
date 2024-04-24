@@ -105,7 +105,7 @@ Considering that this is a new json rpc method, developers should take the follo
   }
   ```
 
-- **Unsupported Multiple Tokens Swap**: As of now, it supports only a single token swap. In case of multiple tokens provided in the `from` object, an 'Currently we de not support multiple tokens swap' error is thrown.
+- **Unsupported Multiple Tokens Swap**: As of now, it supports only a single token swap. In case of multiple tokens provided in the `from` object, an 'Currently we do not support multiple tokens swap' error is thrown.
 
   ```markdown
   if (from.length > 1) {
