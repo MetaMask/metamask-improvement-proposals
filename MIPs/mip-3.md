@@ -115,7 +115,7 @@ Considering that this is a new json rpc method, developers should take the follo
   }
   ```
 
-- **Inactive or Unsupported Swaps**: If the swap is inactive or not possible on the current chain, an alert with the message 'Swap is not active or not possible on this chain' will be triggered.
+- **Inactive or Unsupported Swaps**: If the swap is inactive or is not possible on the current chain, an alert with the message 'Swap is not active or is not possible on this chain' will be triggered.
 
   ```markdown
   const isSwappable = isSwapsAllowed(chainId) && swapsIsLive;
