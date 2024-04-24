@@ -86,7 +86,7 @@ Considering that this is a new json rpc method, developers should take the follo
 
 4. Error handling: Dapp Developers should implement appropriate error handling when using the `wallet_swapAsset` method. The method can return various errors, such as invalid parameters or unsupported operations, and these should be handled gracefully in the dApp.
    On MetaMask side we intent to validate every property of the request and return an approriate answer to the dapp.
-   Currently we throw this errors:
+   Currently we throw these errors:
 
 5. Ensuring Correct Chain Context for wallet_swapAsset: Before initiating a swap, it's crucial to ensure that the user's wallet is connected to the expected blockchain network. Developers should use the [eth_chainId](https://docs.metamask.io/wallet/reference/eth_chainid/) method to verify the current chain, [wallet_switchEthereumChain](https://docs.metamask.io/wallet/reference/wallet_switchethereumchain/) to switch to the desired chain if necessary, and [wallet_addEthereumChain](https://docs.metamask.io/wallet/reference/wallet_addethereumchain/) to add a new chain if it's not known to the wallet. This ensures that token swaps are performed on the intended network, enhancing security and user experience.
 
