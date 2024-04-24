@@ -70,10 +70,6 @@ The new JSON RPC method wallet_swapAsset should be implemented with the followin
 
 MetaMask will interpret the method call and perform the necessary validations and operations to initiate the token swap.
 
-## Caveats
-
-The implementation of `wallet_swapAsset` will be new and this could have some time for adoption.
-
 ## Implementation
 
 The MetaMask team will be responsible for implementing the JSON RPC `wallet_swapAsset` method. This will involve updating the wallet's internal logic.
