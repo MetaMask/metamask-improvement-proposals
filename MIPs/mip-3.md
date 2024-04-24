@@ -27,7 +27,7 @@ Implementing `wallet_swapAsset` would allow the entire token swap process to occ
 - Interoperability - Standard method works across different wallets.
 - Increase revenue - Easier adoption means more users will use MetaMask swaps.
 
-Comparing with other alternative, implementing it using snaps, would create more friction and less adoption since the users would need to install that specific snap to be able to perform a swap action. The goal is to reduce friction to swaps.
+Introducing this API directly in the wallet is preferable when compared with the alternative of using snaps, as the latter would create more friction and less adoption since users would need to install that specific snap to be able to perform a swap action. The goal is to reduce friction to swaps.
 
 Overall, this proposal fills a clear gap in dApp capabilities related to swapping tokens. Implementing it would provide significant value to both developers and users in the Ethereum ecosystem.
 
