@@ -110,7 +110,7 @@ Considering that this is a new json rpc method, developers should take the follo
   ```markdown
   if (from.length > 1) {
   throw ethErrors.rpc.invalidParams(
-  'Currently we de not support multiple tokens swap',
+  'Currently we do not support multiple tokens swap',
   );
   }
   ```
