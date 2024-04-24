@@ -66,8 +66,6 @@ The new JSON RPC method wallet_swapAsset should be implemented with the followin
 
 - `userAddress`: Account address connected to the dapp.
 
-- `referralCode`: (Optional) Future implementation will allow adding a refferal code to drive adoption of the JSON RPC method across the builders community.
-
 - `sendTo`: (Optional) Allows integration with Swap's `send to` feature.
 
 MetaMask will interpret the method call and perform the necessary validations and operations to initiate the token swap.
