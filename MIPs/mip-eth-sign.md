@@ -13,7 +13,7 @@ Created: 2024-05-15
 This proposal seeks to fully deprecate the `eth_sign` signature method in MetaMask due to its inherent security risks. The `eth_sign` method allows signing arbitrary data, posing a significant phishing risk. As of last year, `eth_sign` was disabled by default, but could be re-enabled in MetaMask's settings. This proposal aims to discontinue support entirely.
 
 ## Motivation
-The primary motivation for this deprecation is to enhance user security. The `eth_sign` method's capability to sign arbitrary data makes it vulnerable to phishing attacks, where malicious actors can deceive users into signing harmful transactions or data. Even with `eth_sign` being disabled by default, there is still a risk that users are enticed to re-enable it when they should not. By removing support for this method entirely, we aim to reduce the attack surface and protect MetaMask users from potential threats.
+The primary motivation for this deprecation is to enhance user security. The `eth_sign` method's capability to sign arbitrary data makes it vulnerable to phishing attacks, where malicious actors can deceive users into blindly signing harmful transactions or data since the hex data being signed can't be decoded and made readable to the signer. Even with `eth_sign` being disabled by default, there is still a risk that users are enticed to re-enable it when they should not. By removing support for this method entirely, we aim to reduce the attack surface and protect MetaMask users from potential threats.
 
 ### Security Concerns
 - **Phishing Risk**: The `eth_sign` method can be used to sign arbitrary hashes, making it possible for attackers to trick users into signing malicious transactions or messages.
