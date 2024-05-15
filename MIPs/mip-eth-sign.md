@@ -1,6 +1,6 @@
 ---
 MIP: X
-Title: Deprecation of eth_sign
+Title: Deprecation of `eth_sign`
 Status: Last Call
 Stability: Deprecated
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions/41
