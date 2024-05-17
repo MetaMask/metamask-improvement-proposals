@@ -1,6 +1,6 @@
 ---
 MIP: X
-Title: Deprecation of `eth_sign`
+Title: Discontinuing the eth_sign signature method
 Status: Last Call
 Stability: Deprecated
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions/41
@@ -10,10 +10,10 @@ Created: 2024-05-15
 ---
 
 ## Summary
-This proposal seeks to fully deprecate the `eth_sign` signature method in MetaMask due to its inherent security risks. The `eth_sign` method allows signing arbitrary data, posing a significant phishing risk. As of last year, `eth_sign` was disabled by default, but could be re-enabled in MetaMask's settings. This proposal aims to discontinue support entirely.
+This proposal seeks to fully discontinue the `eth_sign` signature method in MetaMask due to its inherent security risks. The `eth_sign` method allows signing arbitrary data, posing a significant phishing risk. As of last year, `eth_sign` was disabled by default, but could be re-enabled in MetaMask's settings. This proposal aims to discontinue support entirely.
 
 ## Motivation
-The primary motivation for this deprecation is to enhance user security. The `eth_sign` method's capability to sign arbitrary data makes it vulnerable to phishing attacks, where malicious actors can deceive users into blindly signing harmful transactions or data since the hex data being signed can't be decoded and made readable to the signer. Even with `eth_sign` being disabled by default, there is still a risk that users are enticed to re-enable it when they should not. By removing support for this method entirely, we aim to reduce the attack surface and protect MetaMask users from potential threats.
+The primary motivation for discontinuing this method is to enhance user security. The `eth_sign` method's capability to sign arbitrary data makes it vulnerable to phishing attacks, where malicious actors can deceive users into blindly signing harmful transactions or data since the hex data being signed can't be decoded and made readable to the signer. Even with `eth_sign` being disabled by default, there is still a risk that users are enticed to re-enable it when they should not. By removing support for this method entirely, we aim to reduce the attack surface and protect MetaMask users from potential threats.
 
 ### Security Concerns
 - **Phishing Risk**: The `eth_sign` method can be used to sign arbitrary hashes, making it possible for attackers to trick users into signing malicious transactions or messages.
@@ -31,13 +31,13 @@ Requests for the `eth_sign` method will return a standard "Method not found" err
 API Maintainers will remove support for `eth_sign` including all related MetaMask settings to enable it.
 
 ## Backward Compatibility
-`eth_sign` deprecation is a breaking API change.
-- **Previous Default Settings**: However, `eth_sign` has been disabled by default for the past year. Therefore, its complete deprecation should be minimally disruptive.
+`eth_sign` discontinuation is a breaking API change.
+- **Previous Default Settings**: However, `eth_sign` has been disabled by default for the past year. Therefore, its complete discontinuation should be minimally disruptive.
 - **Alternative Methods**: Developers have been encouraged to use more secure alternatives such as `eth_signTypedData_v4` which provides better security by explicitly defining the data being signed.
 
 
 ## User Experience Considerations
-- **Previous Default Settings**: Users will no longer have the option to enable `eth_sign`. Because `eth_sign` has been disabled by default for the past year, its complete deprecation is expected to have minimal impact on the majority of users.
+- **Previous Default Settings**: Users will no longer have the option to enable `eth_sign`. Because `eth_sign` has been disabled by default for the past year, its complete discontinuation is expected to have minimal impact on the majority of users.
 - **Alternatives**: Using older versions of MetaMask, alternative wallets, or command-line tools may provide an alternative for any remaining uses that truly require `eth_sign`.
 
 ## References
