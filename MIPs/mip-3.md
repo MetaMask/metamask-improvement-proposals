@@ -90,38 +90,40 @@ Considering that this is a new json rpc method, developers should take the follo
 
 5. Ensuring Correct Chain Context for wallet_swapAsset: Before initiating a swap, it's crucial to ensure that the user's wallet is connected to the expected blockchain network. Developers should use the [eth_chainId](https://docs.metamask.io/wallet/reference/eth_chainid/) method to verify the current chain, [wallet_switchEthereumChain](https://docs.metamask.io/wallet/reference/wallet_switchethereumchain/) to switch to the desired chain if necessary, and [wallet_addEthereumChain](https://docs.metamask.io/wallet/reference/wallet_addethereumchain/) to add a new chain if it's not known to the wallet. This ensures that token swaps are performed on the intended network, enhancing security and user experience.
 
-- **Undefined Parameters**: Parameters like `from`, `to`, `userAddress`, etc. are essential for the `wallet_swapAsset` method to work correctly. If not provided, the `validateParams` function would throw an error saying `"${property} property of ${name} is not defined"`. (This validation will change on the future when we allow multiple swap tokens, since the architecture of this rpc method allows it.)
+- **Undefined Parameters**: Parameters like `from`, `to`, `userAddress`, etc. are essential for the `wallet_swapAsset` method to work correctly. If not provided, the `validateParams` function would throw an error saying `"${property} property of ${name} is not defined"`. (This validation will change on the future when we allow multiple swap tokens, since the architecture of this rpc method allows it). See more details about error codes in the api-spec: https://github.com/MetaMask/api-specs/pull/201
 
   ```markdown
-  validateParams(from[0], [value, tokenAddress], 'from');
+  validateParams(from[0], [tokenAddress], 'from');
   validateParams(to, [tokenAddress], 'to');
   ```
 
-- **Invalid User Address**: If a non-existent address is provided in `userAddress`, then the method will throw an error 'This address does not exist'.
+- **Invalid User Address**: If a non-existent address is provided in `userAddress`, then the method will throw an error 'This address does not exist'. See more details about error codes in the api-spec: https://github.com/MetaMask/api-specs/pull/201
 
   ```markdown
   if (!dappConnectedAccount) {
-  throw ethErrors.rpc.invalidParams('This address does not exist');
+  throw rpcErrors.invalidParams('This address does not exist');
   }
   ```
 
-- **Unsupported Multiple Tokens Swap**: As of now, it supports only a single token swap. In case of multiple tokens provided in the `from` object, an 'Currently we do not support multiple tokens swap' error is thrown.
+- **Unsupported Multiple Tokens Swap**: As of now, it supports only a single token swap. In case of multiple tokens provided in the `from` object, an 'Currently we do not support multiple tokens swap' error is thrown. See more details about error codes in the api-spec: https://github.com/MetaMask/api-specs/pull/201
 
   ```markdown
   if (from.length > 1) {
-  throw ethErrors.rpc.invalidParams(
+  throw rpcErrors.invalidParams(
   'Currently we do not support multiple tokens swap',
   );
   }
   ```
 
-- **Inactive or Unsupported Swaps**: If the swap is inactive or is not possible on the current chain, an alert with the message 'Swap is not active or is not possible on this chain' will be triggered.
+- **Inactive or Unsupported Swaps**: If the swap is inactive or is not possible on the current chain, an alert with the message 'Swap is not active or is not possible on this chain' will be triggered. See more details about error codes in the api-spec: https://github.com/MetaMask/api-specs/pull/201
 
   ```markdown
   const isSwappable = isSwapsAllowed(chainId) && swapsIsLive;
   if (!isSwappable) {
-  Alert.alert('Swap is not active or not possible on this chain');
-  return;
+  Alert.alert(`Swap is not available on this chain ${networkName}`);
+  throw rpcErrors.methodNotSupported(
+  `Swap is not available on this chain ${networkName}`,
+  );
   }
   ```
 
