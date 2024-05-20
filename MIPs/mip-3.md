@@ -74,6 +74,8 @@ MetaMask will interpret the method call and perform the necessary validations an
 
 The MetaMask team will be responsible for implementing the JSON RPC `wallet_swapAsset` method. This will involve updating the wallet's internal logic.
 
+- PR for MetaMask mobile: https://github.com/MetaMask/metamask-mobile/pull/7509
+
 ## Developer Adoption Considerations
 
 Considering that this is a new json rpc method, developers should take the following aspects into account when adopting this proposal:
