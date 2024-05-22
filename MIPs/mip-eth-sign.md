@@ -18,6 +18,7 @@ The primary motivation for discontinuing this method is to enhance user security
 ### Security Concerns
 - **Phishing Risk**: The `eth_sign` method can be used to sign arbitrary hashes, making it possible for attackers to trick users into signing malicious transactions or messages.
 - **User Protection**: Discontinuing support for `eth_sign` will prevent inadvertent misuse and enhance overall user safety.
+- **Future Risks**: The `eth_sign` method can be used to sign arbitrary hashes, making it possible for attackers to trick users into signing current/future transaction types or other additions to ethereum
 
 # Proposal
 
