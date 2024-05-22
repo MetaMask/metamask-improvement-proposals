@@ -1,8 +1,7 @@
 # MIPs by Status
 
 ## Last Call
-
-- [MIP-2](mip-2.md)
+- [MIP-3](mip-3.md)
 
 ## Review
 
@@ -11,6 +10,7 @@
 ## Implemented
 
 - [MIP-1](mip-1.md)
+- [MIP-2](mip-2.md)
 
 ## Draft
 
