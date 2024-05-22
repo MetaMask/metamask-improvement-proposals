@@ -33,7 +33,7 @@ API Maintainers will remove support for `eth_sign` including all related MetaMas
 ## Backward Compatibility
 `eth_sign` discontinuation is a breaking API change.
 - **Previous Default Settings**: However, `eth_sign` has been disabled by default for the past year. Therefore, its complete discontinuation should be minimally disruptive.
-- **Alternative Methods**: Developers have been encouraged to use more secure alternatives such as `eth_signTypedData_v4` which provides better security by explicitly defining the data being signed.
+- **Alternative Methods**: Developers have been encouraged to use more secure alternatives such as `eth_signTypedData_v4` which provides better security by explicitly defining the data being signed. Further coverage of alternative methods for [Signing Data](https://docs.metamask.io/wallet/how-to/sign-data/).
 
 
 ## User Experience Considerations
