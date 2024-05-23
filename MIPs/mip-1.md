@@ -1,5 +1,5 @@
 ---
-MIP: 1
+MIP: MIP-1
 Title: Extend `wallet_watchAsset` to Support ERC-721 and ERC-1155 Tokens (NFTs)
 Status: Implemented
 Stability: Experimental

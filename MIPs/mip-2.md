@@ -1,5 +1,5 @@
 ---
-MIP: 2
+MIP: MIP-2
 Title: Implement `wallet_revokePermissions` for Flexible Permission Revocation
 Status: Implemented
 Stability: Experimental

@@ -1,5 +1,5 @@
 ---
-MIP: X
+MIP: MIP-3
 Title: Discontinuing the eth_sign signature method
 Status: Last Call
 Stability: Deprecated

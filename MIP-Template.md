@@ -1,5 +1,5 @@
 ---
-MIP: X
+MIP: MIP-X
 Title: MIP Title
 Status: Draft
 Stability: n/a
