@@ -1,11 +1,11 @@
 ---
-MIP: MIP-X
-Title: MIP Title
-Status: Draft
-Stability: n/a
+mip: x
+title: MIP Title
+status: Draft
+stability: n/a
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions
-Type: Community
-Created: 2023-04-28
+type: Community
+created: 2023-04-28
 ---
 > [!NOTE] 
 > Rename this file to mip-x.md in your proposal (numbering will automatically be applied when merged). If more than one MIP will be submitted, then posting a separate PR for each one is recommended.

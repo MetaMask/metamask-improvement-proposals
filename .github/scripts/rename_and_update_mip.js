@@ -35,7 +35,7 @@ function renameAndUpdateMIPFile() {
   }
 
   const content = fs.readFileSync(oldFilePath, "utf-8");
-  const updatedContent = content.replace(/mip-x/gi, `MIP-${nextMIPNumber}`);
+  const updatedContent = content.replace(/mip: x/gi, `mip: ${nextMIPNumber}`);
 
   fs.writeFileSync(newFilePath, updatedContent);
   fs.unlinkSync(oldFilePath);
