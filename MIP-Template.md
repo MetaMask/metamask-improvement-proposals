@@ -8,7 +8,7 @@ type: Community
 created: 2023-04-28
 ---
 > [!NOTE] 
-> Rename this file to mip-x.md in your proposal (numbering will automatically be applied when merged). If more than one MIP will be submitted, then posting a separate PR for each one is recommended.
+> Rename this file to mip-x.md in your proposal. If more than one MIP will be submitted, then a suffix can be added to each file as mip-x-foo.md, mip-x-bar.md, etc. MIP numbering will automatically be applied with renamed filenames when merged.
 
 ["Status" should be one of: Draft | Review | Last Call | Accepted | Implemented | Postponed | Declined | Discontinued]
 
