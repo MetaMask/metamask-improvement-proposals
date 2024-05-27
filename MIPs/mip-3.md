@@ -3,7 +3,7 @@ MIP: 3
 Title: Implement `wallet_swapAsset` to support Dapps to swap
 Status: Draft
 Stability: Experimental
-discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions
+discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions/46
 Author(s): Tomás Santos (@tommasini)
 Type: Community
 Created: 2023-11-10
