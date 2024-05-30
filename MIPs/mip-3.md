@@ -1,5 +1,5 @@
 ---
-MIP: 3
+MIP: x
 Title: Implement `wallet_swapAsset` to support Dapps to swap
 Status: Draft
 Stability: Experimental
@@ -11,7 +11,7 @@ Created: 2023-11-10
 
 ## Summary
 
-This proposal introduces a new JSON RPC method `wallet_swapAsset` that allows dApps to request MetaMask to perform a token swap operation. The method accepts parameters for the source and destination tokens and initiates a token swap operation.
+This proposal introduces a new JSON-RPC method `wallet_swapAsset` that allows dApps to request MetaMask to perform a token swap operation. The method accepts parameters for the source and destination tokens and initiates a token swap operation.
 
 ## Motivation
 
@@ -53,7 +53,7 @@ ethereum.request({
 
 ## Proposal Specification
 
-The new JSON RPC method wallet_swapAsset should be implemented with the following parameters:
+The new JSON-RPC method wallet_swapAsset should be implemented with the following parameters:
 
 - `from`: An object containing details about the source token. It should include:
 
@@ -72,13 +72,13 @@ MetaMask will interpret the method call and perform the necessary validations an
 
 ## Implementation
 
-The MetaMask team will be responsible for implementing the JSON RPC `wallet_swapAsset` method. This will involve updating the wallet's internal logic.
+The MetaMask team will be responsible for implementing the JSON-RPC `wallet_swapAsset` method. This will involve updating the wallet's internal logic.
 
 - PR for MetaMask mobile: https://github.com/MetaMask/metamask-mobile/pull/7509
 
 ## Developer Adoption Considerations
 
-Considering that this is a new json rpc method, developers should take the following aspects into account when adopting this proposal:
+Considering that this is a new json-rpc method, developers should take the following aspects into account when adopting this proposal:
 
 1. Backward compatibility: The introduction of the `wallet_swapAsset` method does not affect existing methods or functionality. Developers can integrate this method into their dApps without needing to modify existing code.
 
@@ -169,7 +169,7 @@ Developers and users should also be aware of the standard security consideration
 
 ## References
 
-[EIP: wallet_swapAsset JSON RPC method](https://github.com/tommasini/EIPs/blob/64090fe54761906fc9bde31ad46eb85230de5e8d/EIPS/eip-swap-rpc.md)
+[EIP: wallet_swapAsset JSON-RPC method](https://github.com/tommasini/EIPs/blob/64090fe54761906fc9bde31ad46eb85230de5e8d/EIPS/eip-swap-rpc.md)
 
 ## Feedback
 
