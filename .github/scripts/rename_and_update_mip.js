@@ -6,7 +6,7 @@ const MIPsFolderPath = path.join(__dirname, "..", "..", "MIPs");
 
 function getMIPFiles() {
   const files = fs.readdirSync(MIPsFolderPath);
-  return files.filter((file) => file.match(/^mip-x(-[\w-]+)?\.md$/i));
+  return files.filter((file) => file.match(/^mip-x([\w-]+)?\.md$/i));
 }
 
 function getNextMIPNumber() {
@@ -24,14 +24,14 @@ function renameAndUpdateMIPFiles() {
     return;
   }
 
-  mipFiles.forEach(() => {
+  mipFiles.forEach((file) => {
     const nextMIPNumber = getNextMIPNumber();
 
-    const oldFilePath = path.join(MIPsFolderPath, "mip-x.md");
+    const oldFilePath = path.join(MIPsFolderPath, file);
     const newFilePath = path.join(MIPsFolderPath, `mip-${nextMIPNumber}.md`);
 
     if (!fs.existsSync(oldFilePath)) {
-      console.log("No mip-x.md file found.");
+      console.log(oldFilePath + " not found.");
       return;
     }
 
