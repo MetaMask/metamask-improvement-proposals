@@ -154,6 +154,8 @@ checksummedDappConnectedAccount,
 }
 ```
 
+While using MetaMask Extension, checking if the selected account is different from the one selected on the Dapp it is not required, but it is also not a blocker.
+
 ## Security Considerations
 
 While the proposed implementation of `wallet_swapAsset` does not introduce new security risks in terms of contract interactions, they do present a potential risk related to phishing.
