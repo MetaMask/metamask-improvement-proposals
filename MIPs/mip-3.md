@@ -15,13 +15,13 @@ This proposal introduces a new JSON-RPC method `wallet_swapAsset` that allows dA
 
 ## Motivation
 
-This proposal aims to solve a key pain point for dApp developers and users - the inability to easily swap tokens within the dApp interface.
+This proposal aims to solve a key pain point for dApp developers and users - the inability to initiate swap tokens from the dApp interface.
 
 Currently, if a dApp requires users to swap from token A to token B to perform a specific operation, the user has to exit the dApp, go to MetaMask or third parties, search for the token the user needs and execute the swap, then return to the dApp. This disjointed workflow results in a poor user experience.
 
-Implementing `wallet_swapAsset` would allow the entire token swap process to occur seamlessly within the dApp without requiring external integration. This provides the following benefits:
+Implementing `wallet_swapAsset` would allow the entire token swap process to occur seamlessly by navigating from the dApp to MetaMask wallet with the tokens information without requiring external integration. This provides the following benefits:
 
-- Improved usability - Users can get the right tokens for dApp operations in fewer steps.
+- Improved usability - Users can get the right tokens for dApp operations in fewer steps and with less context switching.
 - Better dApp integration - dApps can build and control the swap experience natively with just a few lines.
 - Increased adoption - More intuitive swap workflow lowers barrier to dApp usage.
 - Interoperability - Standard method works across different wallets.
@@ -90,9 +90,9 @@ Considering that this is a new json-rpc method, developers should take the follo
    On MetaMask side we intent to validate every property of the request and return an approriate answer to the dapp.
    Currently we throw these errors:
 
-5. Ensuring Correct Chain Context for wallet_swapAsset: Before initiating a swap, it's crucial to ensure that the user's wallet is connected to the expected blockchain network. Developers should use the [eth_chainId](https://docs.metamask.io/wallet/reference/eth_chainid/) method to verify the current chain, [wallet_switchEthereumChain](https://docs.metamask.io/wallet/reference/wallet_switchethereumchain/) to switch to the desired chain if necessary, and [wallet_addEthereumChain](https://docs.metamask.io/wallet/reference/wallet_addethereumchain/) to add a new chain if it's not known to the wallet. This ensures that token swaps are performed on the intended network, enhancing security and user experience.
+5. Ensuring Correct Chain Context for `wallet_swapAsset`: Before initiating a swap, it's crucial to ensure that the user's wallet is connected to the expected blockchain network. Developers should use the [eth_chainId](https://docs.metamask.io/wallet/reference/eth_chainid/) method to verify the current chain, [wallet_switchEthereumChain](https://docs.metamask.io/wallet/reference/wallet_switchethereumchain/) to switch to the desired chain if necessary, and [wallet_addEthereumChain](https://docs.metamask.io/wallet/reference/wallet_addethereumchain/) to add a new chain if it's not known to the wallet. This ensures that token swaps are performed on the intended network, enhancing security and user experience.
 
-- **Undefined Parameters**: Parameters like `from`, `to`, `userAddress`, etc. are essential for the `wallet_swapAsset` method to work correctly. If not provided, the `validateParams` function would throw an error saying `"${property} property of ${name} is not defined"`. (This validation will change on the future when we allow multiple swap tokens, since the architecture of this rpc method allows it). See more details about error codes in the api-spec: https://github.com/MetaMask/api-specs/pull/201
+- **Required Parameters**: Parameters like `from`, `to`, `userAddress`, etc. are essential for the `wallet_swapAsset` method to work correctly. If not provided, the `validateParams` function would throw an error saying `"${property} property of ${name} is not defined"`. (This validation will change on the future when we allow multiple swap tokens, since the architecture of this rpc method allows it). See more details about error codes in the api-spec: https://github.com/MetaMask/api-specs/pull/201
 
   ```markdown
   validateParams(from[0], [tokenAddress], 'from');
@@ -129,8 +129,7 @@ Considering that this is a new json-rpc method, developers should take the follo
   }
   ```
 
-5. Security: Dapp Developers should ensure that the token addresses provided in the method call are secure and valid for the current chain ID. They should also inform users about the potential risks and considerations when performing token swaps.
-   On MetaMask platforms we have warnings in place that say to the user to be carefull when a token is not that trustworthy. We check if the number of occurrences is more than one, If not we show an alert the we obligate the user to ready and press a button to be able to swap.
+5. Security: In MetaMask we have warnings in place to alert the user when a token is not trustworthy and add an additional confirmation step. Despite this, dApp developers should still ensure that the token addresses provided in the method call are secure and valid for the current chain ID. They should also inform users about the potential risks and considerations when performing token swaps.
 
 6. Testing: Before deploying the `wallet_swapAsset` method in a live environment, MetaMask engineers should thoroughly test it to ensure it works correctly and handles errors appropriately. This includes testing with different token types, amounts, and network conditions.
 
