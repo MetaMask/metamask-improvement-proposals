@@ -1,12 +1,12 @@
 ---
-MIP: 1
-Title: Extend `wallet_watchAsset` to Support ERC-721 and ERC-1155 Tokens (NFTs)
-Status: Implemented
-Stability: Experimental
+mip: 1
+title: Extend `wallet_watchAsset` to Support ERC-721 and ERC-1155 Tokens (NFTs)
+status: Implemented
+stability: Experimental
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions/22
-Author(s): Alex Donesky (@adonesky1)
-Type: Maintainer
-Created: 2023-04-11
+author(s): Alex Donesky (@adonesky1)
+type: Maintainer
+created: 2023-04-11
 ---
 
 ## Summary

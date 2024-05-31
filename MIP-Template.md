@@ -1,12 +1,15 @@
 ---
-MIP: X
-Title: MIP Title
-Status: Draft
-Stability: n/a
+mip: x
+title: MIP Title
+status: Draft
+stability: n/a
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions
-Type: Community
-Created: 2023-04-28
+type: Community
+created: 2023-04-28
 ---
+> [!NOTE] 
+> Rename this file to mip-x.md in your proposal. If more than one MIP will be submitted, then a suffix can be added to each file as mip-x-foo.md, mip-x-bar.md, etc. MIP numbering will automatically be applied with renamed filenames when merged.
+
 ["Status" should be one of: Draft | Review | Last Call | Accepted | Implemented | Postponed | Declined | Discontinued]
 
 ["Stability" describes the stability of the implementation. Prior to implementation it should be left as "n/a". Once implemented, the stability will be one of: Experimental | Stable | Deprecated]

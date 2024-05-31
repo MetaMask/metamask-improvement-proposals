@@ -45,6 +45,6 @@ jobs:
           if git diff-index --quiet HEAD --; then
             echo "No changes to commit"
           else
-            git commit -m "Assign MIP number"
+            git commit -m "Assign MIP number(s)"
             git push origin main
           fi
