@@ -41,9 +41,8 @@ function renameAndUpdateMIPFiles() {
     fs.writeFileSync(newFilePath, updatedContent);
     fs.unlinkSync(oldFilePath);
 
-    execSync(`git add ${oldFilePath} ${newFilePath}`);
+    execSync(`git add "${oldFilePath}" "${newFilePath}"`);
   });
 }
 
 renameAndUpdateMIPFiles();
-
