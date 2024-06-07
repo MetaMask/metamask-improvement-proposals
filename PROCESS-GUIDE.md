@@ -85,14 +85,11 @@ The role of MetaMask API Maintainers is to review MIPs and facilitate the MIP pr
 
 The current MetaMask API Maintainers are:
 
-- [@shanejonas](https://github.com/shanejonas)
-- [@BelfordZ](https://github.com/BelfordZ)
 - [@adonesky1](https://github.com/adonesky1)
-- [@vandan](https://github.com/vandan)
-- [andrepimenta](https://github.com/andrepimenta)
-- [@rekmarks](https://github.com/rekmarks)
 - [@Gudahtt](https://github.com/Gudahtt)
-- [@danfinlay](https://github.com/danfinlay)
+- [@shanejonas](https://github.com/shanejonas)
+- [@jiexi](https://github.com/jiexi)
+- [@vandan](https://github.com/vandan)
 
 At least two of the maintainers have to approve any incoming pull requests that update files in the [MIPs folder](./MIPs).
 
