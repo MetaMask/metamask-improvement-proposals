@@ -37,12 +37,12 @@ Overall, this proposal fills a clear gap in dApp capabilities related to swappin
 ethereum.request({
   method: 'wallet_swapAsset',
   params: [{
-    from: [{
-      tokenAddress: '0x1234567890abcdefABCDEF1234567890ABCDEF',
+    fromToken: [{
+      address: '0x1234567890abcdefABCDEF1234567890ABCDEF',
       value: '0xDE0B6B3A7640000',
     }],
-    to: {
-      tokenAddress: '0xabcdef1234567890ABCDEF1234567890abcdef',
+    toToken: {
+      address: '0xabcdef1234567890ABCDEF1234567890abcdef',
     },
     userAddress: '0x0000000000000000000000000000000000000000'
   },
@@ -55,18 +55,18 @@ ethereum.request({
 
 The new JSON-RPC method wallet_swapAsset should be implemented with the following parameters:
 
-- `from`: An object containing details about the source token. It should include:
+- `fromToken`: An object containing details about the source token. It should include:
 
-  - `tokenAddress`: The address of the source token.
+  - `address`: The address of the source token.
   - `value`: The amount of wei in hexadecimal format of the source token to be swapped.
 
-- `to`: An object containing details about the destination token. It should include:
+- `fromToken`: An object containing details about the destination token. It should include:
 
-  - `tokenAddress`: The address of the destination token.
+  - `address`: The address of the destination token.
 
 - `userAddress`: Account address connected to the dapp.
 
-- `sendTo`: (Optional) Allows integration with Swap's `send to` feature.
+- `sendToAddress`: (Future consideration) Allows integration with Swap's `send to` feature.
 
 MetaMask will interpret the method call and perform the necessary validations and operations to initiate the token swap.
 
@@ -90,13 +90,13 @@ Considering that this is a new json-rpc method, developers should take the follo
    On MetaMask side we intent to validate every property of the request and return an approriate answer to the dapp.
    Currently we throw these errors:
 
-5. Ensuring Correct Chain Context for `wallet_swapAsset`: Before initiating a swap, it's crucial to ensure that the user's wallet is connected to the expected blockchain network. Developers should use the [eth_chainId](https://docs.metamask.io/wallet/reference/eth_chainid/) method to verify the current chain, [wallet_switchEthereumChain](https://docs.metamask.io/wallet/reference/wallet_switchethereumchain/) to switch to the desired chain if necessary, and [wallet_addEthereumChain](https://docs.metamask.io/wallet/reference/wallet_addethereumchain/) to add a new chain if it's not known to the wallet. This ensures that token swaps are performed on the intended network, enhancing security and user experience.
+Ensuring Correct Chain Context for `wallet_swapAsset`: Before initiating a swap, it's crucial to ensure that the user's wallet is connected to the expected blockchain network. Developers should use the [eth_chainId](https://docs.metamask.io/wallet/reference/eth_chainid/) method to verify the current chain, [wallet_switchEthereumChain](https://docs.metamask.io/wallet/reference/wallet_switchethereumchain/) to switch to the desired chain if necessary, and [wallet_addEthereumChain](https://docs.metamask.io/wallet/reference/wallet_addethereumchain/) to add a new chain if it's not known to the wallet. This ensures that token swaps are performed on the intended network, enhancing security and user experience.
 
-- **Required Parameters**: Parameters like `from`, `to`, `userAddress`, etc. are essential for the `wallet_swapAsset` method to work correctly. If not provided, the `validateParams` function would throw an error saying `"${property} property of ${name} is not defined"`. (This validation will change on the future when we allow multiple swap tokens, since the architecture of this rpc method allows it). See more details about error codes in the api-spec: https://github.com/MetaMask/api-specs/pull/201
+- **Required Parameters**: Parameters like `fromToken`, `toToken`, `userAddress`, etc. are essential for the `wallet_swapAsset` method to work correctly. If not provided, the `validateParams` function would throw an error saying `"${property} property of ${name} is not defined"`. (This validation will change on the future when we allow multiple swap tokens, since the architecture of this rpc method allows it). See more details about error codes in the api-spec: https://github.com/MetaMask/api-specs/pull/201
 
   ```markdown
-  validateParams(from[0], [tokenAddress], 'from');
-  validateParams(to, [tokenAddress], 'to');
+  validateParams(fromToken[0], [address], 'fromToken');
+  validateParams(toToken, [address], 'toToken');
   ```
 
 - **Invalid User Address**: If a non-existent address is provided in `userAddress`, then the method will throw an error 'This address does not exist'. See more details about error codes in the api-spec: https://github.com/MetaMask/api-specs/pull/201
@@ -107,10 +107,10 @@ Considering that this is a new json-rpc method, developers should take the follo
   }
   ```
 
-- **Unsupported Multiple Tokens Swap**: As of now, it supports only a single token swap. In case of multiple tokens provided in the `from` object, an 'Currently we do not support multiple tokens swap' error is thrown. See more details about error codes in the api-spec: https://github.com/MetaMask/api-specs/pull/201
+- **Unsupported Multiple Tokens Swap**: As of now, it supports only a single token swap. In case of multiple tokens provided in the `fromToken` object, an 'Currently we do not support multiple tokens swap' error is thrown. See more details about error codes in the api-spec: https://github.com/MetaMask/api-specs/pull/201
 
   ```markdown
-  if (from.length > 1) {
+  if (fromToken.length > 1) {
   throw rpcErrors.invalidParams(
   'Currently we do not support multiple tokens swap',
   );
