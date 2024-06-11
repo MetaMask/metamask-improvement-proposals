@@ -1,7 +1,7 @@
 ---
 mip: 3
 title: Discontinuing the eth_sign signature method
-status: Last Call
+status: Accepted
 stability: Deprecated
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions/41
 author(s): Vandan Parikh(@vandan), Shane Jonas (@shanejonas), Alex Donesky (@adonesky1)

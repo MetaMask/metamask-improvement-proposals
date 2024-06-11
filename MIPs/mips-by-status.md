@@ -1,11 +1,11 @@
 # MIPs by Status
 
 ## Last Call
-- [MIP-3](mip-3.md)
 
 ## Review
 
 ## Accepted
+- [MIP-3](mip-3.md)
 
 ## Implemented
 
