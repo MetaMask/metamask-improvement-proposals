@@ -122,17 +122,17 @@ Ensuring Correct Chain Context for `wallet_swapAsset`: Before initiating a swap,
   ```markdown
   if (!isSwappable) {
   Alert.alert(`Swap is not available on this chain ${networkName}`);
-  throw rpcErrors.methodNotSupported(
+  throw rpcErrors.methoddNotSupported(
   `Swap is not available on this chain ${networkName}`,
   );
   }
   ```
 
-- **Cross-Chain Swap Attempt**: Given the current limitations, MetaMask does not support cross-chain swaps. If a swap request involves tokens from different blockchains (as indicated by their CAIP-10 formatted addresses), MetaMask will throw an error to indicate this unsupported operation. This ensures developers and users are aware of the limitations and can adjust their actions accordingly.
+- **Cross-Chain Swap Attempt**: Given the current limitations, MetaMask does not support cross-chain swaps. If a swap request involves tokens from different blockchains (as indicated by their CAIP-10 formatted addresses), MetaMask will throw an error to indicate this unsupported operation. This ensures developers and users are aware of the limitations and can adjust their actions accordingly. See more details about error codes in the api-spec: https://github.com/MetaMask/api-specs/pull/201
 
   ```markdown
   if (parseChainIdFromCaip10(fromToken.address) !== parseChainIdFromCaip10(toToken.address)) {
-  throw rpcErrors.invalidParams(
+  throw rpcErrors.methoddNotSupported(
   'Cross-chain swaps are currently not supported. Both fromToken and toToken must be on the same blockchain.',
   );
   }
