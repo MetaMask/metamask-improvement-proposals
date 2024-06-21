@@ -38,13 +38,13 @@ ethereum.request({
   method: 'wallet_swapAsset',
   params: [{
     fromToken: [{
-      address: '0x1234567890abcdefABCDEF1234567890ABCDEF',
+      address: 'eip155:1:0x1234567890abcdefABCDEF1234567890ABCDEF',
       value: '0xDE0B6B3A7640000',
     }],
     toToken: {
-      address: '0xabcdef1234567890ABCDEF1234567890abcdef',
+      address: 'eip155:1:0xabcdef1234567890ABCDEF1234567890abcdef',
     },
-    userAddress: '0x0000000000000000000000000000000000000000'
+    userAddress: 'eip155:1:0x0000000000000000000000000000000000000000'
   },
   ]
 });
@@ -57,16 +57,16 @@ The new JSON-RPC method wallet_swapAsset should be implemented with the followin
 
 - `fromToken`: An object containing details about the source token. It should include:
 
-  - `address`: The address of the source token.
+  - `address`: The CAIP-10 formatted address of the source token. This address combines the CAIP-2 blockchain identifier and the token's address on that blockchain.
   - `value`: The amount of wei in hexadecimal format of the source token to be swapped.
 
-- `fromToken`: An object containing details about the destination token. It should include:
+- `toToken`: An object containing details about the destination token. It should include:
 
-  - `address`: The address of the destination token.
+  - `address`: The CAIP-10 formatted address of the source token. This address combines the CAIP-2 blockchain identifier and the token's address on that blockchain.
 
-- `userAddress`: Account address connected to the dapp.
+- `userAddress`: The CAIP-10 formatted address of the user's account initiating the swap. This address should be connected to the dApp requesting the swap.
 
-- `sendToAddress`: (Future consideration) Allows integration with Swap's `send to` feature.
+- `sendToAddress`: (Considered for future implementation) This parameter would allow specifying an alternative recipient address for the swapped tokens, facilitating direct transfers and integration with features like Swap's "send to" functionality. This address would also follow the CAIP-10 format.
 
 MetaMask will interpret the method call and perform the necessary validations and operations to initiate the token swap.
 
@@ -120,11 +120,20 @@ Ensuring Correct Chain Context for `wallet_swapAsset`: Before initiating a swap,
 - **Inactive or Unsupported Swaps**: If the swap is inactive or is not possible on the current chain, an alert with the message 'Swap is not active or is not possible on this chain' will be triggered. See more details about error codes in the api-spec: https://github.com/MetaMask/api-specs/pull/201
 
   ```markdown
-  const isSwappable = isSwapsAllowed(chainId) && swapsIsLive;
   if (!isSwappable) {
   Alert.alert(`Swap is not available on this chain ${networkName}`);
   throw rpcErrors.methodNotSupported(
   `Swap is not available on this chain ${networkName}`,
+  );
+  }
+  ```
+
+- **Cross-Chain Swap Attempt**: Given the current limitations, MetaMask does not support cross-chain swaps. If a swap request involves tokens from different blockchains (as indicated by their CAIP-10 formatted addresses), MetaMask will throw an error to indicate this unsupported operation. This ensures developers and users are aware of the limitations and can adjust their actions accordingly.
+
+  ```markdown
+  if (parseChainIdFromCaip10(fromToken.address) !== parseChainIdFromCaip10(toToken.address)) {
+  throw rpcErrors.invalidParams(
+  'Cross-chain swaps are currently not supported. Both fromToken and toToken must be on the same blockchain.',
   );
   }
   ```
