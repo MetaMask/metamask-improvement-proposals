@@ -138,6 +138,30 @@ Ensuring Correct Chain Context for `wallet_swapAsset`: Before initiating a swap,
   }
   ```
 
+- **Invalid caip-10 address**: If the dapp provides an invalid caip-10 address we throw an error, that could be an invalid address for the account address or tokens addresses
+
+```markdown
+try {
+parsedCaip10UserAddress = parseCaip10Address(user_address);
+} catch (error) {
+throw rpcErrors.invalidParams('Invalid caip-10 user address');
+}
+
+try {
+parsedCaip10FromTokenAddress = parseCaip10Address(
+fromToken[0].address,
+);
+} catch (error) {
+throw rpcErrors.invalidParams('Invalid caip-10 fromToken address');
+}
+
+try {
+parsedCaip10ToTokenAddress = parseCaip10Address(toToken.address);
+} catch (error) {
+throw rpcErrors.invalidParams('Invalid caip-10 toToken address');
+}
+```
+
 5. Security: In MetaMask we have warnings in place to alert the user when a token is not trustworthy and add an additional confirmation step. Despite this, dApp developers should still ensure that the token addresses provided in the method call are secure and valid for the current chain ID. They should also inform users about the potential risks and considerations when performing token swaps.
 
 6. Testing: Before deploying the `wallet_swapAsset` method in a live environment, MetaMask engineers should thoroughly test it to ensure it works correctly and handles errors appropriately. This includes testing with different token types, amounts, and network conditions.
