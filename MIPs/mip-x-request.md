@@ -135,10 +135,10 @@ Test cases for scope-specific JSON-RPC method calls are beyond the scope of this
 [List any potential drawbacks, limitations, or risks associated with the proposal]
 
 ## Implementation
-MetaMask's JSON-RPC request-handling code needs to be updated to support this new `wallet_request` method. Appropriate UI updates are also needed to ensure that users are sufficiently informed and aware of what they are interacting with or being asked to confirm.
+MetaMask's JSON-RPC request-handling code needs to be updated to support `wallet_invokeMethod`. Appropriate UI updates are also needed to ensure that users are sufficiently informed and aware of what they are interacting with or being asked to confirm.
 
 A new suite of tests will be added to comprehensively cover key test cases.
-Technical documentation and developer tools will have to be updated to include the Multichain API.
+Technical documentation and developer tools will have to be updated to include the Multinetwork API.
 
 API Maintainers will be implementing the Multichain API in coordination with other MetaMask teams.
 
@@ -162,7 +162,7 @@ MetaMask
 
 ## Open Issues
 List of significant open issues that require resolution in order for this MIP to be ready to be moved to the `Review` stage:
-- Add OpenRPC specs for the `wallet_invokeMethod` method
+- Add OpenRPC specs for `wallet_invokeMethod`
 - Determine whether API versioning should be incorporated into this MIP
 - Elaborate on user experience, error messages, security, and privacy considerations
 
