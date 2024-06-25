@@ -52,12 +52,12 @@ An example of a JSON-RPC request that an application would send to request autho
     "optionalScopes": {
       "wallet": {
         "methods": ["wallet_scanQRCode"],
-        "notifications": ["walletAuthorizationChanged]
-      }
+        "notifications": ["walletAuthorizationChanged"],
+      },
       "eip155:wallet": {
         "methods": ["eth_signTypedData_v4","personal_sign","wallet_addEthereumChain"],
         "notifications": ["accountsChanged"],
-      }
+      },
       "eip155:1": {
         "methods": ["eth_sendTransaction","eth_getBalance","eth_blockNumber","eth_getTransactionCount","wallet_watchAsset"],
         "notifications": ["message"],
@@ -73,9 +73,9 @@ An example of a JSON-RPC request that an application would send to request autho
           "chainName": "Ethereum (Infura)",
           "rpcUrls": ["https://mainnet.infura.io"],
           "nativeCurrency": {
-              "name": "ETH"
-              "symbol": "ETH"
-              "decimals": 18
+              "name": "ETH",
+              "symbol": "ETH",
+              "decimals": 18,
           },
           "iconURLs": ["https://example.com/ethereum.svg"] 
         }],  
@@ -85,9 +85,9 @@ An example of a JSON-RPC request that an application would send to request autho
           "chainName": "Linea (Infura)",
           "rpcUrls": ["https://rpc.linea.build"],
           "nativeCurrency": {
-              "name": "ETH"
-              "symbol": "ETH"
-              "decimals": 18
+              "name": "ETH",
+              "symbol": "ETH",
+              "decimals": 18,
           },
           "iconURLs": ["https://example.com/linea.svg"] 
         }],

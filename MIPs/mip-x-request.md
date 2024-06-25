@@ -51,17 +51,17 @@ Here is an example of how a method to query an Ethereum Mainnet balance would be
 
 ```javascript
 provider.request({
-    "jsonrpc": "2.0",
-    "method": "wallet_invokeMethod",
-    "params":[{
-        "version": "0.0.1",
-        "scope": "eip155:1",
-        "request":{
-            "method": "eth_getBalance",
-            "params": ["0xabc...","latest"]
-        }
-    }]
-    "id": 1
+  "jsonrpc": "2.0",
+  "method": "wallet_invokeMethod",
+  "params":{
+    "version": "0.0.1",
+    "scope": "eip155:1",
+    "request":{
+      "method": "eth_getBalance",
+      "params": ["0xabc...","latest"]
+    },
+  },
+  "id": 1,
 });
 ```
 
@@ -76,25 +76,25 @@ provider.request([
     "jsonrpc": "2.0",
     "method": "wallet_invokeMethod",
     "params": {
-        "scope": "eip155:1",
-        "request": {
-            "method": "eth_getBalance",
-            "params": ["0xabc...", "latest"]
-      }
-    }
-    "id": 1
+      "scope": "eip155:1",
+      "request": {
+        "method": "eth_getBalance",
+        "params": ["0xabc...", "latest"],
+      },
+    },
+    "id": 1,
   },
   {
     "jsonrpc": "2.0",
     "method": "wallet_invokeMethod",
     "params": {
-        "scope": "eip155:59144",
-        "request": {
-            "method": "eth_getBalance",
-            "params": ["0xabc...", "latest"]
-      }
-    }
-    "id": 2
+      "scope": "eip155:59144",
+      "request": {
+        "method": "eth_getBalance",
+        "params": ["0xabc...", "latest"],
+      },
+    },
+    "id": 2,
   }
 ]);
 ```
