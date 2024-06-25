@@ -122,7 +122,7 @@ Ensuring Correct Chain Context for `wallet_swapAsset`: Before initiating a swap,
   ```markdown
   if (!isSwappable) {
   Alert.alert(`Swap is not available on this chain ${networkName}`);
-  throw rpcErrors.methoddNotSupported(
+  throw rpcErrors.methodNotSupported(
   `Swap is not available on this chain ${networkName}`,
   );
   }
