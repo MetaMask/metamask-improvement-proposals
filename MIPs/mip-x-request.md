@@ -120,6 +120,8 @@ If MetaMask is not connected to the network specified in the `scope`, an error s
 
 If an invalid `scope` is specified, then an error should be returned.
 
+If a `method` that is not authorized for the `scope` is specified, then an error should be returned.
+
 ## Backwards Compatibility
 The `wallet_request` method is introduced through the [Multichain API](./mip-x-authorize.md), which is completely separate from the existing JSON-RPC methods. Existing JSON-RPC that are called without the `wallet_request` wrapper would remain available for backward compatibility.
 
