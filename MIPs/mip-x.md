@@ -132,7 +132,7 @@ Ensuring Correct Chain Context for `wallet_swapAsset`: Before initiating a swap,
 
   ```markdown
   if (parseChainIdFromCaip10(fromToken.address) !== parseChainIdFromCaip10(toToken.address)) {
-  throw rpcErrors.methoddNotSupported(
+  throw rpcErrors.methodNotSupported(
   'Cross-chain swaps are currently not supported. Both fromToken and toToken must be on the same blockchain.',
   );
   }
