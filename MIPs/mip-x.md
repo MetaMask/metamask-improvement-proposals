@@ -138,7 +138,7 @@ Ensuring Correct Chain Context for `wallet_swapAsset`: Before initiating a swap,
   }
   ```
 
-- **Invalid caip-10 address**: If the dapp provides an invalid caip-10 address we throw an error, that could be an invalid address for the account address or tokens addresses
+- **Invalid CAIP-10 address**: If the dapp provides an invalid CAIP-10 address we throw an error, that could be an invalid address for the account address or tokens addresses
 
 ```markdown
 try {
