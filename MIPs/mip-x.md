@@ -204,6 +204,7 @@ Developers and users should also be aware of the standard security consideration
 ## References
 
 [EIP: wallet_swapAsset JSON-RPC method](https://github.com/tommasini/EIPs/blob/64090fe54761906fc9bde31ad46eb85230de5e8d/EIPS/eip-swap-rpc.md)
+[CAIP-10](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-10.md)
 
 ## Feedback
 
