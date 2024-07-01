@@ -57,7 +57,7 @@ The new JSON-RPC method wallet_swapAsset should be implemented with the followin
 
 - `fromToken`: An object containing details about the source token. It should include:
 
-  - `address`: The CAIP-10 formatted address of the source token. This address combines the CAIP-2 blockchain identifier and the token's address on that blockchain.
+  - `address`: The [CAIP-10](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-10.md) formatted address of the source token.
   - `value`: The amount of wei in hexadecimal format of the source token to be swapped.
 
 - `toToken`: An object containing details about the destination token. It should include:
