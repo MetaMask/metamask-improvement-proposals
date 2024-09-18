@@ -10,13 +10,13 @@ created: 2024-09-18
 ---
 
 ## Summary
-This proposal aims to add a new JSON-RPC method, `wallet_openDeepLink`, to MetaMask. This method is designed to offer programmatic navigation within MetaMask to the API consumer, in particular, to dapps and snaps.
+This proposal aims to add a new JSON-RPC method, `wallet_openDeepLink`, to MetaMask. This method is designed to offer programmatic navigation within MetaMask to the API consumer, in particular, to dapps and Snaps.
 
 ## Motivation
-Currently, there isn't a way for developers to navigate to specific portions of MetaMask. With the introduction of [MetaMask schemed URLs](https://github.com/MetaMask/SIPs/pull/134) and the ability to navigate to them through snaps link components, we wanted to utilize the full power of the new scheme through allowing a RPC method that would allow consumers to navigate to selected portions of MetaMask.
+Currently, there isn't a way for developers to navigate to specific portions of MetaMask. With the introduction of [MetaMask schemed URLs](https://github.com/MetaMask/SIPs/pull/134) and the ability to navigate to them through Snaps link components, we wanted to utilize the full power of the new scheme through allowing a RPC method that would allow consumers to navigate to selected portions of MetaMask.
 
 # Proposal
-The `wallet_openDeepLink` method is proposed as a new JSON-RPC feature for MetaMask, aimed at giving users navigation ability to exposed routes within the client or a snap. For a list of the routes currently exposed, please see [SIP-22](https://github.com/MetaMask/SIPs/pull/134). In the future, MetaMask URLs will also accept fragments to navigate to a specific portion of a page. This API can also be extended to accept params that can pre-populate fields on a certain page. The authority would be responsible for choosing to accept certain params. In the case of the client authority, MetaMask is responsible for keeping a record of the params for each exposed route. In the case of the snap authority, the snap itself is responsible for params handling and communication of route parameters.
+The `wallet_openDeepLink` method is proposed as a new JSON-RPC feature for MetaMask, aimed at giving users navigation ability to exposed routes within the client or a Snap. For a list of the routes currently exposed, please see [SIP-22](https://github.com/MetaMask/SIPs/pull/134). In the future, MetaMask URLs will also accept fragments to navigate to a specific portion of a page. This API can also be extended to accept params that can pre-populate fields on a certain page. The authority would be responsible for choosing to accept certain params. In the case of the "client" authority, MetaMask is responsible for keeping a record of the params for each exposed route. In the case of the "snap" authority, the Snap itself is responsible for params handling and communication of route parameters.
 
 # Usage Example
 ```js
