@@ -197,6 +197,7 @@ Once there is sufficient industry adoption of the Multichain API, backward-compa
 Initial calls to the `wallet_authorize` method with `optionalScopes` that include any eip155:[reference] scopes will trigger a flow with this sequence:
 
 ```mermaid
+  sequenceDiagram
     app->>+MetaMask: wallet_createSession Request
     actor User
     MetaMask->>User: Review Default Authorizations
