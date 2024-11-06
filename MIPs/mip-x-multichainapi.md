@@ -147,10 +147,10 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ## Proposal Specification
 
-As part of MetaMask's Multichain API implementation, MetaMask will adopt the following standards with notes for implementation-specific guidelines or differences:
+As part of MetaMask's Multichain API implementation, MetaMask will adopt the following standards noting implementation-specific guidelines or differences:
 
 ### CAIP-2 - Network Identifiers
-The network identifiers used in the routing of Multichain API calls will follow [CAIP-2](https://chainagnostic.org/CAIPs/caip-2) conventions and [namespaces](https://namespaces.chainagnostic.org/).
+The network identifiers used in the routing of Multichain API calls will generally follow [CAIP-2](https://chainagnostic.org/CAIPs/caip-2) conventions and [namespaces](https://github.com/ChainAgnostic/namespaces). However, network identifiers may be extended directly through Snaps and may not be limited to [Chain Agnostic Namespaces](https://namespaces.chainagnostic.org/).
 
 > **Note:** Supported namespaces may be limited. Consult the [MetaMask documentation](https://docs.metamask.io/wallet/reference/multichain-api) for the most up-to-date information.
 
@@ -158,6 +158,8 @@ The network identifiers used in the routing of Multichain API calls will follow 
 Multichain API connections will be established and updated through [CAIP-25](https://chainagnostic.org/CAIPs/caip-25) `wallet_createSession` calls.
 
 > **Note:** A `sessionId` will not be returned in the initial response. Instead, the API will adopt session lifecycle management methods outlined in [CAIP-316](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-316.md)
+
+> **Note:**  MetaMask treats `requiredScopes` as `optionalScopes`. We only recommend using `optionalScopes`, though `requiredScopes` can be used to signal that your dapp will not be usable if certain [CAIP-217](https://chainagnostic.org/CAIPs/caip-217) `scopeStrings` are not authorized.
 
 ### CAIP-312 - Retrieve Authorization Scopes
 An app can retrieve a [CAIP-312](https://chainagnostic.org/CAIPs/caip-312) multichain session object by calling `wallet_getSession` to request its authorization scopes at any time.
@@ -185,16 +187,45 @@ API Maintainers will implement the multichain interface in coordination with mul
 The Multichain API is intended to interoperate with MetaMask Snaps. See [SIP-26](https://github.com/MetaMask/SIPs/blob/ed17dd33713e6c2203f11b85ba655ae4acbcca7a/SIPS/sip-26.md) for a high-level overview of the associated architectural approach.
 
 ## Developer Adoption Considerations
-[Explain any considerations that developers should take into account when adopting this proposal. For example, how will it affect compatibility, and what changes may need to be made to accommodate the proposal?]
+Backward compatibility will be maintained through the existing Ethereum Provider API (namely [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193) and [EIP-3326](https://eips.ethereum.org/EIPS/eip-3326)). However, the Multichain API WILL NOT be available through the existing Ethereum Provider API. Because many developers rely on third-party libraries to connect their applications with wallets, mapping logic that allows them to keep their "single chain" code as-is while actually passing calls on to an underlying Multichain API may facilitate more rapid adoption. 
+
+Given its flexibility and advantages, developers should expect new improvements to the Wallet API to be primarily delivered though the Multichain API, as opposed to the [Ethereum Provider API](https://docs.metamask.io/wallet/reference/provider-api/).
+
+Once there is sufficient industry adoption of the Multichain API, backward-compatibility may be gradually deprecated and discontinued.
 
 ## User Experience Considerations
-[Explain any user experience implications of the proposal]
+Initial calls to the `wallet_authorize` method with `optionalScopes` that include any eip155:[reference] scopes will trigger a flow with this sequence:
+
+```mermaid
+    app->>+MetaMask: wallet_createSession Request
+    actor User
+    MetaMask->>User: Review Default Authorizations
+    activate User
+    User->>MetaMask: Edit Authorizations (optional)
+    User-->>MetaMask: Confirm
+    deactivate User
+    MetaMask-->>-app: wallet_createSession Response
+```
+
+> **Note:** There is no guarantee that an authorization request is surfaced in the wallet as **required**. Your application should gracefully handle situations where some authorizations submitted are denied even though the app is considered connected to MetaMask.
+
+## Privacy Considerations
+This proposal raises important privacy considerations, including the need to avoid data leaking and the challenge of obtaining genuine user consent. It underscores the importance of preserving user anonymity and the sensitivites involved in determining authorizations. Identifying and mitigating these issues is crucial for protecting user privacy during multichain interactions, prompting a careful evaluation of how best to balance functionality with privacy concerns.
 
 ## Security Considerations
-[Explain any potential security implications of the proposal]
+This proposal is an opportunity to further incorporate the [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) in MetaMask at least at the API-level.
+
+The proposal also brings to light some security considerations critical to multichain interactions. These include the challenges of ensuring robust authentication and authorization and the importance that users understand the network with which they are interacting. Identifying and addressing these issues is vital for safeguarding users against the evolving landscape of security threats.
 
 ## References
-[List any relevant resources, documentation, or prior art]
+- [CAIP-25](https://chainagnostic.org/CAIPs/caip-25)
+- [CAIP-2](https://chainagnostic.org/CAIPs/caip-2)
+- [CAIP-10](https://chainagnostic.org/CAIPs/caip-10)
+- [CAIP-217](https://chainagnostic.org/CAIPs/caip-217)
+- [CAIP-316](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-316.md)
+- [CAIP-312](https://chainagnostic.org/CAIPs/caip-312)
+- [CAIP-311](https://chainagnostic.org/CAIPs/caip-311)
+- [CAIP-285](https://chainagnostic.org/CAIPs/caip-285)
 
 ### Feedback
 [Provide a way for interested parties to give feedback or make suggestions, such as a GitHub issue or discussion thread]
