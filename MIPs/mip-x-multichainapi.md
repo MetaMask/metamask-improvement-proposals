@@ -229,12 +229,10 @@ The proposal also brings to light some security considerations critical to multi
 - [CAIP-285](https://chainagnostic.org/CAIPs/caip-285)
 
 ### Feedback
-[Provide a way for interested parties to give feedback or make suggestions, such as a GitHub issue or discussion thread]
+Submit feedback in the [discussion](https://github.com/MetaMask/metamask-improvement-proposals/discussions/53) for this MIP.
 
 ### Committed Developers
-[List the names of developers who have committed to using this proposal in an experimental state. This will help gauge community interest and adoption.]
-
-Note: This proposal template is meant to be adapted for different contexts and may require additional sections or information depending on the specific proposal.
+MetaMask
 
 ## Copyright
 Copyright and related rights waived via [CC0](../LICENSE).
