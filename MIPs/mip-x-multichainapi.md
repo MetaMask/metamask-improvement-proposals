@@ -4,7 +4,7 @@ title: Adopt chain agnostic standards for a Multichain API
 status: Draft
 stability: n/a
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions/53
-Authors: Alex Donesky (@adonesky1), Jiexi Luan (@jiexi), Vandan Parikh(@vandan) 
+author(s): Alex Donesky (@adonesky1), Jiexi Luan (@jiexi), Vandan Parikh(@vandan) 
 type: Maintainer
 created: 2024-10-28
 ---
@@ -49,10 +49,6 @@ An example structure for a JSON-RPC request that an application would send to re
         "methods": ["eth_sendTransaction","eth_call","eth_getBalance","eth_blockNumber","eth_getTransactionCount","wallet_watchAsset","eth_subscribe"],
         "notifications": ["message"],
       },
-      "eip155:59144": {
-        "methods": ["eth_sendTransaction","eth_call","eth_getBalance","eth_blockNumber","eth_getTransactionCount","wallet_watchAsset","eth_subscribe"],
-        "notifications": ["message"],
-      },
       "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp": {
         "methods": ["signAndSendTransaction","signAllTransactions","signMessage"],
         "notifications": ["accountChanged"],
@@ -62,30 +58,10 @@ An example structure for a JSON-RPC request that an application would send to re
       }
     },
     "scopedProperties": {
-      "eip155:1": {
-        "rpcEndpoints": [{ 
-          "chainName": "Ethereum (Infura)",
-          "rpcUrls": ["https://mainnet.infura.io"],
-          "nativeCurrency": {
-              "name": "ETH",
-              "symbol": "ETH",
-              "decimals": 18,
-          },
-          "iconURLs": ["https://example.com/ethereum.svg"] 
-        }],  
-      },
-      "eip155:59144": {
-        "rpcEndpoints": [{ 
-          "chainName": "Linea (Infura)",
-          "rpcUrls": ["https://rpc.linea.build"],
-          "nativeCurrency": {
-              "name": "ETH",
-              "symbol": "ETH",
-              "decimals": 18,
-          },
-          "iconURLs": ["https://example.com/linea.svg"] 
-        }],
-      },
+      // Scope-keyed proposals or declarations
+        "eip155:1": {
+          "extension_foo": "bar"    
+        }
     },
   },
 }
@@ -108,11 +84,6 @@ An example structure for the corresponding JSON-RPC response that an application
         "methods": ["eth_sendTransaction","eth_call","eth_getBalance","eth_blockNumber","eth_getTransactionCount","wallet_watchAsset","eth_subscribe"],
         "notifications": ["message"],
         "accounts": ["eip155:1:0x0910e12C68d02B561a34569E1367c9AAb42bd810"]
-      },
-      "eip155:59144": {
-        "methods": ["eth_sendTransaction","eth_call","eth_getBalance","eth_blockNumber","eth_getTransactionCount","wallet_watchAsset","eth_subscribe"],
-        "notifications": ["message"],
-        "accounts": ["eip155:59144:0x0910e12C68d02B561a34569E1367c9AAb42bd810"]
       },
       "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp": {
         "methods": ["signAndSendTransaction","signAllTransactions","signMessage"],
