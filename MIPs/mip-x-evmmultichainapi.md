@@ -112,21 +112,38 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ## Proposal Specification
 
+### Valid scopeStrings
+
+`scopeObjects` must conform to [CAIP-217](https://chainagnostic.org/CAIPs/caip-217)
+
+Valid CAIP-217 `scopeStrings` SHALL include and will initially be limited to:
+- `wallet` - for general authorizations that are unrelated to a specific network or `namespace`
+- `wallet:eip155` - for authorizations that are particular to the `eip155` `namespace`, but involve a function that is not specific to a particular network
+- `eip155:[reference]` - for chain-specific authorizations using a [CAIP-2](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-2.md) identifier with both an `eip155` `namespace` and `reference`
 
 ### API Specification Document
 An OpenRPC [specification for the Multichain API](https://github.com/MetaMask/api-specs/blob/main/multichain/openrpc.yaml) can be found in the [api-specs](https://github.com/MetaMask/api-specs) repository.
 
 ## Caveats
-[List any potential drawbacks, limitations, or risks associated with the proposal]
+
+
 
 ## Implementation
-[Outline how the proposal will be implemented. Which party is expected to implement the proposal?]
+API Maintainers will implement the multichain interface in coordination with multiple MetaMask teams.
 
 ## Developer Adoption Considerations
-[Explain any considerations that developers should take into account when adopting this proposal. For example, how will it affect compatibility, and what changes may need to be made to accommodate the proposal?]
+For Ethereum networks, backward compatibility will be maintained through the existing Ethereum Provider API (namely [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193) and [EIP-3326](https://eips.ethereum.org/EIPS/eip-3326)).
+Because many developers rely on third-party libraries to connect their applications with wallets, mapping logic that allows them to keep their "single chain" code as-is while actually passing calls on to an underlying Multichain API may facilitate more rapid adoption. 
+
+Given its flexibility and advantages, developers should expect new improvements to the Wallet API to be primarily delivered though the Multichain API, as opposed to the [Ethereum Provider API](https://docs.metamask.io/wallet/reference/provider-api/).
+
+Once there is sufficient industry adoption of the Multichain API, backward-compatibility may be gradually deprecated and discontinued.
 
 ## User Experience Considerations
 [Explain any user experience implications of the proposal]
+
+## Privacy Considerations
+This proposal raises important privacy considerations, including the need to avoid data leaking and the challenge of obtaining genuine user consent. It underscores the importance of preserving user anonymity and the sensitivites involved in determining authorizations. Identifying and mitigating these issues is crucial for protecting user privacy during multichain interactions, prompting a careful evaluation of how best to balance functionality with privacy concerns.
 
 ## Security Considerations
 [Explain any potential security implications of the proposal]
@@ -135,12 +152,10 @@ An OpenRPC [specification for the Multichain API](https://github.com/MetaMask/ap
 [List any relevant resources, documentation, or prior art]
 
 ### Feedback
-[Provide a way for interested parties to give feedback or make suggestions, such as a GitHub issue or discussion thread]
+Submit feedback in the [discussion](https://github.com/MetaMask/metamask-improvement-proposals/discussions/53) for this MIP.
 
 ### Committed Developers
-[List the names of developers who have committed to using this proposal in an experimental state. This will help gauge community interest and adoption.]
-
-Note: This proposal template is meant to be adapted for different contexts and may require additional sections or information depending on the specific proposal.
+MetaMask
 
 ## Copyright
 Copyright and related rights waived via [CC0](../LICENSE).
