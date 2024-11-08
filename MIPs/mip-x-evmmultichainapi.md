@@ -5,7 +5,7 @@ status: Draft
 stability: n/a
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions
 author(s): Alex Donesky (@adonesky1), Jiexi Luan (@jiexi), Vandan Parikh(@vandan) 
-type: Community
+type: Maintainer
 created: 2023-04-28
 ---
 
