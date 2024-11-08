@@ -130,7 +130,7 @@ Multichain API connections will be established and updated through [CAIP-25](htt
 
 > **Note:** A `sessionId` will not be returned in the initial response. Instead, the API will adopt session lifecycle management methods outlined in [CAIP-316](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-316.md)
 
-> **Note:**  MetaMask treats `requiredScopes` as `optionalScopes`. We only recommend using `optionalScopes`, though `requiredScopes` can be used to signal that your dapp will not be usable if certain [CAIP-217](https://chainagnostic.org/CAIPs/caip-217) `scopeStrings` are not authorized.
+> **Note:**  MetaMask treats `requiredScopes` as `optionalScopes`. Only `optionalScopes` are recommended, though `requiredScopes` can be used to signal that your dapp will not be usable if certain [CAIP-217](https://chainagnostic.org/CAIPs/caip-217) `scopeStrings` are not authorized. 
 
 ### CAIP-312 - Retrieve Authorization Scopes
 A dapp can retrieve a [CAIP-312](https://chainagnostic.org/CAIPs/caip-312) multichain session object by calling `wallet_getSession` to request its authorization scopes at any time.
@@ -153,7 +153,7 @@ An OpenRPC [specification for the Multichain API](https://github.com/MetaMask/ap
 ## Caveats
 The CAIPs referenced in this proposal are still in Draft or Review status with CASA and may be subject to material changes.
 
-**API Access:**
+### API Access
 As part of the Multichain API, MetaMask is leading the adoption of alternative methods for browser extension wallet communication. The current practice for browser extension wallets is to inject a javascript object in order to communicate with each site. But this approach comes with privacy, security, reliability, and performance drawbacks.
 
 - The MetaMask Browser Extension will adopt an alternative method of communication through the `externally_connectable` feature, which is now supported by most modern web browsers with extension frameworks.
@@ -168,6 +168,15 @@ In summary, the following methods will solely be accessible through the new comm
 `wallet_notify` (CAIP-319)
 
 (API Delivery & Wallet Discovery CAIPs to be added in this section)
+
+### Snap Methods
+Some RPC APIs associated with Snaps will be rendered redundant and will not be supported through the Multichain API. However, they will remain accessible through the EIP-1193 interface for backward compatibility.
+
+**Discontinued Methods:**
+wallet_requestSnaps
+wallet_getSnaps
+wallet_invokeSnap
+wallet_snap
 
 ## Implementation
 API Maintainers will implement the multichain interface in coordination with multiple MetaMask teams.

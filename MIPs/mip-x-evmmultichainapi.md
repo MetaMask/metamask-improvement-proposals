@@ -109,24 +109,43 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ## Definitions
 
-
 ## Proposal Specification
 
 ### Valid scopeStrings
 
 `scopeObjects` must conform to [CAIP-217](https://chainagnostic.org/CAIPs/caip-217)
 
-Valid CAIP-217 `scopeStrings` SHALL include and will initially be limited to:
+Valid CAIP-217 `scopeStrings` for Ethereum-compatible networks shall include and will initially be limited to:
 - `wallet` - for general authorizations that are unrelated to a specific network or `namespace`
 - `wallet:eip155` - for authorizations that are particular to the `eip155` `namespace`, but involve a function that is not specific to a particular network
 - `eip155:[reference]` - for chain-specific authorizations using a [CAIP-2](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-2.md) identifier with both an `eip155` `namespace` and `reference`
+
+### Valid scopedProperties
+When a MetaMask user does not have an existing network configured for a given `eip155[reference]` scope, including metadata for `rpcEndpoints` in the `scopeMetadata` serves as a suggestion for the user add the first endpoint in the list. MetaMask will expect the `rpcEndpoints` parameter to conform with the [EIP-3085](https://eips.ethereum.org/EIPS/eip-3085) standard.
+
+> **Note:** MetaMask does not yet support prompting for RPC additions as part of the [CAIP-25](https://chainagnostic.org/CAIPs/caip-25) connection flow, but may do so in the future. 
 
 ### API Specification Document
 An OpenRPC [specification for the Multichain API](https://github.com/MetaMask/api-specs/blob/main/multichain/openrpc.yaml) can be found in the [api-specs](https://github.com/MetaMask/api-specs) repository.
 
 ## Caveats
+While most existing Ethereum methods will be familiar under the Multichain API, the new API renders some standard methods and events either redundant or incompatible with the new interaction patterns. The following Ethereum standards will not be supported through the Multichain API. However, they will remain accessible through the EIP-1193 interface for backward compatibility.
 
+**Discontinued Methods:**
+eth_requestAccounts
+eth_accounts
+wallet_getPermissions
+wallet_requestPermissions
+wallet_revokePermissions
+wallet_switchEthereumChain
+eth_signTypedData
+eth_signTypedData_v3
 
+**Discontinued Events:**
+- connect
+- disconnect
+- chainChanged
+- accountsChanged
 
 ## Implementation
 API Maintainers will implement the multichain interface in coordination with multiple MetaMask teams.
