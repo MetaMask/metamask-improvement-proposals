@@ -121,7 +121,7 @@ Valid CAIP-217 `scopeStrings` for Ethereum-compatible networks shall include and
 - `eip155:[reference]` - for chain-specific authorizations using a [CAIP-2](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-2.md) identifier with both an `eip155` `namespace` and `reference`
 
 ### Valid scopedProperties
-When a MetaMask user does not have an existing network configured for a given `eip155[reference]` scope, including metadata for `rpcEndpoints` in the `scopeMetadata` serves as a suggestion for the user add the first endpoint in the list. MetaMask will expect the `rpcEndpoints` parameter to conform with the [EIP-3085](https://eips.ethereum.org/EIPS/eip-3085) standard.
+When a MetaMask user does not have an existing network configured for a given `eip155[reference]` scope, including metadata for `rpcEndpoints` in the `scopedProperties` serves as a suggestion for the user to add the RPC network. MetaMask will expect the `rpcEndpoints` parameter to conform with the [EIP-3085](https://eips.ethereum.org/EIPS/eip-3085) standard.
 
 > **Note:** MetaMask does not yet support prompting for RPC additions as part of the [CAIP-25](https://chainagnostic.org/CAIPs/caip-25) connection flow, but may do so in the future. 
 
@@ -157,18 +157,6 @@ Because many developers rely on third-party libraries to connect their applicati
 Given its flexibility and advantages, developers should expect new improvements to the Wallet API to be primarily delivered though the Multichain API, as opposed to the [Ethereum Provider API](https://docs.metamask.io/wallet/reference/provider-api/).
 
 Once there is sufficient industry adoption of the Multichain API, backward-compatibility may be gradually deprecated and discontinued.
-
-## User Experience Considerations
-[Explain any user experience implications of the proposal]
-
-## Privacy Considerations
-This proposal raises important privacy considerations, including the need to avoid data leaking and the challenge of obtaining genuine user consent. It underscores the importance of preserving user anonymity and the sensitivites involved in determining authorizations. Identifying and mitigating these issues is crucial for protecting user privacy during multichain interactions, prompting a careful evaluation of how best to balance functionality with privacy concerns.
-
-## Security Considerations
-[Explain any potential security implications of the proposal]
-
-## References
-[List any relevant resources, documentation, or prior art]
 
 ### Feedback
 Submit feedback in the [discussion](https://github.com/MetaMask/metamask-improvement-proposals/discussions/53) for this MIP.
