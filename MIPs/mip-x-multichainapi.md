@@ -132,6 +132,11 @@ Multichain API connections will be established and updated through [CAIP-25](htt
 
 > **Note:**  MetaMask treats `requiredScopes` as `optionalScopes`. Only `optionalScopes` are recommended, though `requiredScopes` can be used to signal that your dapp will not be usable if certain [CAIP-217](https://chainagnostic.org/CAIPs/caip-217) `scopeStrings` are not authorized. 
 
+### CAIP-27 - Invoke RPC Requests for an Authorization Scope
+A dapp can invoke RPC requests for an authorization scope by making [CAIP-27](https://chainagnostic.org/CAIPs/caip-27) `wallet_invokeMethod` calls.
+
+> **Note:** a `sessionId` parameter is not supported and will be ignored, if included.
+
 ### CAIP-312 - Retrieve Authorization Scopes
 A dapp can retrieve a [CAIP-312](https://chainagnostic.org/CAIPs/caip-312) multichain session object by calling `wallet_getSession` to request its authorization scopes at any time.
 
