@@ -1,5 +1,5 @@
 ---
-MIP: x
+MIP: 4
 Title: Implement `wallet_swapAsset` to support Dapps to swap
 Status: Review
 Stability: Experimental
