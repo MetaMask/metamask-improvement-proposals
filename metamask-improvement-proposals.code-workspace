@@ -1,0 +1,48 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "Virtual TW Source Files",
+			"uri": "twsource:/"
+		}
+	],
+	"settings": {
+		"eepl.target.device": {
+			"description": "[Device]",
+			"devManId": 0,
+			"devName": "Select Target",
+			"frameWorkVerA": 0,
+			"frameWorkVerB": 22,
+			"triplet": "thumbv7m-none-none-eabi",
+			"pathToFile": "",
+			"periphInfo": {
+				"aoCount": 3,
+				"relayCount": 6,
+				"uartCount": 8,
+				"uiCount": 11,
+				"flashSize": 262144,
+				"ramSize": 65536,
+				"flashPageSize": 256,
+				"isDesktop": false,
+				"isResourcesInternal": false
+			},
+			"stdlib": "armv7m",
+			"includePaths": [],
+			"stdlibs": [],
+			"runtime": "clang_rt.builtins-armv7m"
+		},
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"**/.ruby-lsp": true,
+			"": true,
+			".mule": true
+		}
+	}
+}
