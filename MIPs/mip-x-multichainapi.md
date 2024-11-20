@@ -14,8 +14,9 @@ This proposal recommends that MetaMask adopt a set of Chain Agnostic Improvement
 
 ### Goals
 - Consistent Structure: Provide common patterns while separating namespaces of each ecosystem or network.
-- Interoperability: Employ standards to encourage the development of powerful libraries with support for multiple wallets and networks
+- Interoperability: Employ standards to encourage the development of powerful libraries with support for multiple wallets and networks.
 - Unlock the Design Space: Enable dapps to negotiate an interface with wallets for optimal multichain experiences.
+- Extensibility: Make the API reasonbaly future-proof, allowing for new networks and methods to be added as demanded by the ecosystem.
 - Security: Enhance security and privacy associated with wallets delived through Browser Extensions.
 
 ## Motivation
@@ -23,7 +24,7 @@ Valuable lessons have been learned from scaling the Ethereum dapp and wallet eco
 
 The Multichain API and associated CAIP standards promise to enable the following benefits for developers:
 - Ability to interact with EVM and non-EVM decentralized networks through a consistent interface
-- Ability to use interface negotiation to adopt innovative wallet features, while gracefully degrading for wallets that may not yet support them
+- Employ interface negotiation patterns to adopt novel wallet features, while gracefully degrading for wallets that may not yet support them
 - Ability to simultaneously interact with multiple networks
 - Be notified of updates across multiple networks
 - Elimination of excessive error handling involved with chain-switching across EVM networks
