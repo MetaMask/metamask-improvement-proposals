@@ -89,7 +89,7 @@ An example structure for the corresponding JSON-RPC response that an application
       },
       "eip155:1": {
         "methods": ["eth_sendTransaction","eth_call","eth_getBalance","eth_blockNumber","eth_getTransactionCount","wallet_watchAsset","eth_subscribe"],
-        "notifications": ["message"],
+        "notifications": ["eth_subscription"],
         "accounts": ["eip155:1:0x0910e12C68d02B561a34569E1367c9AAb42bd810"]
       },
       "eip155:59144": {
