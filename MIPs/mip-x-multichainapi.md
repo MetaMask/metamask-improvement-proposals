@@ -188,7 +188,7 @@ API Maintainers will implement the multichain interface in coordination with mul
 The Multichain API is intended to interoperate with MetaMask Snaps. See [SIP-26](https://github.com/MetaMask/SIPs/blob/ed17dd33713e6c2203f11b85ba655ae4acbcca7a/SIPS/sip-26.md) for a high-level overview of the anticipated architectural approach.
 
 ## Developer Adoption Considerations
-dapp developers are encouraged to use libraries to abstract the connection differences between wallet clients and to ensure their dapp stays updated as wallet-to-dapp communication methods continue to evolve.
+Dapp developers are encouraged to use libraries to abstract the connection differences between wallet clients and to ensure their dapp stays updated as wallet-to-dapp communication methods continue to evolve.
 
 ## User Experience Considerations
 Initial calls to the `wallet_authorize` method with `optionalScopes` that include any eip155:[reference] scopes will trigger a flow with this sequence:
