@@ -17,7 +17,7 @@ Developers building against Ethereum-compatible networks stand to benefit the mo
 
 The Multichain API and associated CAIP standards promise to enable the following benefits for these developers:
 - Elimination of excessive error handling involved with chain-switching across EVM networks
-- Ability to use interface negotiation to adopt innovative wallet features, while gracefully degrading for wallets that may not yet support them
+- Employ interface negotiation patterns to adopt novel wallet features, while gracefully degrading for wallets that may not yet support them
 - Ability to simultaneously interact with multiple networks
 - Be notified of updates across multiple networks
 
