@@ -10,7 +10,7 @@ created: 2024-10-28
 ---
 
 ## Summary
-This proposal supplements [MIP-x](./mip-x-multichainapi.md) with additional specifications for Ethereum-compatible networks.
+This proposal supplements [MIP-x](./mip-x-multichainapi.md) with additional specifications for EVM networks.
 
 ## Motivation
 Developers building against Ethereum-compatible networks stand to benefit the most from the simplified developer experience associated with the Multichain API. 
