@@ -44,21 +44,23 @@ An example structure for a JSON-RPC request that an application would send to re
         "notifications": ["message"],
       },
     },
-    "scopedProperties": {
-      "eip155:1": {
-        "rpcEndpoints": [{ 
-          "chainName": "Ethereum (Infura)",
+"scopedProperties": {
+  "eip155:1": {
+    "eip3085": {
+          "rpcEndpoints": [{
+            "chainName": "Ethereum (Infura)",
           "rpcUrls": ["https://mainnet.infura.io"],
           "nativeCurrency": {
               "name": "ETH",
               "symbol": "ETH",
               "decimals": 18,
           },
-          "iconURLs": ["https://example.com/ethereum.svg"] 
-        }],  
+          "iconURLs": ["https://example.com/ethereum.svg"]
+        }],
       },
       "eip155:59144": {
-        "rpcEndpoints": [{ 
+        "eip3085": {
+          "rpcEndpoints": [{
           "chainName": "Linea (Infura)",
           "rpcUrls": ["https://rpc.linea.build"],
           "nativeCurrency": {
@@ -66,12 +68,12 @@ An example structure for a JSON-RPC request that an application would send to re
               "symbol": "ETH",
               "decimals": 18,
           },
-          "iconURLs": ["https://example.com/linea.svg"] 
+          "iconURLs": ["https://example.com/linea.svg"]
         }],
       },
     },
   },
-}
+};
 ```
 
 ### Response
