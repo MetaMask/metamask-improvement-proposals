@@ -117,7 +117,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 `scopeObjects` must conform to [CAIP-217](https://chainagnostic.org/CAIPs/caip-217)
 
-Valid CAIP-217 `scopeStrings` for Ethereum-compatible networks shall include and will initially be limited to:
+Valid CAIP-217 `scopeStrings` for EVM networks shall include (and will, initially, be limited to):
 - `wallet` - for general authorizations that are unrelated to a specific network or `namespace`
 - `wallet:eip155` - for authorizations that are particular to the `eip155` `namespace`, but involve a function that is not specific to a particular network
 - `eip155:[reference]` - for chain-specific authorizations using a [CAIP-2](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-2.md) identifier with both an `eip155` `namespace` and `reference`
