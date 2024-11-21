@@ -15,7 +15,7 @@ This proposal supplements [MIP-x](./mip-x-multichainapi.md) with additional spec
 ## Motivation
 Developers building against Ethereum-compatible networks stand to benefit the most from the simplified developer experience associated with the Multichain API. 
 
-The Multichain API and associated CAIP standards promise to enable the following benefits for these developers:
+The Multichain API will enable the following benefits for developers:
 - Elimination of excessive error handling involved with chain-switching across EVM networks
 - Employ interface negotiation patterns to adopt novel wallet features, while gracefully degrading for wallets that may not yet support them
 - Ability to simultaneously interact with multiple networks
