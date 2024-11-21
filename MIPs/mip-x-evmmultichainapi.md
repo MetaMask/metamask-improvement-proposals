@@ -123,7 +123,7 @@ Valid CAIP-217 `scopeStrings` for EVM networks shall include (and will, initiall
 - `eip155:[reference]` - for chain-specific authorizations using a [CAIP-2](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-2.md) identifier with both an `eip155` `namespace` and `reference`
 
 ### Valid scopedProperties
-When a MetaMask user does not have an existing network configured for a given `eip155[reference]` scope, including metadata for `rpcEndpoints` in the `scopedProperties` serves as a suggestion for the user to add the RPC network. MetaMask will expect the `rpcEndpoints` parameter to conform with the [EIP-3085](https://eips.ethereum.org/EIPS/eip-3085) standard.
+A dapp may include metadata for `rpcEndpoints` in the `scopedProperties` object to suggest (and provide the required networkConfiguration for) the addition of a given network which the wallet instance does not yet have installed. MetaMask will expect the `rpcEndpoints` parameter to conform to the [EIP-3085](https://eips.ethereum.org/EIPS/eip-3085) standard interface.
 
 > **Note:** MetaMask does not yet support prompting for RPC additions as part of the [CAIP-25](https://chainagnostic.org/CAIPs/caip-25) connection flow, but may do so in the future. 
 
