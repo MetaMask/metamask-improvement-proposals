@@ -3,7 +3,7 @@ mip: x
 title: Multichain API for Ethereum
 status: Draft
 stability: n/a
-discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions
+discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions/53
 author(s): Alex Donesky (@adonesky1), Jiexi Luan (@jiexi), Vandan Parikh(@vandan) 
 type: Maintainer
 created: 2024-10-28
