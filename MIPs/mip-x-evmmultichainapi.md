@@ -13,7 +13,7 @@ created: 2024-10-28
 This proposal supplements [MIP-x](./mip-x-multichainapi.md) with additional specifications for EVM networks.
 
 ## Motivation
-Developers building against Ethereum-compatible networks stand to benefit the most from the simplified developer experience associated with the Multichain API. 
+Current single chain EVM Wallet APIs severely limit EVM dapp development and cause a great deal of unnecessary friction for users operating in an ecosystem with rapidly growing number of chains. As such, Dapp developers and end users stand to benefit tremendously from the improved DevEx and UX that the Multichain API will provide. 
 
 The Multichain API will enable the following benefits for developers:
 - Concurrent cross chain state reading
