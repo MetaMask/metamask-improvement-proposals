@@ -168,6 +168,7 @@ As part of the Multichain API, MetaMask is leading the adoption of alternative m
 - When a site is accessed through a browser that does not support [externally_connectable](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/externally_connectable), the Multichain API will be available through an alternative communication method. 
 
 In summary, the following methods will solely be accessible through the new communication methods:
+
 `wallet_createSession` (CAIP-25)
 `wallet_sessionChanged` (CAIP-311)
 `wallet_getSession` (CAIP-312)
@@ -181,10 +182,11 @@ In summary, the following methods will solely be accessible through the new comm
 Some RPC APIs associated with Snaps will be rendered redundant and will not be supported through the Multichain API. However, they will remain accessible through the EIP-1193 interface for backward compatibility.
 
 **Discontinued Methods:**
-wallet_requestSnaps
-wallet_getSnaps
-wallet_invokeSnap
-wallet_snap
+
+`wallet_requestSnaps`
+`wallet_getSnaps`
+`wallet_invokeSnap`
+`wallet_snap`
 
 ## Implementation
 API Maintainers will implement the multichain interface in coordination with multiple MetaMask teams.
