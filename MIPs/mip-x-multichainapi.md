@@ -10,7 +10,7 @@ created: 2024-10-28
 ---
 
 ## Summary
-This proposal recommends that MetaMask adopt a set of Chain Agnostic Improvement Proposals ([CAIPs](https://github.com/ChainAgnostic/CAIPs)) to guide the design of a new Wallet API that is generalized for interactions between dapps and wallets in a multichain environment. A "Multichain API". Implementing these standards encourages broad adoption while enhancing interoperability, improving user experiences, and significantly streamlining development for multichain dapps.
+This proposal recommends that MetaMask adopt a set of Chain Agnostic Improvement Proposals ([CAIPs](https://github.com/ChainAgnostic/CAIPs)) to guide the design of a new Wallet API that is generalized for interactions between dapps and wallets in a multichain environment. Implementing these standards encourages broad adoption while enhancing interoperability, improving user experiences, and significantly streamlining development for multichain dapps.
 
 ### Goals
 - Consistent Structure: Provide common patterns while separating namespaces of each ecosystem or network.
