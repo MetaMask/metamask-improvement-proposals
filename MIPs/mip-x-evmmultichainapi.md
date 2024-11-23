@@ -43,19 +43,20 @@ An example structure for a JSON-RPC request that an application would send to re
         "notifications": ["message"],
       },
     },
-"scopedProperties": {
-  "eip155:1": {
-    "eip3085": {
+    "scopedProperties": {
+      "eip155:1": {
+        "eip3085": {
           "rpcEndpoints": [{
             "chainName": "Ethereum (Infura)",
-          "rpcUrls": ["https://mainnet.infura.io"],
-          "nativeCurrency": {
-              "name": "ETH",
-              "symbol": "ETH",
-              "decimals": 18,
-          },
-          "iconURLs": ["https://example.com/ethereum.svg"]
-        }],
+            "rpcUrls": ["https://mainnet.infura.io"],
+            "nativeCurrency": {
+                "name": "ETH",
+                "symbol": "ETH",
+                "decimals": 18,
+            },
+            "iconURLs": ["https://example.com/ethereum.svg"]
+          }],
+        },
       },
       "eip155:59144": {
         "eip3085": {
@@ -68,7 +69,8 @@ An example structure for a JSON-RPC request that an application would send to re
               "decimals": 18,
           },
           "iconURLs": ["https://example.com/linea.svg"]
-        }],
+          }],
+        },
       },
     },
   },
@@ -89,12 +91,12 @@ An example structure for the corresponding JSON-RPC response that an application
           "accounts": ["eip155:wallet:0x0910e12C68d02B561a34569E1367c9AAb42bd810"]
       },
       "eip155:1": {
-        "methods": ["eth_sendTransaction","eth_call","eth_getBalance","eth_blockNumber","eth_getTransactionCount","wallet_watchAsset","eth_subscribe"],
+        "methods": ["wallet_watchAsset","eth_sendTransaction","personal_sign","eth_signTypedData_v4","web3_clientVersion","eth_subscribe","eth_unsubscribe", "eth_blockNumber", "eth_call","eth_estimateGas","eth_feeHistory","eth_gasPrice","eth_getBalance","eth_getBlockByHash","eth_getBlockByNumber","eth_getBlockTransactionCountByHash","eth_getBlockTransactionCountByNumber","eth_getCode","eth_getFilterChanges","eth_getFilterLogs","eth_getLogs","eth_getProof","eth_getStorageAt","eth_getTransactionByBlockHashAndIndex","eth_getTransactionByBlockNumberAndIndex","eth_getTransactionByHash","eth_getTransactionCount","eth_getTransactionReceipt","eth_getUncleCountByBlockHash","eth_getUncleCountByBlockNumber","eth_newBlockFilter","eth_newFilter","eth_newPendingTransactionFilter","eth_sendRawTransaction","eth_syncing","eth_uninstallFilter"],
         "notifications": ["eth_subscription"],
         "accounts": ["eip155:1:0x0910e12C68d02B561a34569E1367c9AAb42bd810"]
       },
       "eip155:59144": {
-        "methods": ["eth_sendTransaction","eth_call","eth_getBalance","eth_blockNumber","eth_getTransactionCount","wallet_watchAsset","eth_subscribe"],
+        "methods": ["wallet_watchAsset","eth_sendTransaction","personal_sign","eth_signTypedData_v4","web3_clientVersion","eth_subscribe","eth_unsubscribe", "eth_blockNumber", "eth_call","eth_estimateGas","eth_feeHistory","eth_gasPrice","eth_getBalance","eth_getBlockByHash","eth_getBlockByNumber","eth_getBlockTransactionCountByHash","eth_getBlockTransactionCountByNumber","eth_getCode","eth_getFilterChanges","eth_getFilterLogs","eth_getLogs","eth_getProof","eth_getStorageAt","eth_getTransactionByBlockHashAndIndex","eth_getTransactionByBlockNumberAndIndex","eth_getTransactionByHash","eth_getTransactionCount","eth_getTransactionReceipt","eth_getUncleCountByBlockHash","eth_getUncleCountByBlockNumber","eth_newBlockFilter","eth_newFilter","eth_newPendingTransactionFilter","eth_sendRawTransaction","eth_syncing","eth_uninstallFilter"],
         "notifications": ["eth_subscription"],
         "accounts": ["eip155:59144:0x0910e12C68d02B561a34569E1367c9AAb42bd810"]
       },
@@ -134,6 +136,9 @@ While most methods from the existing API will also be available on the Multichai
 
 **Discontinued Methods:**
 eth_requestAccounts
+eth_chainId
+eth_getEncryptionPublicKey
+eth_decrypt
 eth_accounts
 wallet_getPermissions
 wallet_requestPermissions

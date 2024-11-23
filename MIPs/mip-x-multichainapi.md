@@ -48,7 +48,7 @@ An example structure for a JSON-RPC request that a dapp would send to request au
       },
       "eip155:1": {
         "methods": ["eth_sendTransaction","eth_call","eth_getBalance","eth_blockNumber","eth_getTransactionCount","wallet_watchAsset","eth_subscribe"],
-        "notifications": ["message"],
+        "notifications": ["eth_subscription"],
       },
       "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp": {
         "methods": ["signAndSendTransaction","signAllTransactions","signMessage"],
@@ -83,7 +83,7 @@ An example structure for the corresponding JSON-RPC response that a dapp would r
       },
       "eip155:1": {
         "methods": ["eth_sendTransaction","eth_call","eth_getBalance","eth_blockNumber","eth_getTransactionCount","wallet_watchAsset","eth_subscribe"],
-        "notifications": ["message"],
+        "notifications": ["eth_subscription"],
         "accounts": ["eip155:1:0x0910e12C68d02B561a34569E1367c9AAb42bd810"]
       },
       "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp": {
@@ -131,7 +131,9 @@ Multichain API connections will be established and updated through [CAIP-25](htt
 
 > **Note:** A `sessionId` will not be returned in the initial response. Instead, the API will adopt session lifecycle management methods outlined in [CAIP-316](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-316.md)
 
-> **Note:**  MetaMask treats `requiredScopes` as `optionalScopes`. Only `optionalScopes` are recommended, though `requiredScopes` can be used to signal that your dapp will not be usable if certain [CAIP-217](https://chainagnostic.org/CAIPs/caip-217) `scopeStrings` are not authorized. 
+> **Note:** MetaMask treats `requiredScopes` as `optionalScopes`. Only `optionalScopes` are recommended, though `requiredScopes` can be used to signal that your dapp will not be usable if certain [CAIP-217](https://chainagnostic.org/CAIPs/caip-217) `scopeStrings` are not authorized. 
+
+> **Note:** Developers are encouraged to precisely request only the authorization scopes for methods and notifications that their dapp expects to call before making additional `wallet_createSession` calls to expand authorization scopes. Requesting specific authorization scopes allows wallets to discover and implement features that are being adopted. Wallets can also further optimize permission confirmation flows to reduce unnecessary friction for some method calls. For simplicity, however, MetaMask may return more authorization scopes, methods, or notifications than the caller explicitly requested.
 
 ### CAIP-27 - Invoke RPC Requests for an Authorization Scope
 A dapp can invoke RPC requests for an authorization scope by making [CAIP-27](https://chainagnostic.org/CAIPs/caip-27) `wallet_invokeMethod` calls.
