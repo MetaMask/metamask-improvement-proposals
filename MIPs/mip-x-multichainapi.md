@@ -169,12 +169,12 @@ As part of the Multichain API, MetaMask is leading the adoption of alternative m
 
 In summary, the following methods will solely be accessible through the new communication methods:
 
-`wallet_createSession` (CAIP-25)
-`wallet_sessionChanged` (CAIP-311)
-`wallet_getSession` (CAIP-312)
-`wallet_revokeSession` (CAIP-285)
-`wallet_invokeMethod` (CAIP-27)
-`wallet_notify` (CAIP-319)
+- `wallet_createSession` (CAIP-25)
+- `wallet_sessionChanged` (CAIP-311)
+- `wallet_getSession` (CAIP-312)
+- `wallet_revokeSession` (CAIP-285)
+- `wallet_invokeMethod` (CAIP-27)
+- `wallet_notify` (CAIP-319)
 
 (API Delivery & Wallet Discovery CAIPs to be added in this section)
 
@@ -183,10 +183,10 @@ Some RPC APIs associated with Snaps will be rendered redundant and will not be s
 
 **Discontinued Methods:**
 
-`wallet_requestSnaps`
-`wallet_getSnaps`
-`wallet_invokeSnap`
-`wallet_snap`
+- `wallet_requestSnaps`
+- `wallet_getSnaps`
+- `wallet_invokeSnap`
+- `wallet_snap`
 
 ## Implementation
 API Maintainers will implement the multichain interface in coordination with multiple MetaMask teams.
@@ -196,7 +196,7 @@ The Multichain API is intended to interoperate with MetaMask Snaps. See [SIP-26]
 Dapp developers are encouraged to use libraries to abstract the connection differences between wallet clients and to ensure their dapp stays updated as wallet-to-dapp communication methods continue to evolve.
 
 ## User Experience Considerations
-Initial calls to the `wallet_authorize` method with `optionalScopes` that include any eip155:[reference] scopes will trigger a flow with this sequence:
+Initial calls to the `wallet_createSession` method with `optionalScopes` that include any `eip155:[reference]` scopes will trigger a flow with this sequence:
 
 ```mermaid
   sequenceDiagram
