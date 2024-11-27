@@ -89,6 +89,7 @@ An example structure for the corresponding JSON-RPC response that an application
     "sessionScopes": { 
       "eip155:wallet": {
           "methods": ["wallet_addEthereumChain"],
+          "notifications": [],
           "accounts": ["eip155:wallet:0x0910e12C68d02B561a34569E1367c9AAb42bd810"]
       },
       "eip155:1": {
