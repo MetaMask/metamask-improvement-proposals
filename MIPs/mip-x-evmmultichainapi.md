@@ -41,7 +41,7 @@ An example structure for a JSON-RPC request that an application would send to re
       },
       "eip155:59144": {
         "methods": ["eth_sendTransaction","eth_call","eth_getBalance","eth_blockNumber","eth_getTransactionCount","wallet_watchAsset","eth_subscribe"],
-        "notifications": ["message"],
+        "notifications": ["eth_subscription"],
       },
     },
     "scopedProperties": {
