@@ -137,17 +137,18 @@ An OpenRPC [specification for the Multichain API](https://github.com/MetaMask/ap
 While most methods from the existing API will also be available on the Multichain API, the new API renders some methods and notifications redundant or incompatible. The following methods will not be supported through the Multichain API. However, they will remain accessible through the injected [EIP-1193][eip-1193] API for backwards compatibility.
 
 **Discontinued Methods:**
-eth_requestAccounts
-eth_chainId
-eth_getEncryptionPublicKey
-eth_decrypt
-eth_accounts
-wallet_getPermissions
-wallet_requestPermissions
-wallet_revokePermissions
-wallet_switchEthereumChain
-eth_signTypedData
-eth_signTypedData_v3
+- eth_requestAccounts
+- eth_chainId
+- eth_getEncryptionPublicKey
+- eth_decrypt
+- eth_accounts
+- wallet_getPermissions
+- wallet_requestPermissions
+- wallet_revokePermissions
+- wallet_switchEthereumChain
+- eth_signTypedData
+- eth_signTypedData_v3
+
 
 **Discontinued Events:**
 - connect
