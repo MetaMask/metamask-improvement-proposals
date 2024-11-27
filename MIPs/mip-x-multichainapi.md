@@ -162,7 +162,7 @@ An OpenRPC [specification for the Multichain API](https://github.com/MetaMask/ap
 The CAIPs referenced in this proposal are still in Draft or Review status with CASA and may be subject to material changes.
 
 ### API Access
-As part of the Multichain API, MetaMask is leading the adoption of alternative methods for browser extension wallet communication. The current practice for browser extension wallets is to inject a javascript object in order to communicate with each site. But this approach comes with privacy, security, reliability, and performance drawbacks.
+As part of the Multichain API, MetaMask is leading the adoption of alternative methods for browser extension wallet communication. Currently, browser extension wallets inject a JavaScript object to communicate with each site. But this approach comes with privacy, security, reliability, and performance drawbacks.
 
 - The MetaMask Browser Extension will adopt an alternative method of communication through the [externally_connectable](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/externally_connectable) feature, which is now supported by most modern web browsers with extension frameworks.
 - When a site is accessed through a browser that does not support [externally_connectable](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/externally_connectable), the Multichain API will be available through an alternative communication method. 
