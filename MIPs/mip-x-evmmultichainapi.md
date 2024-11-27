@@ -46,30 +46,26 @@ An example structure for a JSON-RPC request that an application would send to re
     },
     "scopedProperties": {
       "eip155:1": {
-        "eip3085": {
-          "rpcEndpoints": [{
-            "chainName": "Ethereum (Infura)",
-            "rpcUrls": ["https://mainnet.infura.io"],
-            "nativeCurrency": {
-                "name": "ETH",
-                "symbol": "ETH",
-                "decimals": 18,
-            },
-          }],
-        },
+        "eip3085": [
+          "chainName": "Ethereum (Infura)",
+          "rpcUrls": ["https://mainnet.infura.io"],
+          "nativeCurrency": {
+              "name": "ETH",
+              "symbol": "ETH",
+              "decimals": 18,
+          },
+        ],
       },
       "eip155:59144": {
-        "eip3085": {
-          "rpcEndpoints": [{
-            "chainName": "Linea (Infura)",
-            "rpcUrls": ["https://rpc.linea.build"],
-            "nativeCurrency": {
-                "name": "ETH",
-                "symbol": "ETH",
-                "decimals": 18,
-            },
-          }],
-        },
+        "eip3085": [
+          "chainName": "Linea (Infura)",
+          "rpcUrls": ["https://rpc.linea.build"],
+          "nativeCurrency": {
+              "name": "ETH",
+              "symbol": "ETH",
+              "decimals": 18,
+          },
+        ],
       },
     },
   },
