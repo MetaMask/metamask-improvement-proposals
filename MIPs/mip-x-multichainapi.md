@@ -45,6 +45,7 @@ An example structure for a JSON-RPC request that a dapp would send to request au
     "optionalScopes": {
       "wallet:eip155": {
         "methods": ["wallet_addEthereumChain"],
+        "notifications": [],
       },
       "eip155:1": {
         "methods": ["eth_sendTransaction","eth_call","eth_getBalance","eth_blockNumber","eth_getTransactionCount","wallet_watchAsset","eth_subscribe"],
