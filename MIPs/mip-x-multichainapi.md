@@ -16,8 +16,8 @@ This proposal recommends that MetaMask adopt a set of Chain Agnostic Improvement
 - Consistent Structure: Provide common patterns while separating namespaces of each ecosystem or network.
 - Interoperability: Employ standards to encourage the development of powerful libraries with support for multiple wallets and networks.
 - Unlock the Design Space: Enable dapps to negotiate an interface with wallets for optimal multichain experiences.
-- Extensibility: Make the API reasonbaly future-proof, allowing for new networks and methods to be added as demanded by the ecosystem.
-- Security: Enhance security and privacy associated with wallets delived through Browser Extensions.
+- Extensibility: Make the API reasonably future-proof, allowing for new networks and methods to be added as demanded by the ecosystem.
+- Security: Enhance security and privacy associated with wallets delivered through Browser Extensions.
 
 ## Motivation
 Valuable lessons have been learned from scaling the Ethereum dapp and wallet ecosystem. Now, a subset of [CAIPs](https://github.com/ChainAgnostic/CAIPs) offer a path to dramatically improve upon the prevailing patterns that had been established through [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193) and [EIP-3326](https://eips.ethereum.org/EIPS/eip-3326) with chain-agnostic patterns that address long-standing issues. Furthermore, as decentralized networks continue to diversify, these patterns can be applied to non-EVM ecosystems so they can scale more efficiently and avoid common pain points associated with the demands of a growing dapp ecosystem that may require rapid evolution of Wallet APIs.
