@@ -33,6 +33,7 @@ An example structure for a JSON-RPC request that an application would send to re
     "optionalScopes": {
       "wallet:eip155": {
         "methods": ["wallet_addEthereumChain"],
+        "notifications": [],
       },
       "eip155:1": {
         "methods": ["eth_sendTransaction","eth_call","eth_getBalance","eth_blockNumber","eth_getTransactionCount","wallet_watchAsset","eth_subscribe"],
