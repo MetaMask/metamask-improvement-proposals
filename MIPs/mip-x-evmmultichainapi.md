@@ -55,21 +55,19 @@ An example structure for a JSON-RPC request that an application would send to re
                 "symbol": "ETH",
                 "decimals": 18,
             },
-            "iconURLs": ["https://example.com/ethereum.svg"]
           }],
         },
       },
       "eip155:59144": {
         "eip3085": {
           "rpcEndpoints": [{
-          "chainName": "Linea (Infura)",
-          "rpcUrls": ["https://rpc.linea.build"],
-          "nativeCurrency": {
-              "name": "ETH",
-              "symbol": "ETH",
-              "decimals": 18,
-          },
-          "iconURLs": ["https://example.com/linea.svg"]
+            "chainName": "Linea (Infura)",
+            "rpcUrls": ["https://rpc.linea.build"],
+            "nativeCurrency": {
+                "name": "ETH",
+                "symbol": "ETH",
+                "decimals": 18,
+            },
           }],
         },
       },
@@ -155,6 +153,7 @@ While most methods from the existing API will also be available on the Multichai
 - disconnect
 - chainChanged
 - accountsChanged
+- message
 
 ## Implementation
 API Maintainers will implement the multichain interface in coordination with multiple MetaMask teams.

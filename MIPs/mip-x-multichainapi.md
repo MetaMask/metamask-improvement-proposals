@@ -53,7 +53,7 @@ An example structure for a JSON-RPC request that a dapp would send to request au
       },
       "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp": {
         "methods": ["signAndSendTransaction","signAllTransactions","signMessage"],
-        "notifications": ["accountChanged"],
+        "notifications": [],
       }
       "bip122:000000000019d6689c085ae165831e93": {
         ...
@@ -90,7 +90,7 @@ An example structure for the corresponding JSON-RPC response that a dapp would r
       },
       "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp": {
         "methods": ["signAndSendTransaction","signAllTransactions","signMessage"],
-        "notifications": ["accountChanged"],
+        "notifications": [],
         "accounts": ["solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp:7S3P4HxJpyyigGzodYwHtCxZyUQe9JiBMHyRWXArAaKv"]
       }
     },      
