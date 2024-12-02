@@ -81,7 +81,7 @@ An example structure for the corresponding JSON-RPC response that a dapp would r
       "wallet:eip155": {
           "methods": ["wallet_addEthereumChain"],
           "notifications": [],
-          "accounts": ["eip155:wallet:0x0910e12C68d02B561a34569E1367c9AAb42bd810"]
+          "accounts": ["wallet:eip155:0x0910e12C68d02B561a34569E1367c9AAb42bd810"]
       },
       "eip155:1": {
         "methods": ["eth_sendTransaction","eth_call","eth_getBalance","eth_blockNumber","eth_getTransactionCount","wallet_watchAsset","eth_subscribe"],
