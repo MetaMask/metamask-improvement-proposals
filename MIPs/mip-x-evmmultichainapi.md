@@ -84,7 +84,7 @@ An example structure for the corresponding JSON-RPC response that an application
       "wallet:eip155": {
           "methods": ["wallet_addEthereumChain"],
           "notifications": [],
-          "accounts": ["eip155:wallet:0x0910e12C68d02B561a34569E1367c9AAb42bd810"]
+          "accounts": ["wallet:eip155:0x0910e12C68d02B561a34569E1367c9AAb42bd810"]
       },
       "eip155:1": {
         "methods": ["wallet_watchAsset","eth_sendTransaction","personal_sign","eth_signTypedData_v4","web3_clientVersion","eth_subscribe","eth_unsubscribe", "eth_blockNumber", "eth_call","eth_estimateGas","eth_feeHistory","eth_gasPrice","eth_getBalance","eth_getBlockByHash","eth_getBlockByNumber","eth_getBlockTransactionCountByHash","eth_getBlockTransactionCountByNumber","eth_getCode","eth_getFilterChanges","eth_getFilterLogs","eth_getLogs","eth_getProof","eth_getStorageAt","eth_getTransactionByBlockHashAndIndex","eth_getTransactionByBlockNumberAndIndex","eth_getTransactionByHash","eth_getTransactionCount","eth_getTransactionReceipt","eth_getUncleCountByBlockHash","eth_getUncleCountByBlockNumber","eth_newBlockFilter","eth_newFilter","eth_newPendingTransactionFilter","eth_sendRawTransaction","eth_syncing","eth_uninstallFilter"],
