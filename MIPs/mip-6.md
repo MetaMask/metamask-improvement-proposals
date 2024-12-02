@@ -1,5 +1,5 @@
 ---
-mip: x
+mip: 6
 title: Multichain API for Ethereum
 status: Draft
 stability: n/a
@@ -10,7 +10,7 @@ created: 2024-10-28
 ---
 
 ## Summary
-This proposal supplements [MIP-x](./mip-x-multichainapi.md) with additional specifications for EVM networks.
+This proposal supplements [MIP-5](./mip-5.md) with additional specifications for EVM networks.
 
 ## Motivation
 Current single chain EVM Wallet APIs severely limit EVM dapp development and cause a great deal of unnecessary friction for users operating in an ecosystem with rapidly growing number of chains. As such, Dapp developers and end users stand to benefit tremendously from the improved DevEx and UX that the Multichain API will provide. 
