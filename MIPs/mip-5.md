@@ -1,5 +1,5 @@
 ---
-mip: x
+mip: 5
 title: Adopt chain agnostic standards for a Multichain API
 status: Draft
 stability: n/a
