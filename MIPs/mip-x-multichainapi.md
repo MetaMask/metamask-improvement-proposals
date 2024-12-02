@@ -78,7 +78,7 @@ An example structure for the corresponding JSON-RPC response that a dapp would r
   "jsonrpc": "2.0",
   "result": {
     "sessionScopes": { 
-      "eip155:wallet": {
+      "wallet:eip155": {
           "methods": ["wallet_addEthereumChain"],
           "notifications": [],
           "accounts": ["eip155:wallet:0x0910e12C68d02B561a34569E1367c9AAb42bd810"]
