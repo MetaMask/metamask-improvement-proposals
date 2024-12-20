@@ -128,7 +128,7 @@ A dapp may include metadata for `rpcEndpoints` in the `scopedProperties` object 
 An OpenRPC [specification for the Multichain API](https://github.com/MetaMask/api-specs/blob/main/multichain/openrpc.yaml) can be found in the [api-specs](https://github.com/MetaMask/api-specs) repository.
 
 ## Caveats
-While most methods from the existing API will also be available on the Multichain API, the new API renders some methods and notifications redundant or incompatible. The following methods will not be supported through the Multichain API. However, they will remain accessible through the injected [EIP-1193][https://eips.ethereum.org/EIPS/eip-1193] API for backwards compatibility.
+While most methods from the existing API will also be available on the Multichain API, the new API renders some methods and notifications redundant or incompatible. The following methods will not be supported through the Multichain API. However, they will remain accessible through the injected [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193) API for backwards compatibility.
 
 **Discontinued Methods:**
 - `eth_requestAccounts`
