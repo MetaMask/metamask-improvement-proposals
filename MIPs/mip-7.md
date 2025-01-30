@@ -152,7 +152,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 [Include a reference to the OpenRPC specification for any JSON-RPC APIs being proposed - this should be done by opening a PR on the [api-specs](https://github.com/MetaMask/api-specs) repository]
 
 ## Caveats
-While the `wallet_grantPermissions` is not a supported method in the MetaMask Wallet API, a `wallet_revokePermissions` method introduced by [MIP-2](https://github.com/MetaMask/metamask-improvement-proposals/blob/main/MIPs/mip-2.md). The `wallet_revokePermissions` method of MIP-2 and ERC-7715 both provide different functionalities. Exposing a separate rpc method(e.g., wallet_revokeGrantedPermissions) that routes to an internal 7715 `wallet_revokePermissions` may be required to avoid collisions.
+While the `wallet_grantPermissions` is not a supported method in the MetaMask Wallet API, a `wallet_revokePermissions` method was introduced by [MIP-2](https://github.com/MetaMask/metamask-improvement-proposals/blob/main/MIPs/mip-2.md). The `wallet_revokePermissions` method of MIP-2 and ERC-7715 both provide different functionalities. Exposing a separate rpc method(e.g., wallet_revokeGrantedPermissions) that routes to an internal 7715 `wallet_revokePermissions` may be required to avoid collisions.
 
 **Permissions**
 In the context of this proposal, 'permissions' is a bit overloaded and can refer to the native permissions system that exists today in MetaMask Wallet API or the proposed introduction of the 7715 permissions system. 
