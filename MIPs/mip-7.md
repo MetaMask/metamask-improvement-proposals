@@ -14,12 +14,12 @@ This proposal aims to add two new JSON-RPC methods, `wallet_grantPermissions` an
 
 ## Motivation
 Today, a user comes to a site and clicks a connect button, granting the site access to see all the assets the user holds and their balances(show me what you got). The site can then suggest an arbitrary transaction to spend some of a user's assets with user consent(give me what I want). This connection pattern has some hurdles preventing developers from building an ecosystem of dApps that can challenge traditional apps while ensuring user safety at a scale of mass adoption. These hurdles are:
-1. Too many prompts: Prompting for user consent on every action is necessary to maintain security but is unfamiliar to users from traditional Oauth2 permission systems.
+1. Too many prompts: Prompting for user consent on every action is necessary to maintain security but is unfamiliar to users coming from traditional Oauth2 permission systems.
 2. Phishing attacks: Malicious sites that abuse the permissions system can cherry-pick a user's assets since they can see all the assets the user holds and suggest any transactions.
 
 Wallets can alleviate some of today's connection hurdles by providing a non-breaking alternative connection model built on 7715 permissions to support a new ecosystem of web3 primitives. The ERC-7715 Permissions API will enable the following benefits for developers:
-- Native access to smart contract account in MetaMask.
-- Improved dApp connection flows with the least privilege permissions pattern.
+- Native access to smart contract accounts in MetaMask.
+- An improved dApp connection flow that adheres to the principle of least privilege(POLP).
 - Human-readable permissions with a single consent screen(session cookie flow) that improve UX without comprised security.
 - Access to new primitives to build dApps that allow executing user transactions outside the context of a wallet in a safe manner.
 - High level of security without adding cognitive load so users can feel safe without needing excessive amounts of technical knowledge.
@@ -27,9 +27,9 @@ Wallets can alleviate some of today's connection hurdles by providing a non-brea
 The MetaMask Wallet API currently lacks a way for users to grant granular permissions as capabilities to sites. This proposal aims to implement:
 - Attenuated–adjusted permissions: Implementing 7715 `wallet_grantPermissions` will allow sites to provide a set of chain agnostic permissions as defined by 7715, each of which could be individually rejected(i.e., if not strictly required by the site) or attenuated-adjusted to meet the user terms.
 - Revoking permissions: Implementing 7715 `wallet_revokePermissions` allows users to revoke 7715 permissions granted to sites.
-- New dApp communication protocol: Updating today's `wallet_requestPermission` introduced by [EIP-2255](https://eips.ethereum.org/EIPS/eip-2255) to support an alternative connection model that allows dApps to execute transactions on the user's behalf with permissions grant from new 7715 JSON-RPC methods.
+- New dApp communication protocol: Updating today's `wallet_requestPermission` introduced by [EIP-2255](https://eips.ethereum.org/EIPS/eip-2255) to support an alternative connection model that allows dApps to execute transactions on the user's behalf with permissions granted via new 7715 JSON-RPC methods.
 
-Introducing an alternative dApp communication protocol rooted in the least private principles, MetaMask further aligns with traditional permission systems, strengthening the long-term offering of a permissionless, secure ecosystem.
+By introducing an alternative dApp communication protocol rooted in the principle of least privilege(POLP), MetaMask further aligns with traditional permission systems.
 
 ## Usage Example
 [Provide an illustrative example of the proposed API or feature in use]
@@ -163,13 +163,11 @@ To avoid confusion with developers when merging these two systems, the usage of 
 API Maintainers will implement the 7715 permission interface in coordination with multiple MetaMask teams.
 
 ## Developer Adoption Considerations
-This proposal introduces a non-breaking optional opt-in alternative connection path, so exiting dApps slow to adopt it will not need to make changes at release.
+This proposal introduces a non-breaking optional alternative connection path, so exiting dApps slow to adopt it will not need to make changes at release.
 
 Developers who choose early adoption should carefully consider the UX of managing today's connection models alongside the proposed alternate connection model. Developers building new apps may choose to only support the alternate connection model, given the massive UX gains.
 
 A granular permissions system using ERC-7715 as a foundation offers flexibility and extensibility. Developers should expect additional backward-compatible features that build on this proposal.
-
-Once the 7715 Permissions API reaches mass adoption in the industry, today's connection models may be deprecated.
 
 ## User Experience Considerations
 The proposed JSON-RPC methods offer users a significantly different experience with dApps that will require education.
