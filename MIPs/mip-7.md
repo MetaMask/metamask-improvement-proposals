@@ -163,7 +163,7 @@ To avoid confusion with developers when merging these two systems, the usage of 
 API Maintainers will implement the 7715 permission interface in coordination with multiple MetaMask teams.
 
 ## Developer Adoption Considerations
-This proposal introduces a non-breaking optional alternative connection path, so exiting dApps slow to adopt it will not need to make changes at release.
+This proposal introduces a non-breaking optional alternative connection path, so existing dApps slow to adopt it will not need to make changes at release.
 
 Developers who choose early adoption should carefully consider the UX of managing today's connection models alongside the proposed alternate connection model. Developers building new apps may choose to only support the alternate connection model, given the massive UX gains.
 
