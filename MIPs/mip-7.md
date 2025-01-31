@@ -27,7 +27,7 @@ Wallets can alleviate some of today's connection hurdles by providing a non-brea
 The MetaMask Wallet API currently lacks a way for users to grant granular permissions as capabilities to sites. This proposal aims to implement:
 - Attenuated–adjusted permissions: Implementing 7715 `wallet_grantPermissions` will allow sites to provide a set of chain agnostic permissions as defined by 7715, each of which could be individually rejected(i.e., if not strictly required by the site) or attenuated-adjusted to meet the user terms.
 - Revoking permissions: Implementing 7715 `wallet_revokePermissions` allows users to revoke 7715 permissions granted to sites.
-- New dApp communication protocol: Updating today's `wallet_requestPermission` introduced by [EIP-2255](https://eips.ethereum.org/EIPS/eip-2255) to support an alternative connection model that allows dApps to execute transactions on the user's behalf with permissions granted via new 7715 JSON-RPC methods.
+- New dApp communication protocol: Updating today's `wallet_requestPermission` introduced by [EIP-2255](https://eips.ethereum.org/EIPS/eip-2255) to support an alternative connection model that allows dApps to execute transactions on the user's behalf with permissions granted via new 7715 JSON-RPC methods. The `wallet_getPermissions` rpc should so also be updated to return an array of permissions currently granted(i.e., the response returned from `wallet_grantPermissions`) to dApps, allowing dApps to use permissions that are still active(i.e., users have not revoked and or the permission has not yet expired).
 
 By introducing an alternative dApp communication protocol rooted in the principle of least privilege(POLP), MetaMask further aligns with traditional permission systems.
 
