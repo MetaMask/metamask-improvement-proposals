@@ -135,7 +135,19 @@ Multichain API connections will be established and updated through [CAIP-25](htt
 
 > **Note:** MetaMask treats `requiredScopes` as `optionalScopes`. Only `optionalScopes` are recommended, though `requiredScopes` can be used to signal that your dapp will not be usable if certain [CAIP-217](https://chainagnostic.org/CAIPs/caip-217) `scopeStrings` are not authorized. 
 
-> **Note:** Developers are encouraged to precisely request only the authorization scopes for methods and notifications that their dapp expects to call before making additional `wallet_createSession` calls to expand authorization scopes. Requesting specific authorization scopes allows wallets to discover and implement features that are being adopted. Wallets can also further optimize permission confirmation flows to reduce unnecessary friction for some method calls. For simplicity, however, MetaMask may return more authorization scopes, methods, or notifications than the caller explicitly requested.
+> **Note:** Developers are encouraged to precisely request only the authorization scopes for methods and notifications that their dapp expects to call before making additional `wallet_createSession` calls to expand authorization scopes. Requesting specific authorization scopes allows wallets to discover and implement features that are being adopted. Wallets can also further optimize permission confirmation flows to reduce unnecessary friction for some method calls. For efficiency, however, MetaMask may return more authorization scopes, methods, or notifications than the caller explicitly requested.
+
+#### Supported `scopeObject` properties
+
+Supported scopeObject properties include:
+- `references`
+- `methods`
+- `notifications`
+- `accounts`
+
+> **Note:** The `references` parameter is mainly included as a shorthand when there would otherwise be repetitive `scopeObjects` with the only difference being the `reference` portion of each `scopeString`.
+
+> **Note:** The optional [CAIP-217](https://chainagnostic.org/CAIPs/caip-217) `accounts` parameter may be included as part of [CAIP-25](https://chainagnostic.org/CAIPs/caip-25) requests. When provided, if the user holds a matching account, the supplied accounts MAY default to being preselected in the account selection process.
 
 ### CAIP-27 - Invoke RPC Requests for an Authorization Scope
 A dapp can invoke RPC requests for an authorization scope by making [CAIP-27](https://chainagnostic.org/CAIPs/caip-27) `wallet_invokeMethod` calls.
