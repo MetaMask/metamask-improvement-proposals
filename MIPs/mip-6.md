@@ -1,8 +1,8 @@
 ---
 mip: 6
 title: Multichain API for Ethereum
-status: Review
-stability: n/a
+status: Implemented
+stability: Experimental
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions/53
 author(s): Alex Donesky (@adonesky1), Jiexi Luan (@jiexi), Vandan Parikh(@vandan) 
 type: Maintainer
