@@ -140,12 +140,9 @@ Multichain API connections will be established and updated through [CAIP-25](htt
 #### Supported `scopeObject` properties
 
 Supported scopeObject properties include:
-- `references`
 - `methods`
 - `notifications`
 - `accounts`
-
-> **Note:** The `references` parameter is mainly included as a shorthand when there would otherwise be repetitive `scopeObjects` with the only difference being the `reference` portion of each `scopeString`.
 
 > **Note:** The optional [CAIP-217](https://chainagnostic.org/CAIPs/caip-217) `accounts` parameter may be included as part of [CAIP-25](https://chainagnostic.org/CAIPs/caip-25) requests. When provided, if the user holds a matching account, the supplied accounts MAY default to being preselected in the account selection process.
 
