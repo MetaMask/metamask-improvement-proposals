@@ -135,7 +135,7 @@ Multichain API connections will be established and updated through [CAIP-25](htt
 
 > **Note:** MetaMask treats `requiredScopes` as `optionalScopes`. Only `optionalScopes` are recommended, though `requiredScopes` can be used to signal that your dapp will not be usable if certain [CAIP-217](https://chainagnostic.org/CAIPs/caip-217) `scopeStrings` are not authorized. 
 
-> **Note:** Developers are encouraged to precisely request only the authorization scopes for methods and notifications that their dapp expects to call before making additional `wallet_createSession` calls to expand authorization scopes. Requesting specific authorization scopes allows wallets to discover and implement features that are being adopted. Wallets can also further optimize permission confirmation flows to reduce unnecessary friction for some method calls. For efficiency, however, MetaMask may return more authorization scopes, methods, or notifications than the caller explicitly requested.
+> **Note:** Developers are encouraged to precisely request only the authorization scopes for methods and notifications that their dapp expects to call before making additional `wallet_createSession` calls to expand authorization scopes. Requesting specific authorization scopes allows wallets to discover and implement features that are being adopted. Wallets can also further optimize permission confirmation flows to reduce unnecessary friction for some method calls which may result in returning more authorization scopes, methods, or notifications than the caller explicitly requested. Dapps should expect and be able to handle the scenario when a user grants fewer authorizaion scopes, methods, or notifications than the caller explicitly requested. 
 
 #### Supported `scopeObject` properties
 
