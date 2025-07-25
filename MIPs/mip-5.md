@@ -1,8 +1,8 @@
 ---
 mip: 5
 title: Adopt chain agnostic standards for a Multichain API
-status: Draft
-stability: n/a
+status: Implemented
+stability: Experimental
 discussions-to: https://github.com/MetaMask/metamask-improvement-proposals/discussions/53
 author(s): Alex Donesky (@adonesky1), Jiexi Luan (@jiexi), Vandan Parikh(@vandan) 
 type: Maintainer
@@ -135,7 +135,16 @@ Multichain API connections will be established and updated through [CAIP-25](htt
 
 > **Note:** MetaMask treats `requiredScopes` as `optionalScopes`. Only `optionalScopes` are recommended, though `requiredScopes` can be used to signal that your dapp will not be usable if certain [CAIP-217](https://chainagnostic.org/CAIPs/caip-217) `scopeStrings` are not authorized. 
 
-> **Note:** Developers are encouraged to precisely request only the authorization scopes for methods and notifications that their dapp expects to call before making additional `wallet_createSession` calls to expand authorization scopes. Requesting specific authorization scopes allows wallets to discover and implement features that are being adopted. Wallets can also further optimize permission confirmation flows to reduce unnecessary friction for some method calls. For simplicity, however, MetaMask may return more authorization scopes, methods, or notifications than the caller explicitly requested.
+> **Note:** Developers are encouraged to precisely request only the authorization scopes for methods and notifications that their dapp expects to call before making additional `wallet_createSession` calls to expand authorization scopes. Requesting specific authorization scopes allows wallets to discover and implement features that are being adopted. Wallets can also further optimize permission confirmation flows to reduce unnecessary friction for some method calls which may result in returning more authorization scopes, methods, or notifications than the caller explicitly requested. Dapps should expect and be able to handle the scenario when a user grants fewer authorizaion scopes, methods, or notifications than the caller explicitly requested. 
+
+#### Supported `scopeObject` properties
+
+Supported scopeObject properties include:
+- `methods`
+- `notifications`
+- `accounts`
+
+> **Note:** The optional [CAIP-217](https://chainagnostic.org/CAIPs/caip-217) `accounts` parameter may be included as part of [CAIP-25](https://chainagnostic.org/CAIPs/caip-25) requests. When provided, if the user holds a matching account, the supplied accounts MAY default to being preselected in the account selection process.
 
 ### CAIP-27 - Invoke RPC Requests for an Authorization Scope
 A dapp can invoke RPC requests for an authorization scope by making [CAIP-27](https://chainagnostic.org/CAIPs/caip-27) `wallet_invokeMethod` calls.
@@ -166,10 +175,12 @@ The CAIPs referenced in this proposal are still in Draft or Review status with C
 ### API Access
 As part of the Multichain API, MetaMask is leading the adoption of alternative methods for browser extension wallet communication. Currently, browser extension wallets inject a JavaScript object to communicate with each site. But this approach comes with privacy, security, reliability, and performance drawbacks.
 
-- The MetaMask Browser Extension will adopt an alternative method of communication through the [externally_connectable](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/externally_connectable) feature, which is now supported by most modern web browsers with extension frameworks.
-- When a site is accessed through a browser that does not support [externally_connectable](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/externally_connectable), the Multichain API will be available through an alternative communication method. 
+Wallet discovery and access will be guided by [CAIP-282]() and [CAIP-294]() standards.
 
-In summary, the following methods will solely be accessible through the new communication methods:
+- The MetaMask Browser Extension will adopt an alternative method of communication through the [externally_connectable](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/externally_connectable) feature, which is now supported by most modern web browsers with extension frameworks.
+- When a site is accessed through a browser that does not support [externally_connectable](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/externally_connectable), the Multichain API will be available through the `window.postMessage` method. 
+
+Once a communication channel has been established with the wallet, the following standard methods will be exposed:
 
 - `wallet_createSession` (CAIP-25)
 - `wallet_sessionChanged` (CAIP-311)
@@ -177,8 +188,6 @@ In summary, the following methods will solely be accessible through the new comm
 - `wallet_revokeSession` (CAIP-285)
 - `wallet_invokeMethod` (CAIP-27)
 - `wallet_notify` (CAIP-319)
-
-(API Delivery & Wallet Discovery CAIPs to be added in this section)
 
 ### Snap Methods
 Some RPC APIs associated with Snaps will be rendered redundant and will not be supported through the Multichain API. However, they will remain accessible through the EIP-1193 interface for backward compatibility.
