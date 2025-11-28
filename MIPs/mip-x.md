@@ -11,26 +11,31 @@ created: 2025-11-26
 
 ## Summary
 
-This proposal introduces a new JSON-RPC method `wallet_getTransactionCountIncludingQueued` that returns the next available nonce for an account, including transactions that are pending locally in MetaMask but not yet confirmed on-chain. This enables dApps to reliably submit multiple sequential transactions without waiting for each to be mined.
+This proposal introduces a new JSON-RPC method `wallet_getTransactionCountIncludingQueued` that returns the next available nonce for an account, including transactions that are pending locally in MetaMask but not yet confirmed on-chain.
+
+This enables dApps that require **nonce precision** to predict contract deployment addresses before transactions confirm. CREATE addresses are deterministically derived from `keccak256(rlp(sender, nonce))`, so knowing the exact nonce MetaMask will assign is essential for multi-step deployments where subsequent transactions must reference not-yet-deployed contracts.
 
 ## Motivation
 
-The current `eth_getTransactionCount` method, when called with the `pending` block tag, queries the node for the pending nonce but does not account for transactions that are pending locally within MetaMask. This creates a significant limitation for dApps that need to submit multiple transactions in rapid succession.
+The current `eth_getTransactionCount` method, when called with the `pending` block tag, queries the node for the pending nonce but does not account for transactions that are pending locally within MetaMask. While submitting multiple transactions in rapid succession is already possible today, this limitation breaks dApps that need to **predict CREATE addresses** for contract deployments.
 
 ### The Problem
 
-When a dApp submits transaction N and immediately queries `eth_getTransactionCount("pending")`, MetaMask returns the nonce from the connected node. If transaction N hasn't propagated to the node's mempool yet, the returned nonce will be N (not N+1), causing the next transaction to fail with a "nonce too low" error or to replace the pending transaction.
+Contract deployment addresses are deterministic: `address = keccak256(rlp(sender, nonce))`. When a dApp needs to deploy contract A and then deploy contract B that references A's address, it must know the exact nonce for transaction A to compute the address before A confirms.
 
-### Use Case: Transaction Orchestration
+When a dApp submits transaction N and immediately queries `eth_getTransactionCount("pending")`, MetaMask returns the nonce from the connected node. If transaction N hasn't propagated to the node's mempool yet, the returned nonce will be N (not N+1), resulting in the dApp's CREATE address prediction for transaction N+1 to be wrong.
 
-Consider TXTX, a runbook orchestrator for blockchain deployments that manages multi-step contract deployments, migrations, and batch operations. Runbooks are declarative specs analyzed to produce a DAG of transactions where the full dependency graph is known upfront.
+### Use Case: Multi-Step Contract Deployments
 
-A typical workflow:
-1. User connects wallet via wagmi/Web3Modal
-2. DAG executor traverses the graph, prompting signatures as dependencies resolve
-3. User signs rapidly through the sequence (5-20+ transactions)
+Consider a deployment orchestrator managing multi-step contract deployments:
 
-Because the orchestrator knows the complete transaction graph upfront, it can assign nonces immediately: deploy a factory (nonce N) -> deploy 3 contracts in parallel (nonces N+1, N+2, N+3) -> wire them together (nonce N+4). The current "submit, wait for confirmation, query next nonce" model forces serialization of what could be parallelized.
+1. **Deploy Factory** (nonce N) -> predicted address: `0xABC`
+2. **Deploy Contract via Factory** (nonce N+1)  must reference `0xABC` in calldata
+3. **Initialize contracts** (nonce N+2) -> wires them together
+
+The orchestrator computes `0xABC = keccak256(rlp(sender, N))` *before* transaction N confirms, so it can prepare transaction N+1's calldata. This requires knowing N precisely.
+
+Tools like TXTX deliberately use `eth_sendTransaction` to leverage MetaMask's security stack (transaction simulation, phishing detection, spend limits, confirmation flows) rather than asking users to hand over private keys for raw transaction signing. But to make this work for complex deployments, there needs to be visibility into exactly what nonce MetaMask will assign.
 
 ### Current Workaround
 
@@ -44,41 +49,53 @@ Introducing a new method rather than reverting the old behavior avoids breaking 
 
 ## Usage Example
 
+### Predicting CREATE Addresses for Multi-Step Deployments
+
 ```javascript
-// Get the next available nonce including locally pending transactions
+import { getContractAddress } from 'viem';
+
+const deployerAddress = '0x1234567890abcdef1234567890abcdef12345678';
+
+// Get the next nonce MetaMask will assign (including locally queued txs)
 const nonce = await ethereum.request({
   method: 'wallet_getTransactionCountIncludingQueued',
-  params: ['0x1234567890abcdef1234567890abcdef12345678']
+  params: [deployerAddress]
 });
 
-// Use the nonce for the next transaction
+// Predict the factory contract address before deployment confirms
+const predictedFactoryAddress = getContractAddress({
+  from: deployerAddress,
+  nonce: BigInt(nonce)
+});
+
+// Deploy the factory (MetaMask assigns nonce N)
 await ethereum.request({
   method: 'eth_sendTransaction',
   params: [{
-    from: '0x1234567890abcdef1234567890abcdef12345678',
-    to: '0xabcdef1234567890abcdef1234567890abcdef12',
-    nonce: nonce,
-    // ... other transaction parameters
+    from: deployerAddress,
+    data: factoryBytecode,
   }]
 });
-```
 
-### Batch Transaction Submission
+// Now prepare the next transaction that references the factory
+// We know the factory address even though deployment hasn't confirmed
+const childDeploymentCalldata = encodeDeployViaFactory(predictedFactoryAddress, childParams);
 
-```javascript
-// Submit multiple transactions with sequential nonces
-const baseNonce = await ethereum.request({
+// Query again for the next nonce (now N+1)
+const nextNonce = await ethereum.request({
   method: 'wallet_getTransactionCountIncludingQueued',
-  params: [userAddress]
+  params: [deployerAddress]
 });
 
-// Queue transactions with known nonces
-const txPromises = transactions.map((tx, index) =>
-  ethereum.request({
-    method: 'eth_sendTransaction',
-    params: [{ ...tx, nonce: `0x${(parseInt(baseNonce) + index).toString(16)}` }]
-  })
-);
+// Submit the dependent transaction
+await ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [{
+    from: deployerAddress,
+    to: predictedFactoryAddress,
+    data: childDeploymentCalldata,
+  }]
+});
 ```
 
 # Proposal
@@ -88,6 +105,8 @@ const txPromises = transactions.map((tx, index) =>
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" written in uppercase in this document are to be interpreted as described in RFC 2119.
 
 ## Definitions
+
+**CREATE address**: The deterministic address where a contract will be deployed, computed as `keccak256(rlp(sender, nonce))`. Knowing the exact nonce is required to predict this address before the deployment transaction confirms.
 
 **locally pending transaction**: A transaction that has been signed and submitted through MetaMask but has not yet been confirmed on-chain. These transactions are tracked in MetaMask's internal transaction queue.
 
@@ -118,6 +137,38 @@ This differs from `eth_getTransactionCount(address, 'pending')` by including tra
 
 - **Invalid Address**: If the address is not a valid Ethereum address, the wallet MUST throw an `invalidParams` error with message "Invalid Ethereum address".
 - **Address Not Connected**: If the address is not connected to the requesting dApp, the wallet MUST throw an `unauthorized` error with message "Address not authorized for this dApp".
+
+## Alternatives Considered
+
+### Fix `eth_getTransactionCount("pending")` to include local transactions
+
+One alternative considered was modifying the existing `eth_getTransactionCount("pending")` behavior to include locally queued transactions. However, this approach has limitations:
+
+1. **Semantic mismatch**: The `pending` block tag refers to the node's pending block (mempool state). Locally queued transactions that have not been submitted yet are not in the pending state by definition. They exist only in the wallet's local state.
+
+2. **Incomplete solution**: Fixing `pending` to consider submitted-but-not-propagated transactions (such as smart transactions) would help some cases, but would not address queued transactions that have not been submitted yet. The new method provides a more complete and semantically correct solution.
+
+### Add a new block parameter type (e.g., `"queued"` or `"local"`)
+
+Another alternative was extending `eth_getTransactionCount` with a new block parameter type that includes wallet-local state. This was rejected because:
+
+1. **Shared infrastructure**: The block parameter type is shared across many JSON-RPC methods where a "local" option may not be applicable.
+
+2. **Cross compatibility**: A wallet-specific parameter would not be recognized as valid by other RPC processors (nodes, indexers, etc.).
+
+3. **Process constraints**: MetaMask has a well-documented process for introducing new experimental methods, but no established process for adding experimental parameter options to stable methods.
+
+### Why a new method is preferred
+
+A dedicated `wallet_` namespaced method provides:
+
+- **Clear semantics**: The `wallet_` prefix signals this returns wallet-local state, not network state
+- **Explicit opt-in**: dApps consciously choose to query wallet state rather than having existing behavior change
+- **Established process**: Follows MetaMask's documented approach (TODO: Include link to MM process doc) for experimental methods
+
+### Future consideration
+
+As MetaMask's feature set grows, there will likely be more cases where wallet-local state needs to surface through APIs. If each case requires a new method, the API surface could fragment over time. A principled approach to extending existing methods with wallet-specific behavior may be worth considering, even if this particular case is best served by a new method.
 
 ## Caveats
 
