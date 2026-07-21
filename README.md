@@ -14,7 +14,7 @@ We encourage developers to actively participate in the MIPs process by submittin
 Please refer to the following documents:
 
 [PROCESS GUIDE](./PROCESS-GUIDE.md) 
-For an overview of the process and guidelines about when creating a MIP would be appropriate.
+For an overview of the process and guidelines about when creating a MIP would be appropriate. Best in that case is try few sets before MIP.
 
 [CONTRIBUTING](./CONTRIBUTING.md) 
 For detailed guidelines on how to contribute.
